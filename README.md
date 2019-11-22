@@ -53,7 +53,7 @@ If you are using your own AWS account, this workshop uses AWS services that are 
 
 ### Next steps
 
-:white_check_mark: Proceed to the [setup module](../1-app-deploy/README.md), where you'll start setting up your environment.
+:white_check_mark: Proceed to the [setup module](./1-app-deploy/README.md), where you'll start setting up your environment.
 
 [amplify-console]: https://aws.amazon.com/amplify/console/
 [cognito]: https://aws.amazon.com/cognito/
