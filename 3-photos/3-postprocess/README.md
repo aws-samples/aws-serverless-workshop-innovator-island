@@ -1,6 +1,6 @@
 # Module 3: On-ride photo processing - Post-processing
 
-*[Click here](../README.md) to return the main instructions for Module 3 at any time.*
+*[Click here](../README.md) to return to the main instructions for Module 3 at any time.*
 
 The final Lambda function in the photo processing pipeline is triggered when the final image is rendered and saved into the S3 **finalbucket**. It will save the photo object information into DynamoDB and send a message to the IoT topic so the frontend application is notified.
 

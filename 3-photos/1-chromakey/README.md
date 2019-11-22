@@ -1,6 +1,6 @@
 # Module 3: On-ride photo processing - Creating the chroma key Lambda function
 
-*[Click here](../README.md) to return the main instructions for Module 3 at any time.*
+*[Click here](../README.md) to return to the main instructions for Module 3 at any time.*
 
 This function implements [chroma key processing](https://en.wikipedia.org/wiki/Chroma_key), also commonly known as green screen. It takes an input image of a person against a green background, removes the green, and then saves the output image.
 
