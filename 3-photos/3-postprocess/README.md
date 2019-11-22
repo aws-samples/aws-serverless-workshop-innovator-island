@@ -16,7 +16,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.**
 
-2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 10.x` is selected under *Runtime*. 
+2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
 
 3. Open the *Choose or create an execution role* section:
 -  Select the *Use an existing role* radio button. 
@@ -65,7 +65,7 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 aws dynamodb list-tables
 ```
 
-4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card and enter the two environment variables names along with the values you retrieved in CLoud9:
+4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card and enter the two environment variables names along with the values you retrieved in Cloud9:
 
 5. **Choose *Save* to save these changes.**
 
@@ -96,6 +96,8 @@ This file contains a JSON configuration for the frontend. The file is separated 
 6. In the **MODULE 3** section, between the single quote marks `''`, update the *photoUploadURL* with the API Endpoint URL in the clipboard.
 
 7. Save the file.
+
+![Module 3 - Output](../../images/3-photos-postprocess-config.png)
 
 ### Push to CodeCommit and deploy via Amplify
 
