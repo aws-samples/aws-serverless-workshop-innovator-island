@@ -113,12 +113,12 @@ In this section, you will retrieve these values and update the frontend configur
 ```
 aws cognito-identity list-identity-pools --max-results 10
 ```
-3. Run this command to show the **IoT endpoint hostname**
+3. Run this command to show the **IoT endpoint hostname**:
 
 ```
 aws iot describe-endpoint --endpoint-type iot:Data-ATS
 ```
-4. Run this command to show the **AWS REGION**
+4. Run this command to show the **AWS REGION**:
 
 ```
 echo $AWS_REGION

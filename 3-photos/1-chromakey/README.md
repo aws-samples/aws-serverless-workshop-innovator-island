@@ -109,12 +109,12 @@ You will now test the function using a test image containing a photo of a person
 
 1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*. **Make sure your region is correct.**
 
-2. Navigate to the file `theme-park-backend\3-photos\green-screen-png` and open. You can see the photo of a person with a green screen. This is the local testing image.
+2. Navigate to the file `aws-serverless-workshop-innovator-island\3-photos\green-screen-png` and open. You can see the photo of a person with a green screen. This is the local testing image.
 
 3. In the terminal enter the following command to change the directory:
 
 ```
-cd ~/environment/theme-park-backend/3-photos/
+cd ~/environment/aws-serverless-workshop-innovator-island/3-photos/
 ```
 4. Find the name of your S3 upload bucket with this command:
 ```
