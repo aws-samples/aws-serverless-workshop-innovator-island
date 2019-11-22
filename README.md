@@ -6,9 +6,9 @@ If you're attending this workshop at an AWS event, your instructor will provide 
 
 # Welcome to the Theme Park!
 
-This exciting new theme park built on the remote island of Isla Sanserver, combining rollercoasters and rides with shows and exhibits. The park is the creation of the billionaire entrepreneur behind Wild Rydes, the unicorn taxi service that sold in 2018. The park will open every day and expects up to 50,000 visitors daily. It's self-guided, using a web application that guests can browse on their smartphones. 
+This exciting new theme park, built on the remote island of Isla Sanserver, combines rollercoasters and rides with shows and exhibits. The park is the creation of the billionaire entrepreneur behind Wild Rydes, the unicorn taxi service that sold in 2018. The park will open every day and expects up to 50,000 visitors daily. It's self-guided, using a web application that guests can browse on their smartphones. 
 
-The only "slight" problem is that the development team has suddenly left and the park is due to open today! You only have 2 hours to finish assembling the remaining pieces of the application before the gates open. But don't worry, serverless is at hand! These instructions will guide you through using AWS services to assemble a complete application so you can save the day.
+The only "slight" problem is that the development team has suddenly left and the park's Grand Opening is today! You only have 2 hours to finish assembling the remaining pieces of the application before the gates open. But don't worry, serverless is at hand! These instructions will guide you through using AWS services to assemble a complete application so you can save the day.
 
 ## Application structure
 
@@ -32,11 +32,10 @@ See the diagram below for the complete architecture.
 
 ## Start here
 
-You must first complete the set-up module to configure your workspace and environment, then follow the modules in order:
+After setting up your Cloud9 environment, follow the modules in order:
 
 Module # | Feature | Description
 ------------ | ------------- | -------------
-0 | Initial Setup | Get started with the AWS cloud native IDE, Cloud9.
 1 | Deploy the App | Deploy the initial frontend and backend applications.
 2 | Ride wait times | Integrate your application with the ride systems so guests can see wait times.
 3 | Ride photos | Build a photo processing flow so guests can take selfies around the park.
@@ -48,13 +47,13 @@ If you run out of time in the workshop, don't panic! This GitHub repository is p
 
 If you are using an account provided at an AWS event, the account will be cleaned up automatically. 
 
-If you are using your own AWS account, this workshop uses AWS services that are mostly covered by the Free Tier allowance (if your account is less than 12 months old) but it may incur some costs. To minimize the cost, make sure you deprovision and delete those resources when you are finished.
+If you are using your own AWS account, this workshop uses AWS services that are mostly covered by the Free Tier allowance (if your account is less than 12 months old) but it may incur some costs. To minimize cost, make sure you deprovision and delete those resources when you are finished.
 
 **:loudspeaker: If you leave resources running in your account, you are liable for the costs incurred.**
 
 ### Next steps
 
-:white_check_mark: Proceed to the [setup module](https://github.com/jbesw/theme-park-backend/tree/master/0-setup), where you'll start setting up your environment.
+:white_check_mark: Proceed to the [setup module](../1-app-deploy/README.md), where you'll start setting up your environment.
 
 [amplify-console]: https://aws.amazon.com/amplify/console/
 [cognito]: https://aws.amazon.com/cognito/
