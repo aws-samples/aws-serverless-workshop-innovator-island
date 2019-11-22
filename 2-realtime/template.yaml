@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: module3-controller
+Parameters:
+  DynamoDBTableName:
+    Type: String
+    Description: Main Theme Park app table
+  IOTendpoint:
+    Type: String
+    Description: Theme Park IoT endpoint
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ControllerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: controller/
+      Handler: app.handler
+      MemorySize: 128
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          DDB_TABLE_NAME: !Ref DynamoDBTableName
+          IOT_DATA_ENDPOINT: !Ref IOTendpoint
+          IOT_TOPIC: 'theme-park-rides'
+      Policies:
+      - Statement:
+          - Effect: Allow
+            Resource: '*'
+            Action:
+              - iot:*
+      - DynamoDBCrudPolicy:
+          TableName: !Ref DynamoDBTableName      
+
+Outputs:
+  ControllerFunctionArn:
+    Export:
+      Name: ControllerFunctionARN
+    Value:
+      Fn::GetAtt: ControllerFunction.Arn

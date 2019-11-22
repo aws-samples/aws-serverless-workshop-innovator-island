@@ -1,0 +1,30 @@
+{
+  "en": {
+    "message": {
+      "hello": "Hello guest!"
+    },
+    "words": {
+      "mins": "mins",
+      "description": "Activity Description"
+    },
+    "phrases": {
+      "addPhoto": "Add ride photo",
+      "yourGallery": "Your photo gallery",
+      "selectLanguage": "Select language:",
+      "currentWaitTime": "Current wait time",
+      "outOfService": "Out of service"
+    },
+    "photoUploaded": {
+      "title": "Photo Uploaded.",
+      "text": "We're processing your photo. You'll receive an alert when it's ready."
+    },
+    "photoProcessed": {
+      "title": "Photo Ready!",
+      "text": "Your new photo is ready to view in the gallery."
+    },
+    "errors": {
+      "photoWrongType": "Wrong file type - JPG only.",
+      "photoTooLarge": "Image is loo large - 5Mb maximum."
+    }
+  }
+}

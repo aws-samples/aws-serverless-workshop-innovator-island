@@ -1,0 +1,9 @@
+{
+  "name": "module2-backend",
+  "version": "1.0.0",
+  "description": "Backend setup",
+  "main": "app.js",
+  "repository": "",
+  "author": "AWS Serverless team",
+  "license": "MIT"
+}

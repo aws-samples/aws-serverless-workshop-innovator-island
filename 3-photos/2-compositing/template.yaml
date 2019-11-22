@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Module-3 - Composite
+Parameters:
+  FinalBucketName:
+    Type: String
+    Description: Name of the final S3 bucket
+
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  CompositeFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: lambdaFunction/
+      Handler: app.handler
+      Runtime: nodejs10.x
+      MemorySize: 2048
+      Environment:
+        Variables:
+          OUTPUT_BUCKET_NAME: !Ref FinalBucketName  
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Resource: '*'
+            Action:
+              - s3:*

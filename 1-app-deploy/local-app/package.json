@@ -1,0 +1,17 @@
+{
+  "name": "local-app",
+  "version": "1.0.0",
+  "main": "importData.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.526.0",
+    "csv-parse": "^4.4.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}

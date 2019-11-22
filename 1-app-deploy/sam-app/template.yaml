@@ -1,0 +1,264 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: theme-park-backend
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  InitStateFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: getInitState/
+      Handler: app.lambdaHandler
+      MemorySize: 128
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          DDB_TABLE_NAME: !Ref DynamoDBTable     
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName: !Ref DynamoDBTable      
+      Events:
+        InitStateAPI:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /InitState
+            Method: get
+
+  S3UploaderFunction:
+    # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: getUploadURL/
+      Handler: app.handler
+      MemorySize: 128
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          UploadBucket: !Ref UploadBucket
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref UploadBucket
+      Events:
+        HttpPost:
+          Type: Api
+          Properties:
+            Path: '/Upload'
+            Method: get  
+
+  ##########################################
+  # Application's DynamoDB table           #
+  ##########################################
+
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - AttributeName: partitionKey
+          AttributeType: S
+        - AttributeName: sortKey
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: partitionKey
+          KeyType: HASH
+        - AttributeName: sortKey
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST 
+
+  ##########################################
+  # S3 Buckets                             #
+  ##########################################
+
+  UploadBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      CorsConfiguration:
+        CorsRules:
+        - AllowedHeaders:
+            - "*"
+          AllowedMethods:
+            - GET
+            - PUT
+            - POST
+            - DELETE
+            - HEAD
+          AllowedOrigins:
+            - "*"
+
+  ProcessingBucket:
+    Type: 'AWS::S3::Bucket'
+
+  FinalBucket:
+    Type: 'AWS::S3::Bucket'
+
+  ##########################################
+  # Resources for realtime messaging       #
+  ##########################################
+
+  ThemeParkRealtime:
+      Type: "AWS::IoT::Thing"
+      Properties:
+          ThingName: "theme-park-realtime"
+          AttributePayload: 
+              Attributes: {}  
+
+  UserPool:
+    Type: "AWS::Cognito::UserPool"
+    Properties:
+      UserPoolName: ThemeParkUserPool
+      MfaConfiguration: "OFF"
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+  
+  # Creates a User Pool Client to be used by the identity pool
+  UserPoolClient:
+    Type: "AWS::Cognito::UserPoolClient"
+    Properties:
+      ClientName: ThemeParkUserPoolClient
+      GenerateSecret: false
+      UserPoolId: !Ref UserPool
+  
+  # Creates a federated Identity pool
+  IdentityPool:
+    Type: "AWS::Cognito::IdentityPool"
+    Properties:
+      IdentityPoolName: ThemeParkIdentityPool
+      AllowUnauthenticatedIdentities: true
+      CognitoIdentityProviders: 
+        - ClientId: !Ref UserPoolClient
+          ProviderName: !GetAtt UserPool.ProviderName
+
+  # Create a role for unauthorized access to AWS resources. 
+  CognitoUnAuthorizedRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal: 
+              Federated: "cognito-identity.amazonaws.com"
+            Action: 
+              - "sts:AssumeRoleWithWebIdentity"
+            Condition:
+              StringEquals: 
+                "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
+              "ForAnyValue:StringLike":
+                "cognito-identity.amazonaws.com:amr": unauthenticated
+      Policies:
+        - PolicyName: "CognitoUnauthorizedPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                  - "mobileanalytics:PutEvents"
+                  - "cognito-sync:*"
+                  - "iot:*"
+                Resource: "*"
+
+  # Create a role for authorized acces to AWS resources. 
+  CognitoAuthorizedRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal: 
+              Federated: "cognito-identity.amazonaws.com"
+            Action: 
+              - "sts:AssumeRoleWithWebIdentity"
+            Condition:
+              StringEquals: 
+                "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
+              "ForAnyValue:StringLike":
+                "cognito-identity.amazonaws.com:amr": authenticated
+      Policies:
+        - PolicyName: "CognitoAuthorizedPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                  - "mobileanalytics:PutEvents"
+                  - "cognito-sync:*"
+                  - "cognito-identity:*"
+                Resource: "*"
+
+  # Assigns the roles to the Identity Pool
+  IdentityPoolRoleMapping:
+    Type: "AWS::Cognito::IdentityPoolRoleAttachment"
+    Properties:
+      IdentityPoolId: !Ref IdentityPool
+      Roles:
+        authenticated: !GetAtt CognitoAuthorizedRole.Arn
+        unauthenticated: !GetAtt CognitoUnAuthorizedRole.Arn
+
+  #######################################################
+  # Resources for Custom Role for user Lambda functions #
+  #######################################################
+  
+  ThemeParkLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17      
+        Statement:
+          - Action:
+            - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+      Policies:
+      - PolicyName: ThemeParkAccess
+        PolicyDocument:
+          Version: 2012-10-17      
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - "s3:*"
+              Resource:
+                - !Sub ${UploadBucket.Arn}/*
+                - !Sub ${ProcessingBucket.Arn}/*
+                - !Sub ${FinalBucket.Arn}/*
+            - Effect: "Allow"
+              Action:
+                - "dynamodb:*"
+              Resource:
+                - !GetAtt DynamoDBTable.Arn
+            - Effect: "Allow"
+              Action:
+                - "iot:*"
+              Resource:
+                - "*"
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  InitStateApi:
+    Description: "API Gateway endpoint URL for Prod stage for Init State function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/InitState/"
+  UploadApi:
+    Description: "API Gateway endpoint URL for upload function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/Upload"
+  IdentityPoolId:
+    Value: !Ref IdentityPool
+    Export:
+      Name: "IdentityPool::Id"    
+  IotEndpoint:
+    Value: !Ref ThemeParkRealtime
+  UploadBucketName:
+    Value: !Ref UploadBucket
+  ProcessingBucketName:
+    Value: !Ref ProcessingBucket
+  FinalBucketName:
+    Value: !Ref FinalBucket

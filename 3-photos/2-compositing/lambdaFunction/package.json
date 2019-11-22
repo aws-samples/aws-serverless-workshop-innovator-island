@@ -1,0 +1,16 @@
+{
+  "name": "3-composite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.528.0",
+    "jimp": "^0.8.4"
+  }
+}
