@@ -104,7 +104,7 @@ Next you'll use the AWS Amplify Console to deploy the frontend website you've ju
 1. Launch the [Amplify Console](https://console.aws.amazon.com/amplify/home).
 2. Scroll down to the *Deploy* section and select **Get Started**.
 ![Module 1 amplify splash](../images/module1-amplify-splash.png)
-3. Under *Connect App*, select **AWS CodeCommit** and select **Continue**.
+3. Under *Get started with the Amplify Console*, select **AWS CodeCommit** and select **Continue**.
 
 ![Module 1 connect app](../images/module1-connect-app.png)
 
@@ -192,7 +192,7 @@ This has now created the S3 deployment bucket.
 
 4. Change directory:
 ```
-cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
+cd ~/environment/aws-serverless-workshop-innovator-island/1-app-deploy/sam-app/
 ```
 5. Use SAM CLI to deploy the infrastructure by running the following commands:
 ```
@@ -204,28 +204,29 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-backend --capab
 ```
 This will take a few minutes to deploy - wait for the confirmation message in the console before continuing.
 
-SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop, 2 x Lambda functions and a Lambda Layer, 3 x S3 buckets, a DynamoDBTable, Cognito UserPool, AWS IoT thing and a number of IAM Roles and Policies.
+SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop:
+- 2 Lambda functions and a Lambda Layer
+- 3 S3 buckets
+- A DynamoDBTable
+- A Cognito UserPool
+- An AWS IoT thing
+- Several IAM Roles and Policies.
 
 6. Configure environment variables. Set a number of environment variables to represent the custom names of resources deployed in your account. These commands use the AWS CLI to retrieve the CloudFormation resource names and then construct the environment variables using Linux string manipulation commands ``grep`` and ``cut``. This makes it easier to type deployment commands in later modules. In the terminal, execute:
 
 ```console
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-echo $AWS_REGION
-
 FINAL_BUCKET=$(aws s3 ls | grep finalbucket | cut -d' ' -f 3)
-echo $FINAL_BUCKET
-
 PROCESSING_BUCKET=$(aws s3 ls | grep processingbucket | cut -d' ' -f 3)
-echo $PROCESSING_BUCKET
-
 UPLOAD_BUCKET=$(aws s3 ls | grep uploadbucket | cut -d' ' -f 3)  
+DDB_TABLE=$(aws dynamodb list-tables | grep theme-park-backend | awk '{$1=$1};1' | sed 's/"//g')
+echo $FINAL_BUCKET
+echo $PROCESSING_BUCKET
 echo $UPLOAD_BUCKET
-
-DDB_TABLE=$(aws cloudformation describe-stack-resources --stack-name theme-park-backend  --logical-resource-id DynamoDBTable | grep PhysicalResourceId | cut -d '"' -f 4)
 echo $DDB_TABLE
 ```
 
-
+SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop, 2 x Lambda functions and a Lambda Layer, 3 x S3 buckets, a DynamoDBTable, Cognito UserPool, AWS IoT thing and a number of IAM Roles and Policies.
 
 ## Populate the DynamoDB Table
 
@@ -237,12 +238,14 @@ The SAM template created a DynamoDB table for the application. Next, you will fi
 
 1. From the Cloud9 console, navigate to the local-app directory in **1-app-deploy**:
 ```
-cd ~/environment/theme-park-backend/1-app-deploy/local-app/
+cd ~/environment/aws-serverless-workshop-innovator-island/1-app-deploy/local-app/
 ```
 2. Install the NPM packages needed:
 ```
 npm install
 ```
+*Ignore any NPM warnings or errors - do not run npm audit*
+
 3. Run the import script:
 ```
 node ./importData.js $AWS_REGION $DDB_TABLE
