@@ -14,6 +14,29 @@
       "currentWaitTime": "Current wait time",
       "outOfService": "Out of service"
     },
+    "rideDescriptions": {
+      "null": "Loading...",
+      "ride-001": "Our Virtual Reality showcase immerses guests in a vision of the future, where every ride is tailored for you. Choose from a range of interactive adventures where Sumerian is your guide. Let your imagination roam free.",
+      "ride-002": "Hop on the island’s event bus to get around! EventBridge connects everything that’s going on around the park - it’s your ticket to an easy visit. Once on board,  you’ll hear about all the day’s events - choose to take part or pass. It’s all observable!",
+      "ride-003": "Experience the wonders of the galaxy from the safety of the API Gateway shuttle. It’s a fast round-trip around the planets, safely protected from DDoS meteor showers and the hazards of the solar system. Everything is fully-managed - enjoy the ride!",
+      "ride-004": "The SAR Carousel is the first place to get started on Inventor Island. Take a look at all the great ideas that were built and shared, and then create your own! If you need help, Sam the squirrel is around to answer any questions.",
+      "ride-005": "The first ride we built on Innovator Island, SQS Mountain the fast roller coaster inside the man-made volcano at the heart of the island. Don’t worry if it seems crowded - the queue moves very quickly.",
+      "ride-006": "Kids of all ages love containers - and with Fargate you can focus on the fun things your containers can do. This is a family-friendly attraction that shows how serverless and containers co-exist to let our inventors focus on building cool things.",
+      "ride-007": "Don’t get lost - let Step Functions show you how to keep track of where you are! It’s definitely not a small world for an innovator. In the Step Function world, you can power up and build more awesome inventions.",
+      "ride-008": "This is the world’s ultimate water park. With so many streams, you are going to get wet! Bathing suits are recommended, and most attractions can be enjoyed with or without a Firehose. We recommend you visit Lambda Lakes after.",
+      "ride-009": "Meander through the most picturesque parts of the island in the CloudWatch Log Ride  - it’s a log flume like no other. There are sudden twists and drops when you least expect them. Be prepared for the splash after you hear the alarm!",
+      "ride-010": "Meet everyone’s favorite serverless squirrel while enjoying the best food the island has to offer. This full-service dining experience offers hourly dining opportunities, featuring a range of global cuisine and family-friendly entertainment.",
+      "ride-011": "Lambda makes developers’ lives easy - with all that extra time, you can choose between working on differentiating customer features or boating around the lake. Every day is Friday here at Innovator Island so let’s get those feet wet!",
+      "ride-012": "SNS is one of the oldest services in the serverless family. Go on this tour to explore the history of our famed SNS service. You’ll be fanning out in no time and having so much fun you’ll want to notify everyone - but only with a well-defined retry policy!",
+      "ride-013": "“What’s the official bird of the island?” Ask Alexa as you explore the park’s zoo. She’ll keep you posted and let you know if the large-eyed, native island ferret is hungry or friendly. Feeding times occur throughout the day.",
+      "ride-014": "Northern California is the home to our first Region in the Western United States. This train journey takes you on the same footsteps as the early cloud pioneers, and as they explored the frontiers of high availability.",
+      "ride-015": "Modern Application Design has evolved quickly but what does the future hold? Learn how serverless is used on Innovator Island, and how organizations of the future will use a serverless-first mentality to create the path to their destinies.",
+      "ride-016": "Get ready for a high-octane performance that puts guests on the edges of their seats! Experience a high-speed thrill ride that combines raw power, cutting edge technology and massive scale. Shows occur throughout the day.",
+      "facility-007": "Discover the unique flavors of South Pacific dining.",
+      "facility-008": "Healthy snacks from Sam the Squirrel.",
+      "facility-009": "Enjoy a classic Bezzy Burger, home-made with all the trimmings.",
+      "facility-010": "Pay for value! Whether you want a Lambda Golf Tee or a Step Functions sippy cup, we're scaling up to meet your needs."
+    },
     "photoUploaded": {
       "title": "Photo Uploaded.",
       "text": "We're processing your photo. You'll receive an alert when it's ready."

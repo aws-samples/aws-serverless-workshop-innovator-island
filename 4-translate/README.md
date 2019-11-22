@@ -14,15 +14,15 @@ Many of the visitors to the the park's island come from all over the world and E
 **:white_check_mark: Step-by-step Instructions**
 
 1. Go to the AWS Management Console, click **Services** then select **Cloud9** under Developer Tools. **Make sure your region is correct.**
-2. In the left panel of the IDE, open the ```4-translate/local-app``` folder in the theme-part-backend directory. Click on ```translations-input.json``` to see the English input language file.
+2. In the left panel of the IDE, open the ```4-translate/local-app``` folder in the aws-serverless-workshop-innovator-island directory. Click on ```translations-input.json``` to see the English input language file.
 3. In the left panel of the IDE, click on the ```translate.js``` file to open. This contains a function you will execute locally to translate the input file.
 
-4. Select your target languages - on line 17, the ```targetLanguages``` array shows a list of languages for translation. Currently this is set to French, Spanish and Japanese - you can modify this array to include of the supported language codes (show on line 10 in the ```possibleLanguages``` array).
+4. Select your target languages. On line 17, the ```targetLanguages``` array shows a list of languages for translation. Currently this is set to French, Spanish and Japanese - you can modify this array to include of the supported language codes (show on line 10 in the ```possibleLanguages``` array). Choose 4-5 different languages.
 5. **Save** the file after making any changes.
 6. In the terminal, execute the local Node application by running the following commands which will use Amazon Translate to create the translation file:`
 
 ```
-cd ~/environment/theme-park-backend/4-translate/local-app/
+cd ~/environment/aws-serverless-workshop-innovator-island/4-translate/local-app/
 npm install 
 node ./translate.js
 ```
@@ -39,7 +39,7 @@ In this section, you will copy the new translation file into the front-end sourc
 1. In the Cloud9 terminal, execute this command to copy the new translation file into the front-end source code:
 
 ```
-cp ~/environment/theme-park-backend/4-translate/local-app/translations.json ~/environment/theme-park-frontend/src/languages/
+cp ~/environment/aws-serverless-workshop-innovator-island/4-translate/local-app/translations.json ~/environment/theme-park-frontend/src/languages/
 ```
 ### Push to CodeCommit and deploy via Amplify
 
