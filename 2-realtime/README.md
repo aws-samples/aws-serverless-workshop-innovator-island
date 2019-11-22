@@ -29,7 +29,7 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
-2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 10.x` is selected under *Runtime*. 
+2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
 
 3. Open the *Choose or create an execution role* section:
 -  Select the *Use an existing role* radio button. 
@@ -55,9 +55,11 @@ US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-contr
 
 ![Module 2 - SNS completed](../images/2-realtime-lambda3.png)
 
-6. Back in the Cloud9 browser tab, in the left directory panel navigate navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the  contents onto the clipboard. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
+6. Back in the Cloud9 browser tab, in the left directory panel navigate navigate to `aws-serverless-workshop-innovator-island\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
 
-7. On the top right of the window, **Select *Save* to save the changes.**
+7. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
+
+8. On the top right of the window, **Select *Save* to save the changes.**
 
 This Lambda function code reads the latest message from the SNS topic, writes it to DynamoDB and then pushes the message to the frontend application via an IoT topic.
 
@@ -135,7 +137,7 @@ This file contains a JSON configuration for the frontend. The file is separated 
 
 ![Module 2 - Front end config](../images/2-realtime-frontend1.png)
 
-8. **Save the file.**__
+8. **Save the file.**
 
 ### Push to CodeCommit and deploy via Amplify
 
