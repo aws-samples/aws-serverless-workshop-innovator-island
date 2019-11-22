@@ -53,7 +53,7 @@ exports.handler = async (event) => {
     
     const params = {
       ObjectKey: event.Records[0].s3.object.key,
-      URL: `https://${event.Records[0].s3.bucket.name}.s3-${event.Records[0].awsRegion}.amazonaws.com/${event.Records[0].s3.object.key}`
+      URL: `https://${event.Records[0].s3.bucket.name}.s3.awsRegion}.amazonaws.com/${event.Records[0].s3.object.key}`
     }
 
     console.log(params)
