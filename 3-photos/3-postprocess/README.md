@@ -136,10 +136,10 @@ The frontend application will notify you when the photo is uploaded. You will se
 
 You will see a Gallery icon has appeared in the toolbar. Click on this icon to view your composited photo.
 
-Finally, click the *Share on Twitter* button. Tweet out your photo with the hashtag and you can win some exclusive island swag!
+Finally, click the *Share on Twitter* button. Tweet out your photo with the hashtag #InnovatorIsland!
 
 ## Next steps
 
-Congratulations! You have completed building the theme park application. Please drop by the Human Resource office - we need talented developers like you!
+Congratulations! You have completed building the Innovator Island theme park application. Please drop by the Innovator Island Human Resource office - we need talented developers like you!
 
 In you have time, we have one more bonus challenge for you. The frontend application needs language support for international visitors. If you're ready to take this challenge, [click here to continue](../../4-translate/README.md).
