@@ -26,7 +26,7 @@ Use a single region for the duration of this workshop. This workshop supports th
 
 Please select one of these in the top right corner.
 
-![Step 3](..images/c9-step3.png)
+![Step 3](../images/c9-step3.png)
 
 ## Starting AWS Cloud9 IDE
 
@@ -90,7 +90,7 @@ ec2-user:~/environment $ aws sts get-caller-identity
 
 ```
 cd ~/environment/
-git clone https://github.com/jbesw/theme-park-backend
+git clone https://github.com/aws-samples/aws-serverless-workshop-innovator-island
 ```
 - Within the Cloud9 file browser on the left hand side you can see the backend files have been downloaded.
 
@@ -101,7 +101,7 @@ sudo yum install jq -y
 
 5. Update the tools and software in your Cloud9 instance with these commands:
 ```
-cd ~/environment/theme-park-backend/0-setup/
+cd ~/environment/aws-serverless-workshop-innovator-island/0-setup/
 chmod 744 bootstrap.sh   
 ./bootstrap.sh
 ```
