@@ -68,7 +68,7 @@ Clone the repo which will download a local copy of the instructions and code you
 
 ```console
 cd ~/environment/
-git clone https://github.com/jbesw/theme-park-backend
+git clone https://github.com/aws-samples/aws-serverless-workshop-innovator-island
 ```
 
 ![Module 0 Cloud9 clone](../images/0-setup-clone.png)

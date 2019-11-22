@@ -18,7 +18,7 @@ Once you have built the back-end resources needed, you will update the front-end
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. Remember: if you have any questions, contact one of the AWS employees located around the room.
 
-:heavy_exclamation_mark: Please ensure you have completed the [Setup Guide](https://github.com/jbesw/theme-park-backend/tree/master/0-setup) first!
+:heavy_exclamation_mark: Please ensure you have completed the [Setup Guide](https://github.com/aws-samples/aws-serverless-workshop-innovator-island/tree/master/0-setup) first!
 
 ## How it works - Frontend
 
