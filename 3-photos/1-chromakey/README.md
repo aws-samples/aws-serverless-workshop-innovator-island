@@ -11,6 +11,9 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 - This section shows how you can use different runtimes for different tasks. The chromakey processing function uses an open source Python library called OpenCV. This function is deployed using Python 3.6 while the other functions are written in Node.
 - The OpenCV library must be compiled using the target operating system, which for Lambda is Amazon Linux 2. To simplify deployment, this was already created in Module 1 and has been packaged as a Lambda Layer. You will use link this Layer to your function.
 
+*More information on the services introduced in this section:*
+* [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+
 ## Creating the Chromakey Lambda function
 
 **:white_check_mark: Step-by-step Instructions**
@@ -98,6 +101,8 @@ In this section, you will modify the memory and timeout settings for the Lambda 
 ![Module 3 - Basic settings](../../images/3-photos-chroma11.png)
 
 2. Change the *Memory (MB)* slider to **3008 MB**. Change the *Timeout* values to **0** min and **10** sec. 
+
+The chromakey process uses memory-intensive libraries to complete the graphics processing. By allocating the maximum memory, this function will complete processing more quickly.
 
 3. Select **Save** to update the function.
 
