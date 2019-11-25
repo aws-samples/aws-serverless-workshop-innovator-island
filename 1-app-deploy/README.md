@@ -295,7 +295,7 @@ This file contains a JSON configuration for the frontend. The file is separated 
 
 4. **Save the file**.
 
-![Module 1 - InitStateAPIURL](../images/module1-initstateAPI.png)
+![Module 1 - InitStateAPIURL](../images/module1-initStateAPI.png)
 
 ### Push to CodeCommit and deploy via Amplify
 
