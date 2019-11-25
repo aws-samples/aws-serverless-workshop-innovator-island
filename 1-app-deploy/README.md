@@ -272,7 +272,7 @@ aws cloudformation describe-stacks --stack-name theme-park-backend | grep -A 2 I
 
 3. Once you have the endpoint URL, select the URL link in the Cloud9 terminal and select Open: 
 
-![Module 2 open InitStateAPIURL](../images/module2-open-initstateAPIURL.png)
+![Module 1 open InitStateAPIURL](../images/module2-open-initstateAPIURL.png)
 
 This opens another browser tab and returns all the raw ride and attraction data from the DynamoDB table via API Gateway and Lambda. You have now created a public API that your frontend application can use to populate the map with points of interest.
 
@@ -291,9 +291,11 @@ After the update, you will commit the changes to the git repo, which will automa
 
 This file contains a JSON configuration for the frontend. The file is separated into modules that correspond with the modules in this workshop.
 
-3. In the **MODULE 1** section at the beginning of the file, update the *URL* attribute of the API by pasting the API Endpoint URL from the previous section between the two ```'```.
+3. In the **MODULE 1** section at the beginning of the file, update the *initStateAPI* attribute of the API by pasting the API Endpoint URL from the previous section between the two ```'```.
 
 4. **Save the file**.
+
+![Module 1 - InitStateAPIURL](../images/module1-initstateAPI.png)
 
 ### Push to CodeCommit and deploy via Amplify
 

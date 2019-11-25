@@ -36,7 +36,7 @@ Take a few minutes now and setup your Cloud9 development environment. Cloud9 wor
 
 1. Select **Next step**.
 
-1. You may leave **Environment settings** at their defaults for launching a new **t2.micro** EC2 instance bason on Amazon Linux which will be paused after **30 minutes** of inactivity. Select **Next step**.
+1. You may leave **Environment settings** at their defaults for launching a new **t2.micro** EC2 instance based on Amazon Linux which will be paused after **30 minutes** of inactivity. Select **Next step**.
 
 1. Review the environment settings and select **Create environment**. It will take a few minutes for your Cloud9 environment to be provisioned and prepared.
 
