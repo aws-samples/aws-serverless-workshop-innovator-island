@@ -239,6 +239,13 @@ Resources:
                 - "iot:*"
               Resource:
                 - "*"
+            - Effect: "Allow"
+              Action:
+                - "logs:CreateLogGroup"
+                - "logs:CreateLogStream"
+                - "logs:PutLogEvents"
+              Resource:
+                - "*"                
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
