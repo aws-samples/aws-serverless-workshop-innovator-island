@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.526.0",
-    "csv-parse": "^4.4.5"
+    "csv-parse": "^4.8.2"
   },
   "devDependencies": {},
   "description": ""
