@@ -84,7 +84,7 @@ sudo yum install jq -y
 
 Finally, update the tools and software in your Cloud9 instance with these commands:
 ```
-cd ~/environment/theme-park-backend/0-setup/
+cd ~/environment/aws-serverless-workshop-innovator-island/0-setup/
 chmod 744 bootstrap.sh   
 ./bootstrap.sh
 ```
