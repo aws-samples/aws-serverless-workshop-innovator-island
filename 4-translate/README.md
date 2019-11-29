@@ -13,7 +13,7 @@ Many of the visitors to the the park's island come from all over the world and E
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go to the AWS Management Console, click **Services** then select **Cloud9** under Developer Tools. **Make sure your region is correct.**
+1. Go to the AWS Management Console, click **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under Developer Tools. **Make sure your region is correct.**
 2. In the left panel of the IDE, open the ```4-translate/local-app``` folder in the aws-serverless-workshop-innovator-island directory. Click on ```translations-input.json``` to see the English input language file.
 3. In the left panel of the IDE, click on the ```translate.js``` file to open. This contains a function you will execute locally to translate the input file.
 
