@@ -27,7 +27,7 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
+1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
 2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
 
@@ -68,9 +68,9 @@ This Lambda function code reads the latest message from the SNS topic, writes it
 ## Adding environment variables
 
 This function uses three environment variables:
-- IOT_DATA_ENDPOINT: the IoT endpoint hostname.
-- IOT_TOPIC: The name of the IoT topic to publish messages to, which is `theme-park-rides`.
-- DDB_TABLE_NAME: The name of the application's DynamoDB table.
+- `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
+- `IOT_TOPIC`: The name of the IoT topic to publish messages to, which is `theme-park-rides`.
+- `DDB_TABLE_NAME`: The name of the application's DynamoDB table.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
@@ -131,9 +131,9 @@ This file contains a JSON configuration for the frontend. The file is separated 
 
 7. In the **MODULE 2** section at the beginning of the file, update the *iot* attributes as follows:
 
-- poolId: set to the **IdentityPool Id** from the section above.
-- host: set to the **IoT endpoint hostname** from the section above.
-- region: set to your **AWS_REGION** from the section above (e.g. `'us-west-2'`).
+- `poolId`: set to the **IdentityPool Id** from the section above.
+- `host`: set to the **IoT endpoint hostname** from the section above.
+- `region`: set to your **AWS_REGION** from the section above (e.g. `'us-west-2'`).
 
 ![Module 2 - Front end config](../images/2-realtime-frontend1.png)
 

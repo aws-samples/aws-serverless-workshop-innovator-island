@@ -14,7 +14,7 @@ In this part, you will use the AWS Serverless Application Model (SAM) to automat
 
 The AWS SAM template file is a YAML or JSON configuration file. You use the template to declare all of the AWS resources that make up your serverless application.   
 
-1. Go to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*. **Make sure your region is correct.**
+1. Go to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
 2. In the Cloud9 file explorer panel, navigate to and open  `aws-serverless-workshop-innovator-island\3-photos\2-compositing\template.yaml` to review its contents.
 

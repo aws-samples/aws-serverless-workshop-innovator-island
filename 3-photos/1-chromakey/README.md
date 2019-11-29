@@ -18,7 +18,7 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.**
+1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
 2. Select **Create function**. Enter `theme-park-photos-chromakey` for *Function name* and ensure `Python 3.6` is selected under *Runtime*.
 
@@ -44,9 +44,11 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 3. Select **Add a layer**. Select the *Provide a layer version ARN* radio button. Depending on the selected region, copy the ARN to the clipboard: 
 
-- us-west-2 (US West - Oregon) - **arn:aws:lambda:us-west-2:678705476278:layer:Chromakey:1**
-- us-east-2 (US East - Ohio) - **arn:aws:lambda:us-east-2:678705476278:layer:Chromakey:1**
-- us-east-1 (US East - Northern Virginia) - **arn:aws:lambda:us-east-1:678705476278:layer:Chromakey:1**
+| Region | Region Name | Layer ARN |
+|:-------|:------------|:----------|
+| us-west-2 | US West - Oregon | `arn:aws:lambda:us-west-2:678705476278:layer:Chromakey:1`
+| us-east-2 | US East - Ohio | `arn:aws:lambda:us-east-2:678705476278:layer:Chromakey:1`
+| us-east-1 | US East - Northern Virginia | `arn:aws:lambda:us-east-1:678705476278:layer:Chromakey:1`
 
 Paste the ARN into the *Layer version ARN* field. Select **Add**.
 
@@ -65,26 +67,26 @@ Paste the ARN into the *Layer version ARN* field. Select **Add**.
 ### Adding environment variables
 
 This function uses three environment variables:
-- OUTPUT_BUCKET_NAME: the name of the bucket where the output object is stored.
-- HSV_LOWER: A tuple representing lower HSV value for the chroma key matching process.
-- HSV_UPPER: A tuple representing upper HSV value for the chroma key matching process.
+- `OUTPUT_BUCKET_NAME`: the name of the bucket where the output object is stored.
+- `HSV_LOWER`: A tuple representing lower HSV value for the chroma key matching process.
+- `HSV_UPPER`: A tuple representing upper HSV value for the chroma key matching process.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*. **Make sure your region is correct.**
+1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
-2. In the terminal enter the following command to retrieve the value for OUTPUT_BUCKET_NAME:
+2. In the terminal enter the following command to retrieve the value for `OUTPUT_BUCKET_NAME`:
 ```
 aws s3 ls | grep theme-park-backend-processingbucket
 ```
 
 3. Go back to the browser tab with the `theme-park-photos-chromakey` Lambda function open. Scroll down to the *Environment variables* card and enter the three environment variables with the three variables, as follows:
 
-- OUTPUT_BUCKET_NAME: the value from step 2 above.
-- HSV_LOWER: (36, 100, 100)
-- HSV_UPPER: (70 ,255, 255)
+- `OUTPUT_BUCKET_NAME`: the value from step 2 above.
+- `HSV_LOWER`: (36, 100, 100)
+- `HSV_UPPER`: (70 ,255, 255)
 
 ![Module 3 - Environment vars](../../images/3-photos-chroma6.png)
 
@@ -112,7 +114,7 @@ You will now test the function using a test image containing a photo of a person
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*. **Make sure your region is correct.**
+1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
 2. Navigate to the file `aws-serverless-workshop-innovator-island\3-photos\green-screen-png` and open. You can see the photo of a person with a green screen. This is the local testing image.
 
