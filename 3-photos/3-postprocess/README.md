@@ -14,7 +14,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.**
+1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
 2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
 
@@ -47,20 +47,20 @@ After you will test with the sample image, and then perform a test from the fron
 ### Adding environment variables
 
 This function uses three environment variables:
-- IOT_DATA_ENDPOINT: the IoT endpoint hostname.
-- DDB_TABLE_NAME: the DynamoDB table name used by the application.
+- `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
+- `DDB_TABLE_NAME`: the DynamoDB table name used by the application.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*. **Make sure your region is correct.**
+1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
-2. In the terminal enter the following command to retrieve the value for IOT_DATA_ENDPOINT:
+2. In the terminal enter the following command to retrieve the value for `IOT_DATA_ENDPOINT`:
 ```
 aws iot describe-endpoint --endpoint-type iot:Data-ATS
 ```
-3. Next, enter the following command to retrieve the value for DDB_TABLE_NAME:
+3. Next, enter the following command to retrieve the value for `DDB_TABLE_NAME`:
 ```
 aws dynamodb list-tables
 ```
@@ -89,7 +89,7 @@ aws cloudformation describe-stacks --stack-name theme-park-backend | grep -A2 -B
 
 4. In the Cloud9 terminal, in the left directory panel navigate to **theme-park-frontend/src**. 
 
-5. Locate the **config.js** file and double-click to open in the editor.
+5. Locate the `config.js` file and double-click to open in the editor.
 
 This file contains a JSON configuration for the frontend. The file is separated into modules that correspond with the modules in this workshop.
 
