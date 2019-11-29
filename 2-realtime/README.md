@@ -27,7 +27,7 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
+1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
 2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
 
