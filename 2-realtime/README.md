@@ -68,9 +68,9 @@ This Lambda function code reads the latest message from the SNS topic, writes it
 ## Adding environment variables
 
 This function uses three environment variables:
-- IOT_DATA_ENDPOINT: the IoT endpoint hostname.
-- IOT_TOPIC: The name of the IoT topic to publish messages to, which is `theme-park-rides`.
-- DDB_TABLE_NAME: The name of the application's DynamoDB table.
+- `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
+- `IOT_TOPIC`: The name of the IoT topic to publish messages to, which is `theme-park-rides`.
+- `DDB_TABLE_NAME`: The name of the application's DynamoDB table.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
