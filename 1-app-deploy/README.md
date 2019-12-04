@@ -80,13 +80,17 @@ git config --global credential.UseHttpPath true
 mkdir ~/environment/theme-park-frontend
 cd ~/environment/theme-park-frontend
 wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend.zip
+```
+4. Unzip the code:
+```
 unzip theme-park-frontend.zip 
 ```
+
 Within the Cloud9 file browser on the left hand side you can see the theme-park-frontend files have been downloaded into a separate local directory from the theme-park-backend.
 
 ![Module 1 cloud9 files](../images/module1-cloud9files.png)
 
-4. Push the downloaded code to populate your recently created CodeCommit repository:
+5. Push the downloaded code to populate your recently created CodeCommit repository:
 ```
 cd ~/environment/theme-park-frontend/
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
