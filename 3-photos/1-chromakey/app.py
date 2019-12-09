@@ -40,7 +40,7 @@ def scale_image(image):
     if scale > 1:
         _image = cv2.resize(image, (int(width/scale), int(height/scale)))
         height, width, channels = image.shape
-        logger.info('New size: {}h x {}w'.format(height, width))
+        logger.info('New size: {}h x {}w'.format(int(height/scale), int(width/scale)))
     return _image
 
 def lambda_handler(event, context):
