@@ -49,6 +49,8 @@ US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-contr
 
 ![Module 2 - SNS](../images/2-realtime-lambda2.png)
 
+:heavy_exclamation_mark: Ensure you have discarded the pre-populated ARN and pasted the Flow & Traffic Controller's SNS topic depending on the region.
+
 4. Leave *Enable trigger* checked, and choose *Add*.
 
 5. In the *Designer* section, select the **theme-park-ridetimes** option which has the Lambda logo. This opens the *Function code* card below.
@@ -92,6 +94,8 @@ aws dynamodb list-tables
 4. Go back to the browser tab with the `theme-park-ridetimes` Lambda function open. Scroll down to the *Environment variables* card and enter the three environment variables with the three values, as follows:
 
 ![Module 2 - Environment vars](../images/2-realtime-lambda6.png)
+
+:heavy_exclamation_mark: Ensure you have entered the environment variables into the *Environment variables* card rather than the *Tags card*.
 
 5. **Select *Save* to save these changes.**
 
