@@ -60,7 +60,7 @@ You will see a new build has automatically started as a result of the new commit
 
 1. Open the published application URL.
 
-2, You can see a new translations button has appeared in the menu bar at the top of the display. Click this and select a non-English language from the list of translations. 
+2. You can see a new translations button has appeared in the menu bar at the top of the display. Click this and select a non-English language from the list of translations. 
 
 3. Now click on any ride profile in the map to see the ride description in the new language. Navigate around the app to see how the new language now appears throughout.
 
