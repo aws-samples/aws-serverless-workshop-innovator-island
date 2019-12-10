@@ -22,6 +22,8 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 2. Select **Create function**. Enter `theme-park-photos-chromakey` for *Function name* and ensure `Python 3.6` is selected under *Runtime*.
 
+:heavy_exclamation_mark: Ensure you have selected `Python 3.6` under *Runtime* to avoid an error.
+
 3. Open the *Choose or create an execution role* section:
 -  Select the *Use an existing role* radio button. 
 - Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
@@ -68,8 +70,8 @@ Paste the ARN into the *Layer version ARN* field. Select **Add**.
 
 This function uses three environment variables:
 - `OUTPUT_BUCKET_NAME`: the name of the bucket where the output object is stored.
-- `HSV_LOWER`: A tuple representing lower HSV value for the chroma key matching process.
-- `HSV_UPPER`: A tuple representing upper HSV value for the chroma key matching process.
+- `HSV_LOWER`: A tuple representing lower HSV value for the green screen chroma key matching process.
+- `HSV_UPPER`: A tuple representing upper HSV value for the green screen chroma key matching process.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
