@@ -36,7 +36,8 @@ exports.handler = async (event) => {
   const branding = await Jimp.read('https://d15l97sovqpx31.cloudfront.net/images/edge-decor-600x1000.png') // branding frame
 
   // Composite background with greenscreen foreground (foreground in front - added vertical offset of 130px)
-  let composited = await background.composite(foreground, 0, 130, { mode: Jimp.BLEND_SOURCE_OVER })
+  const x = (background.bitmap.width/2) - (foreground.bitmap.width/2) // updated code here to center photo on background
+  let composited = await background.composite(foreground, x, 130, { mode: Jimp.BLEND_SOURCE_OVER })
 
   // Composite with branding frame (branding in front)
   composited = await composited.composite(branding, 0, 0, { mode: Jimp.BLEND_SOURCE_OVER })
