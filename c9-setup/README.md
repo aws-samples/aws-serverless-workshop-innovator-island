@@ -23,6 +23,8 @@ Use a single region for the duration of this workshop. This workshop supports th
 - us-west-2 (US West - Oregon)
 - us-east-2 (US East - Ohio)
 - us-east-1 (US East - Northern Virginia)
+- ap-southeast-2 (Sydney, Australia)
+- eu-central-1 (Frankfurt, Germany)
 
 Please select one of these in the top right corner.
 
@@ -90,22 +92,16 @@ ec2-user:~/environment $ aws sts get-caller-identity
 
 ```
 cd ~/environment/
-git clone https://github.com/aws-samples/aws-serverless-workshop-innovator-island
+git clone https://github.com/aws-samples/aws-serverless-workshop-innovator-island ./theme-park-backend
 ```
 - Within the Cloud9 file browser on the left hand side you can see the backend files have been downloaded.
+
+![Module 0 Cloud9 clone](../images/0-setup-clone.png)
 
 4. Next, install JQ to provide formatting for JSON in the console:
 ```
 sudo yum install jq -y
 ```
-
-5. Update the tools and software in your Cloud9 instance with these commands:
-```
-cd ~/environment/aws-serverless-workshop-innovator-island/0-setup/
-chmod 744 bootstrap.sh   
-./bootstrap.sh
-```
-- The update will take around 5 minutes to complete. Wait for this to finish before continuing.
 
 ### :star: Tips
 

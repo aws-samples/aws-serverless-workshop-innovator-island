@@ -32,7 +32,7 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 ![Module 3 - Create Function](../../images/3-photos-chroma1.png)
 
-1. Select **+ Add Trigger**:
+4. Select **+ Add Trigger**:
    - In the *Trigger configuration* dropdown, select **S3**. 
    - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-uploadbucket`. 
    - For *Event Type* select **All object create events** from the dropdown. 
@@ -40,7 +40,7 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 ![Module 3 - Add trigger](../../images/3-photos-chroma7.png)
 
-2. In the *Designer* card, under the lambda function name `theme-park-photos-chromakey` select the **Layers** button to open the *Layers* panel below.
+5. In the *Designer* card, under the lambda function name `theme-park-photos-chromakey` select the **Layers** button to open the *Layers* panel below.
 
 ![Module 3 - Trigger added](../../images/3-photos-chroma2.png)
 
@@ -51,6 +51,7 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 | us-west-2 | US West - Oregon | `arn:aws:lambda:us-west-2:678705476278:layer:Chromakey:1`
 | us-east-2 | US East - Ohio | `arn:aws:lambda:us-east-2:678705476278:layer:Chromakey:1`
 | us-east-1 | US East - Northern Virginia | `arn:aws:lambda:us-east-1:678705476278:layer:Chromakey:1`
+| eu-central-1 | Frankfurt | `arn:aws:lambda:eu-central-1:678705476278:layer:Chromakey:1`
 
 Paste the ARN into the *Layer version ARN* field. Select **Add**.
 
@@ -84,7 +85,7 @@ In this section, you will retrieve and configure these Environment Variables for
 aws s3 ls | grep theme-park-backend-processingbucket
 ```
 
-3. Go back to the browser tab with the `theme-park-photos-chromakey` Lambda function open. Scroll down to the *Environment variables* card and enter the three environment variables with the three variables, as follows:
+3. Go back to the browser tab with the `theme-park-photos-chromakey` Lambda function open. Scroll down to the *Environment variables* card and click **Edit**. Enter the three environment variables with the three values, as follows:
 
 - `OUTPUT_BUCKET_NAME`: the value from step 2 above.
 - `HSV_LOWER`: (36, 100, 100)
@@ -118,12 +119,12 @@ You will now test the function using a test image containing a photo of a person
 
 1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
-2. Navigate to the file `aws-serverless-workshop-innovator-island\3-photos\green-screen-png` and open. You can see the photo of a person with a green screen. This is the local testing image.
+2. Navigate to the file `theme-park-backend\3-photos\green-screen-png` and open. You can see the photo of a person with a green screen. This is the local testing image.
 
 3. In the terminal enter the following command to change the directory:
 
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/3-photos/
+cd ~/environment/theme-park-backend/3-photos/
 ```
 4. Find the name of your S3 upload bucket with this command:
 ```

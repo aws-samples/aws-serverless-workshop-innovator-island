@@ -65,7 +65,7 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 aws dynamodb list-tables
 ```
 
-4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card and enter the two environment variables names along with the values you retrieved in Cloud9:
+4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and enter the two environment variables names along with the values you retrieved in Cloud9:
 
 5. **Choose *Save* to save these changes.**
 
@@ -140,6 +140,4 @@ Finally, click the *Share on Twitter* button. Tweet out your photo with the hash
 
 ## Next steps
 
-Congratulations! You have completed building the Innovator Island theme park application. Please drop by the Innovator Island Human Resource office - we need talented developers like you!
-
-In you have time, we have one more bonus challenge for you. The frontend application needs language support for international visitors. If you're ready to take this challenge, [click here to continue](../../4-translate/README.md).
+[Click here](../4-translate/README.md) to continue to Module 4.

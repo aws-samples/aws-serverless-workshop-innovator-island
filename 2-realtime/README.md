@@ -46,6 +46,8 @@ Region | ARN
 US Oregon - us-west-2 | ```arn:aws:sns:us-west-2:526237104669:theme-park-FAT-controller```
 US N Virginia - us-east-1 | ```arn:aws:sns:us-east-1:526237104669:theme-park-FAT-controller```
 US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-controller```
+Frankfurt - eu-central-1 | ```arn:aws:sns:eu-central-1:526237104669:theme-park-FAT-controller```
+Sydney - ap-southeast-2 | ```arn:aws:sns:ap-southeast-2:526237104669:theme-park-FAT-controller```
 
 ![Module 2 - SNS](../images/2-realtime-lambda2.png)
 
@@ -57,7 +59,7 @@ US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-contr
 
 ![Module 2 - SNS completed](../images/2-realtime-lambda3.png)
 
-6. Back in the Cloud9 browser tab, in the left directory panel navigate navigate to `aws-serverless-workshop-innovator-island\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
+6. Back in the Cloud9 browser tab, in the left directory panel navigate navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
 
 7. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
 
@@ -91,13 +93,18 @@ aws dynamodb list-tables
 ```
 ![Module 2 - Terminal](../images/2-realtime-lambda5.png)
 
-4. Go back to the browser tab with the `theme-park-ridetimes` Lambda function open. Scroll down to the *Environment variables* card and enter the three environment variables with the three values, as follows:
+4. Go back to the browser tab with the `theme-park-ridetimes` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and then choose **Add environment variable**.
+
+5. Enter the three environment variables with the three values, as follows:
+- IOT_DATA_ENDPOINT - the value from step 2 above.
+- DDB_TABLE_NAME - the value from step 3 above.
+- IOT_TOPIC: `theme-park-rides`
 
 ![Module 2 - Environment vars](../images/2-realtime-lambda6.png)
 
-:heavy_exclamation_mark: Ensure you have entered the environment variables into the *Environment variables* card rather than the *Tags card*.
+:heavy_exclamation_mark: Ensure you have entered the environment variables into the *Environment variables* card, not the *Tags* card.
 
-5. **Select *Save* to save these changes.**
+5. Choose **Save**.
 
 ## Updating the frontend
 

@@ -16,7 +16,7 @@ The AWS SAM template file is a YAML or JSON configuration file. You use the temp
 
 1. Go to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
-2. In the Cloud9 file explorer panel, navigate to and open  `aws-serverless-workshop-innovator-island\3-photos\2-compositing\template.yaml` to review its contents.
+2. In the Cloud9 file explorer panel, navigate to and open  `theme-park-backend\3-photos\2-compositing\template.yaml` to review its contents.
 
 ![template.yaml](../../images/3-photos-composite-yaml.png)
 
@@ -39,7 +39,7 @@ Within the Resources section:
 1. Change directory:
 
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/3-photos/2-compositing
+cd ~/environment/theme-park-backend/3-photos/2-compositing
 ```
 
 2. You can see the name of the final S3 bucket using the following command which has been already stored as an environment variable ```$FINAL_BUCKET```. SAM will be configured to use this S3 bucket name to set the environment variable within the Lambda function.
@@ -86,7 +86,7 @@ You will now test the function using a test image containing a photo of a person
 2. In the terminal enter the following command to change the directory:
 
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/3-photos/
+cd ~/environment/theme-park-backend/3-photos/
 ```
 3. You can see the name of your S3 upload bucket with this command:
 ```

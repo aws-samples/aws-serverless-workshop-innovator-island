@@ -105,7 +105,7 @@ Next you'll use the AWS Amplify Console to deploy the frontend website you've ju
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. Launch the [Amplify Console](https://console.aws.amazon.com/amplify/home).
+1. Launch [Amplify Console](https://console.aws.amazon.com/amplify/home).
 2. Scroll down to the *Deploy* section and select **Get Started**.
 ![Module 1 amplify splash](../images/module1-amplify-splash.png)
 3. Under *Get started with the Amplify Console*, select **AWS CodeCommit** and select **Continue**.
@@ -196,7 +196,7 @@ This has now created the S3 deployment bucket.
 
 4. Change directory:
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/1-app-deploy/sam-app/
+cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
 ```
 5. Use SAM CLI to deploy the infrastructure by running the following commands:
 ```
@@ -242,7 +242,7 @@ The SAM template created a DynamoDB table for the application. Next, you will fi
 
 1. From the Cloud9 console, navigate to the local-app directory in **1-app-deploy**:
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/1-app-deploy/local-app/
+cd ~/environment/theme-park-backend/1-app-deploy/local-app/
 ```
 2. Install the NPM packages needed:
 ```
