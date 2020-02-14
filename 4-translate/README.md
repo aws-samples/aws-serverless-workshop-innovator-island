@@ -22,7 +22,7 @@ Many of the visitors to the the park's island come from all over the world and E
 6. In the terminal, execute the local Node application by running the following commands which will use Amazon Translate to create the translation file:`
 
 ```
-cd ~/environment/aws-serverless-workshop-innovator-island/4-translate/local-app/
+cd ~/environment/theme-park-backend/4-translate/local-app/
 npm install 
 node ./translate.js
 ```
@@ -39,7 +39,7 @@ In this section, you will copy the new translation file into the front-end sourc
 1. In the Cloud9 terminal, execute this command to copy the new translation file into the front-end source code:
 
 ```
-cp ~/environment/aws-serverless-workshop-innovator-island/4-translate/local-app/translations.json ~/environment/theme-park-frontend/src/languages/
+cp ~/environment/theme-park-backend/4-translate/local-app/translations.json ~/environment/theme-park-frontend/src/languages/
 ```
 ### Push to CodeCommit and deploy via Amplify
 
