@@ -1,0 +1,111 @@
+[
+  {
+    "id": 6,
+    "firstName": "Chase",
+    "lastName": "Dickens",
+    "age": 15,
+    "birthday": { "month": 9, "day": 24 },
+    "home": { "latitude": 37.71706144199896, "longitude": -83.42346443060228 },
+    "arrivalTime": "2020-02-03T16:26:21.009Z",
+    "arrivalIteration": 266,
+    "leavingIteration": 720,
+    "lastActionIteration": 709,
+    "totalRides": 11,
+    "rideHistory": [
+      { "rideId": "ride-10", "rideTime": "2020-02-03T17:09:21.009Z" },
+      { "rideId": "ride-14", "rideTime": "2020-02-03T17:49:21.009Z" },
+      { "rideId": "ride-14", "rideTime": "2020-02-03T18:24:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T19:02:21.009Z" },
+      { "rideId": "ride-5", "rideTime": "2020-02-03T19:50:21.009Z" },
+      { "rideId": "ride-2", "rideTime": "2020-02-03T20:33:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T21:09:21.009Z" },
+      { "rideId": "ride-8", "rideTime": "2020-02-03T21:46:21.009Z" },
+      { "rideId": "ride-11", "rideTime": "2020-02-03T22:26:21.009Z" },
+      { "rideId": "ride-15", "rideTime": "2020-02-03T23:01:21.009Z" },
+      { "rideId": "ride-2", "rideTime": "2020-02-03T23:49:21.009Z" }
+    ]
+  },
+  {
+    "id": 7,
+    "firstName": "Hillard",
+    "lastName": "Zulauf",
+    "age": 15,
+    "birthday": { "month": 7, "day": 9 },
+    "home": { "latitude": 43.28580062032914, "longitude": -100.92739311844409 },
+    "arrivalTime": "2020-02-03T17:59:21.009Z",
+    "arrivalIteration": 359,
+    "leavingIteration": 720,
+    "lastActionIteration": 709,
+    "totalRides": 9,
+    "rideHistory": [
+      { "rideId": "ride-3", "rideTime": "2020-02-03T18:38:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T19:09:21.009Z" },
+      { "rideId": "ride-7", "rideTime": "2020-02-03T19:42:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T20:22:21.009Z" },
+      { "rideId": "ride-15", "rideTime": "2020-02-03T21:05:21.009Z" },
+      { "rideId": "ride-5", "rideTime": "2020-02-03T21:37:21.009Z" },
+      { "rideId": "ride-12", "rideTime": "2020-02-03T22:27:21.009Z" },
+      { "rideId": "ride-15", "rideTime": "2020-02-03T23:16:21.009Z" },
+      { "rideId": "ride-14", "rideTime": "2020-02-03T23:49:21.009Z" }
+    ]
+  },
+  {
+    "id": 8,
+    "firstName": "Judson",
+    "lastName": "Cruickshank",
+    "age": 20,
+    "birthday": { "month": 11, "day": 12 },
+    "home": { "latitude": 34.196319045573304, "longitude": -88.5213535463581 },
+    "arrivalTime": "2020-02-03T20:10:21.009Z",
+    "arrivalIteration": 490,
+    "leavingIteration": 720,
+    "lastActionIteration": 665,
+    "totalRides": 4,
+    "rideHistory": [
+      { "rideId": "ride-5", "rideTime": "2020-02-03T21:07:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T21:48:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T22:34:21.009Z" },
+      { "rideId": "ride-9", "rideTime": "2020-02-03T23:05:21.009Z" }
+    ]
+  },
+  {
+    "id": 9,
+    "firstName": "Vallie",
+    "lastName": "Ruecker",
+    "age": 30,
+    "birthday": { "month": 2, "day": 4 },
+    "home": { "latitude": 42.67293628065439, "longitude": -93.93763571452779 },
+    "arrivalTime": "2020-02-03T20:21:21.009Z",
+    "arrivalIteration": 501,
+    "leavingIteration": 720,
+    "lastActionIteration": 716,
+    "totalRides": 5,
+    "rideHistory": [
+      { "rideId": "ride-6", "rideTime": "2020-02-03T21:11:21.009Z" },
+      { "rideId": "ride-1", "rideTime": "2020-02-03T22:03:21.009Z" },
+      { "rideId": "ride-13", "rideTime": "2020-02-03T22:35:21.009Z" },
+      { "rideId": "ride-9", "rideTime": "2020-02-03T23:14:21.009Z" },
+      { "rideId": "ride-14", "rideTime": "2020-02-03T23:56:21.009Z" }
+    ]
+  },
+  {
+    "id": 10,
+    "firstName": "Isabelle",
+    "lastName": "Boehm",
+    "age": 25,
+    "birthday": { "month": 2, "day": 5 },
+    "home": { "latitude": 43.64519120906762, "longitude": -85.863102513778 },
+    "arrivalTime": "2020-02-03T20:26:21.009Z",
+    "arrivalIteration": 506,
+    "leavingIteration": 720,
+    "lastActionIteration": 697,
+    "totalRides": 5,
+    "rideHistory": [
+      { "rideId": "ride-1", "rideTime": "2020-02-03T20:57:21.009Z" },
+      { "rideId": "ride-16", "rideTime": "2020-02-03T21:46:21.009Z" },
+      { "rideId": "ride-3", "rideTime": "2020-02-03T22:26:21.009Z" },
+      { "rideId": "ride-5", "rideTime": "2020-02-03T22:58:21.009Z" },
+      { "rideId": "ride-1", "rideTime": "2020-02-03T23:37:21.009Z" }
+    ]
+  }
+]

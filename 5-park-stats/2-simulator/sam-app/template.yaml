@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Innovator Island - Theme park simulator.
+
+Parameters:
+  StreamName:
+    Type: String
+    Default: 'theme-park-streaming-data'
+
+Globals:
+  Function:
+    Timeout: 900
+
+Resources:
+  SimulatorFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: simulatorFunction/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      MemorySize: 3008
+      Environment:
+        Variables:
+          streamName: !Ref StreamName
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Resource: '*'
+            Action:
+              - firehose:PutRecordBatch

@@ -1,0 +1,18 @@
+{
+  "name": "theme-park-person-simulator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.610.0",
+    "chance": "^1.1.4",
+    "faker": "^4.1.0",
+    "moment": "^2.24.0"
+  }
+}
