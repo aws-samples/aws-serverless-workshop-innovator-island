@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Innovator Island - 6 Event-based architecture - Part 1.
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  PublishFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: publishFunction/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Resource: '*'
+            Action:
+              - events:PutEvents
+
+  MetricsFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: metricsFunction/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Resource: '*'
+            Action:
+              - cloudwatch:PutMetricData

@@ -68,4 +68,4 @@ To test further, change the selected language in the language dropdown to anothe
 
 ## Next steps ## 
 
-Feel free to experiment with the completed application, and browse the AWS Management Console to see the backend services you have configured. Thanks for participating!
+Next, you will use Amazon Kinesis to ingest real-time data from park visitors and convert into business insights using Amazon QuickSight - [click here to continue](../5-park-stats/README.md).
