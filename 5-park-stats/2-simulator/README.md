@@ -7,7 +7,7 @@ To simulate the load expected from a full park of visitors, you will deploy a si
 ## How it works
 
 * You will deploy the simulator application using SAM. The simulator runs in a Lambda function.
-* The simulator generates between 500-900,000 thousand messages for between 70-80,000 visitors. On average, it produces 300Mb of streaming data. It will take ~5 minutes to simulate an entire 12-hour park day, streaming at an average 1000 transactions per second.
+* The simulator generates approximately one million messages for between 70-80,000 visitors. On average, it produces 300Mb of streaming data. It will take ~5 minutes to simulate an entire 12-hour park day, streaming at an average 1000 transactions per second.
 * These messages are sent to the Kinesis Firehose delivery stream you configured in the previous step. They will start appearing in the dedicated S3 bucket shortly after the simulator starts.
 * A typical message is a JSON object - here is an example for a completed ride by a visitor:
 
@@ -86,6 +86,6 @@ aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 
 ## Next steps
 
-At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. 
+At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. Wait until the simulation finishes before continuing.
 
 Next, you will analyze the data for business insights with Amazon QuickSight. To start the next section, [click here to continue](../3-quicksight/README.md).

@@ -2,39 +2,8 @@
 
 *[Click here](../README.md) to return the main instructions for Module 5 at any time.*
 
-To simulate the load expected from a full park of visitors, you will deploy a simulator. This is a custom application running in a Lambda function.
+Using the data from the simulation, you will use Amazon QuickSight to answer questions related to the operation of the theme park. In this section, you will configure QuickSight and create insights based on the simulation data.
 
-## How it works
-
-* You will deploy the simulator application using SAM. The simulator runs in a Lambda function.
-* The simulator generates between 500-900,000 thousand messages for between 70-80,000 visitors. On average, it produces 300Mb of streaming data. It will take 4-5 minutes to simulate an entire 12-hour park day, streaming at an average 1000 transactions per second.
-* These messages are sent to the Kinesis Firehose delivery stream you configured in the previous step. They will start appearing in the dedicated S3 bucket shortly after the simulator starts.
-* A typical message is a JSON object - here is an example for  a completed ride by a visitor:
-
-```
-{
-    "event:": "Ride",
-    "rideId": "ride-014",
-    "rating": 4,
-    "visitorId": 9,
-    "visitor": {
-        "id": 9,
-        "firstName": "Kacie",
-        "lastName": "Kihn",
-        "age": 18,
-        "birthday":                      
-            "month": 7,
-            "day": 25
-        },
-        "home": {
-            "latitude": 42.058359409010635,
-            "longitude": -90.28163047438535
-        },
-        "arrivalTime": "2020-02-05T20:20:16.787Z",
-        "totalRides": 4
-    }
-}
-```
 ## Creating a QuickSight account
 
 **:white_check_mark: Step-by-step Instructions**
@@ -52,14 +21,14 @@ To simulate the load expected from a full park of visitors, you will deploy a si
 4. In the next page in the sign-up process:
 - Leave *Use Role Based Federation (SSO)* selected.
 - For *Region*, select the region in the dropdown you have been using in the workshop.
-- For *QuickSight account name*, enter `theme-park-data-admin`.
+- For *QuickSight account name*, enter `theme-park-admin-` followed by your AWS account ID.
 - For *Notification email address*, enter your email address.
 - Uncheck any checked boxes.
 - Click **Choose S3 buckets*
 
-![Enterprise plan](../../images/module5-3-signup-3.png)
+**:star:You can find your AWS Account ID by clicking your name in the menu bar at the top of the page.**
 
-In the Region dropdown, select the region you have been using for this workshop.
+![Enterprise plan](../../images/module5-3-signup-3.png)
 
 5. In the *Select Amazon S3 buckets* popup, check the S3 bucket beginning with `theme-park-data`. Choose **Finish**.
 
@@ -210,9 +179,15 @@ Park Management is concerned that some rides are popular with visitors. Create a
 (a) Show if the ratings vary significantly by age group.
 (b) Executives are concerned that ride uptime may be impacting visitor satisfaction. Show if the ratings increase or decrease throughout the day.
 
-### (In-person workshops only)
+## Module review and next steps
 
-Once you are finished with the advanced challenge solution, present your dashboard to a workshop instructor. There are prizes available!
+## Module review
+
+In this module you:
+
+- Set up Kinesis Firehose to ingest data from park visitors and store in a dedicated S3 bucket.
+- Launched the simulator to generate test data for analysis, streaming data to Firehose.
+- Configured Amazon QuickSight to perform business intelligence analytics on the sample data.
 
 ## Next steps
 

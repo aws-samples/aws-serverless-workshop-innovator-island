@@ -1,7 +1,7 @@
 
 // Libraries
 const AWS = require('aws-sdk')
-AWS.config.update({region: 'us-east-1'})
+AWS.config.update({region: process.env.AWS_REGION})
 const firehose = new AWS.Firehose()
 
 const DeliveryStreamName = process.env.streamName || 'theme-park-streaming-data'
@@ -39,7 +39,7 @@ const flushBatch = async () => {
 
   console.log(params)
   try {    
-    // const result = await firehose.putRecordBatch(params).promise()
+    const result = await firehose.putRecordBatch(params).promise()
     if (result.FailedPutCount > 0) {
       console.log(`Firehose batch sequence ${sequenceId}. Failure: : ${result}`)
     }

@@ -29,25 +29,32 @@ This section shows how to set up and configure a Kinesis Firehose delivery strea
 
 4. On the *Process records* page, leave the defaults and choose **Next**.
 
-5. On the *Select a destination* page, leave *S3* selected. In the *S3 Destination* panel, enter `theme-park-data-` followed by your AWS Account ID. Choose **Create S3 bucket** then choose **Next**.
+5. On the *Select a destination* page, in the *Destination* section leave *Amazon S3* selected. In the *S3 Destination* panel, choose **Create new**.
+
+6. On the *Create S3 bucket* page:
+- For *S3 bucket name* enter `theme-park-data-` followed by your AWS Account ID. 
+- For *Region*, enter your current region.
+- Choose *Create S3 bucket*.
 
 **:star:You can find your AWS Account ID by clicking your name in the menu bar at the top of the page.**
 
 ![Setup S3 bucket](../../images/module5-1-firehose-setup3.png)
 
-6. On the *Configure settings* page, scroll down to the *Permissions* section. Choose **Create new or choose**. In the IAM window, choose **Allow**.
+7. Back in the *Select a destination* page, choose **Next**.
+
+8. On the *Configure settings* page, scroll down to the *Permissions* section. Choose **Create new or choose**. In the IAM window, choose **Allow**.
 
 ![Setup IAM](../../images/module5-1-firehose-setup4.png)
 
-7. Back in the *Configure settings* page, note that the role name now appears, and then choose **Next**.
+9. Back in the *Configure settings* page, note that the role name now appears, and then choose **Next**.
 
 ![Finalize setup](../../images/module5-1-firehose-setup5.png)
 
-8. On the *Review page*, check your settings and then choose **Create delivery stream**.
+10. On the *Review page*, check your settings and then choose **Create delivery stream**.
 
 ![Review setup](../../images/module5-1-firehose-setup6.png)
 
-9. Finally, on the *Kinesis Data Firehose delivery streams* page, wait until your new stream shows the status *Active*.
+11. Finally, on the *Kinesis Data Firehose delivery streams* page, wait until your new stream shows the status *Active*.
 
 ![Review setup](../../images/module5-1-firehose-setup7.png)
 
