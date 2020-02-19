@@ -148,7 +148,7 @@ Add each of the following visualizations to your analysis dashboard:
 4. Ride rating by popularity. [Go to instructions...](./visual4.md)
 5. How many total rides today? [Go to instructions...](./visual5.md)
 
-Once you have the five visualulations on your worksheet, rename your worksheet, and resize the visualizations to fit the dashbaord.
+Once you have the five visualulations on your worksheet, rename your worksheet, and resize the visualizations to fit the dashboard.
 
 ![Completed dashboard](../../images/module5-3-visualization-all.png)
 
