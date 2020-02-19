@@ -39,7 +39,9 @@ Module # | Feature | Description
 1 | Deploy the App | Deploy the initial frontend and backend applications.
 2 | Ride wait times | Integrate your application with the ride systems so guests can see wait times.
 3 | Ride photos | Build a photo processing flow so guests can take selfies around the park.
-4 | Translation (Bonus) | Help international guests understand the app by adding language translation.
+4 | Translation | Help international guests understand the app by adding language translation.
+5 | Analyzing visitor stats | Collecting and analyzing large amounts of data from park guests.
+6 | Developing event-based architecture | Routing park maintenance events depending upon severity.
 
 If you run out of time in the workshop, don't panic! This GitHub repository is public and is available after your workshop ends.
 
@@ -49,7 +51,7 @@ If you are using an account provided at an AWS event, the account will be cleane
 
 If you are using your own AWS account, this workshop uses AWS services that are mostly covered by the Free Tier allowance (if your account is less than 12 months old) but it may incur some costs. To minimize cost, make sure you deprovision and delete those resources when you are finished.
 
-**:loudspeaker: If you leave resources running in your account, you are liable for the costs incurred.**
+**:loudspeaker: You are liable for the costs incurred of running this workshop.**
 
 ### Next steps
 

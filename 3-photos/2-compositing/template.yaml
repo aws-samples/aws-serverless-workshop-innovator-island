@@ -16,7 +16,7 @@ Resources:
     Properties:
       CodeUri: lambdaFunction/
       Handler: app.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       MemorySize: 2048
       Environment:
         Variables:
