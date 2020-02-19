@@ -127,16 +127,12 @@ You must change the datatypes of some fields for QuickSight to use these properl
 
 ![Your data sets](../../images/module5-3-configure-11.png)
 
-- Park attendance by time of day.
-- Most popular rides by age group.
-- Where are our visitors from?
-
 4. In the analysis dashboard, note the following areas on the display, since you will need these to build the data visualizations:
-- 1. Analysis menu bar.
-- 2. Fields list.
-- 3. Visualization types.
-- 4. Field wells, for modifying fields in visualizations.
-- 5. Worksheet, containing multiple visualization panels.
+- 1 - Analysis menu bar.
+- 2 - Fields list.
+- 3 - Visualization types.
+- 4 - Field wells, for modifying fields in visualizations.
+- 5 - Worksheet, containing multiple visualization panels.
 
 ![Analysis dashboard](../../images/module5-3-configure-12.png)
 
@@ -177,11 +173,12 @@ Park Management is considering offering free entrance to anyone on their birthda
 Park Management is concerned that some rides are popular with visitors. Create a visualation to show the 3 least popular rides.
 
 (a) Show if the ratings vary significantly by age group.
+
 (b) Executives are concerned that ride uptime may be impacting visitor satisfaction. Show if the ratings increase or decrease throughout the day.
 
 ## Module review and next steps
 
-## Module review
+### Module review
 
 In this module you:
 
@@ -189,7 +186,7 @@ In this module you:
 - Launched the simulator to generate test data for analysis, streaming data to Firehose.
 - Configured Amazon QuickSight to perform business intelligence analytics on the sample data.
 
-## Next steps
+### Next steps
 
 Great! You've now completed the streaming data and park statistics module of this workshop. 
 
