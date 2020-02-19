@@ -263,7 +263,7 @@ You will now start to receive SMS message at your phone number when emergency ou
 
 2. In the terminal, change the directory by entering:
 ```
-cd ~environment/theme-park-backend/6-eventbridge/2-maintenance/
+cd ~/environment/theme-park-backend/6-eventbridge/2-maintenance/
 ```
 3. Put a test event on the Eventbridge default event by running the following command:
 ```

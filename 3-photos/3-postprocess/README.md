@@ -67,9 +67,9 @@ aws dynamodb list-tables
 
 4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and enter the two environment variables names along with the values you retrieved in Cloud9:
 
-5. **Choose *Save* to save these changes.**
-
 ![Module 2 - Environment vars](../../images/3-photos-composite6.png)
+
+5. **Choose *Save* to save these changes.**
 
 ## Update the frontend
 
@@ -140,4 +140,4 @@ Finally, click the *Share on Twitter* button. Tweet out your photo with the hash
 
 ## Next steps
 
-[Click here](../4-translate/README.md) to continue to Module 4.
+[Click here](../../4-translate/README.md) to continue to Module 4.

@@ -14,7 +14,7 @@ This visualization shows the total number of rides takes in the entire park toda
 2. Click **Filter** in the *Analysis menu bar*, then choose **Create one...**.
 3. Choose **event** from the list. Click *event* and check **Ride**. Choose **Apply** then **Close**.
 4. Click **Visualize** in the *Analysis menu bar*.
-5. In *Visualization types*, choose **Tree map**.
+5. In *Visualization types*, choose **KPI**.
 6. Click the *Field Wells* panel to open this section.
 7. Drag **rideId** from the *Fields list* to the *Value* box in the *Field wells*.
 8. Click the title of the visualization and rename to *How many total rides today?*.
@@ -25,4 +25,4 @@ The finished visualization is shown below.
 
 ## Next steps
 
-Go back to [Building visualizations](./README.md).
+Go back to [Building visualizations](./README.md#building-visualizations).

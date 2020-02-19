@@ -25,4 +25,4 @@ The finished visualization looks like the map below.
 
 ## Next steps
 
-Go back to [Building visualizations](./README.md).
+Go back to [Building visualizations](./README.md#building-visualizations).
