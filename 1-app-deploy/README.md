@@ -206,7 +206,7 @@ sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-backend --capabilities CAPABILITY_IAM
 ```
-This will take a few minutes to deploy - wait for the confirmation message in the console before continuing.
+This will take a few minutes to deploy. You can see the deployment progress in the console. Wait until you see the ``Successfully created/updated stack - theme-park-backend`` confirmation message in the console before continuing.
 
 SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop:
 - 2 Lambda functions and a Lambda Layer
