@@ -32,7 +32,7 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabi
 
 4. Select the Lambda function with the name beginning `theme-park-events-PublishFunction`.
 
-- This function will be invoked by SNS after you create in the trigger in the next section.
+- This function will be invoked by SNS after you create the trigger in the next section.
 - The code iterates through the list of ride wait times in the incoming SNS message. It creates an event for each ride time and publishes to the default bus in EventBridge. For these events, the DetailType is `waitTimes`.
 - It also publishes a single summary event to the EventBridge default bus using the DetailType `waitTimesSummary`.
 
