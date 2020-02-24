@@ -32,11 +32,11 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabi
 
 4. Select the Lambda function with the name beginning `theme-park-events-PublishFunction`.
 
-- This function will be invoked by SNS after you in the trigger in the next section.
-- The code iterates through the list of ride wait times in the incoming SNS message. It creates an event for each ride time and publishes the the default bus in EventBridge. For these events, the DetailType is `waitTimes`.
+- This function will be invoked by SNS after you create in the trigger in the next section.
+- The code iterates through the list of ride wait times in the incoming SNS message. It creates an event for each ride time and publishes to the default bus in EventBridge. For these events, the DetailType is `waitTimes`.
 - It also publishes a single summary event to the EventBridge default bus using the DetailType `waitTimesSummary`.
 
-5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, discard the pre-populated ARN and paste the ARN of the Flow & Traffic Controller's SNS topic depending on the region: 
+5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, discard the pre-populated ARN and paste the ARN of the Flow & Traffic Controller's SNS topic, depending on the region: 
 
 Region | ARN
 ------------ | -------------
