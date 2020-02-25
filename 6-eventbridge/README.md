@@ -1,7 +1,5 @@
 # Module 6: Developing event-based architecture
 
-** CURRENTLY IN BETA -- We are testing this module. This is not a stable version **
-
 ## Overview
 
 The Flow & Traffic Controller system provides the web app with ride times via an SNS topic in another AWS account. 
