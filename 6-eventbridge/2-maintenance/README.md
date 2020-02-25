@@ -255,6 +255,8 @@ You will now start to receive SMS message at your phone number when emergency ou
 
 ## 4. Create a test event.
 
+Whereas informational alerts happen frequently, it can take a few minutes for an emergency alert to occur. To simulate an emergency, you can generate a test event.
+
 **:white_check_mark: Step-by-step Instructions**
 
 1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select **Cloud9** under *Developer Tools*.
