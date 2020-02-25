@@ -1,7 +1,5 @@
 # Module 5: Analyzing visitor stats
 
-** CURRENTLY IN BETA -- We are testing this module. This is not a stable version **
-
 ## Overview
 
 Each park visitor has a wristband that collects data throughout the day. It records when visitors arrive and leave, and keeps track of every ride they visit. 
