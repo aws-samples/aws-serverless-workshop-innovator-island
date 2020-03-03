@@ -24,7 +24,7 @@ Many of the visitors to the the park's island come from all over the world and E
 ```
 cd ~/environment/theme-park-backend/4-translate/local-app/
 npm install 
-node ./translate.js
+node ./translate.js $AWS_REGION
 ```
 After a few seconds, the function completes and has created a new file in the same directory called ```translations.json```. Click on the file in the left panel of the IDE to inspect the contents. You will see it contains translations of the string resources in the target languages.
 
