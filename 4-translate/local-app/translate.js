@@ -20,7 +20,8 @@
 'use strict'
 
 const AWS = require('aws-sdk')
-AWS.config.region = ( process.env.AWS_REGION || 'us-west-2' )
+AWS.config.update({ region: process.argv[2] })
+
 const translate = new AWS.Translate()
 const fs = require('fs')
 const messages = require('./translations-input.json')
@@ -91,5 +92,8 @@ const main = async () => {
   // Write to the local file system.
   fs.writeFileSync(outputFileName, JSON.stringify(translations, null, 2))
 }
+
+if(!process.argv[2])
+  return console.error('Missing REGION in command line parameters.')
 
 main()
