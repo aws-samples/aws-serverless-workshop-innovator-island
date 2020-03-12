@@ -101,7 +101,7 @@ In this section, you will modify the memory and timeout settings for the Lambda 
 
 **:white_check_mark: Step-by-step Instructions**
 
-1. In the browser tab with the `theme-photos-chromakey` Lambda function open, scroll down to the *Basic settings* card.
+1. In the browser tab with the `theme-park-photos-chromakey` Lambda function open, scroll down to the *Basic settings* card.
 
 ![Module 3 - Basic settings](../../images/3-photos-chroma11.png)
 
