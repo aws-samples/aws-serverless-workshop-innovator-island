@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Innovator Island Workshop - Flow & Traffic Controller (ride queue times service).
+
+Resources:
+
+  # Ride times are published to this topic
+  FATcontroller:
+    Type: AWS::SNS::Topic
+
+  # Table to hold state between Lambda invocations
+  DDBtable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: ID
+        AttributeType: S
+      KeySchema:
+      - AttributeName: ID
+        KeyType: HASH
+      BillingMode: PAY_PER_REQUEST    
+
+  # Function to simulate ride times and closures
+  UpdateRides:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: fatController/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Environment:
+        Variables:
+          DDBtable: !Ref DDBtable
+          TopicArn: !Ref FATcontroller      
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DDBtable  
+        - Statement:
+          - Effect: Allow
+            Resource: !Ref FATcontroller
+            Action:
+              - sns:Publish                 
+      Events:
+        UpdateRidesEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 minute)
+
+  # Lambda function for initializing DDB table content
+  AppConfigurationLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: initDB/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      Timeout: 15
+      MemorySize: 128
+      Environment:
+        Variables:
+          DDBtable: !Ref DDBtable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DDBtable                 
+
+  # Triggers Lambda function after stack creation to add rides to DDB
+  DeploymentCustomResource:
+    Type: Custom::AppConfiguration
+    Properties:
+      ServiceToken: !GetAtt AppConfigurationLambda.Arn
+
+Outputs:
+  RideUpdatesSNStopic:
+      Description: "SNS topic to receive ride uptime updates"
+      Value: !Ref FATcontroller

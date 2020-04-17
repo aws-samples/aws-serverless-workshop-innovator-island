@@ -196,9 +196,22 @@ This has now created the S3 deployment bucket.
 
 4. Change directory:
 ```
+cd ~/environment/theme-park-backend/1-app-deploy/ride-controller/
+```
+5. Use SAM CLI to deploy the first part of the infrastructure by running the following commands:
+```
+sam build
+
+sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
+
+sam deploy --template-file packaged.yaml --stack-name ride-times --capabilities CAPABILITY_IAM
+```
+
+6. Change directory:
+```
 cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
 ```
-5. Use SAM CLI to deploy the infrastructure by running the following commands:
+7. Use SAM CLI to deploy the infrastructure by running the following commands:
 ```
 sam build
 
@@ -216,7 +229,7 @@ SAM has now used CloudFormation to deploy a stack of backend resources which wil
 - An AWS IoT thing
 - Several IAM Roles and Policies.
 
-6. Configure environment variables. 
+8. Configure environment variables. 
    
 Set a number of environment variables to represent the custom names of resources deployed in your account. These commands use the AWS CLI to retrieve the CloudFormation resource names and then construct the environment variables using Linux string manipulation commands ``grep`` and ``cut``. This makes it easier to type deployment commands in later modules. In the terminal, execute:
 
