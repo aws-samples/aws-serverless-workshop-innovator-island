@@ -225,7 +225,7 @@ AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availabil
 FINAL_BUCKET=$(aws s3 ls | grep finalbucket | cut -d' ' -f 3)
 PROCESSING_BUCKET=$(aws s3 ls | grep processingbucket | cut -d' ' -f 3)
 UPLOAD_BUCKET=$(aws s3 ls | grep uploadbucket | cut -d' ' -f 3)  
-DDB_TABLE=$(aws dynamodb list-tables | grep theme-park-backend | awk '{$1=$1};1' | sed 's/"//g')
+DDB_TABLE=$(aws dynamodb list-tables | grep theme-park-backend | awk '{$1=$1};1' | sed 's/",\?//g')
 echo $FINAL_BUCKET
 echo $PROCESSING_BUCKET
 echo $UPLOAD_BUCKET
