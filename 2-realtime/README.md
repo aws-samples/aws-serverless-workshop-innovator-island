@@ -39,19 +39,9 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 
 ![Module 2 - Create Function](../images/2-realtime-lambda1.png)
 
-3. Expand the *Designer* section. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, discard the pre-populated ARN and paste the ARN of the Flow & Traffic Controller's SNS topic depending on the region: 
+3. Expand the *Designer* section. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the SNS topic starting with `ride-times`: 
 
-Region | ARN
------------- | -------------
-US Oregon - us-west-2 | ```arn:aws:sns:us-west-2:526237104669:theme-park-FAT-controller```
-US N Virginia - us-east-1 | ```arn:aws:sns:us-east-1:526237104669:theme-park-FAT-controller```
-US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-controller```
-Frankfurt - eu-central-1 | ```arn:aws:sns:eu-central-1:526237104669:theme-park-FAT-controller```
-Sydney - ap-southeast-2 | ```arn:aws:sns:ap-southeast-2:526237104669:theme-park-FAT-controller```
-
-![Module 2 - SNS](../images/2-realtime-lambda2.png)
-
-:heavy_exclamation_mark: Ensure you have discarded the pre-populated ARN and pasted the Flow & Traffic Controller's SNS topic depending on the region.
+![Module 2 - SNS](../images/2-realtime-lambda2b.png)
 
 4. Leave *Enable trigger* checked, and choose *Add*.
 

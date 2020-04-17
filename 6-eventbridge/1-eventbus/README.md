@@ -36,17 +36,9 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabi
 - The code iterates through the list of ride wait times in the incoming SNS message. It creates an event for each ride time and publishes to the default bus in EventBridge. For these events, the DetailType is `waitTimes`.
 - It also publishes a single summary event to the EventBridge default bus using the DetailType `waitTimesSummary`.
 
-5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, discard the pre-populated ARN and paste the ARN of the Flow & Traffic Controller's SNS topic, depending on the region: 
+5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the topic beginning with `ride-times`: 
 
-Region | ARN
------------- | -------------
-US Oregon - us-west-2 | ```arn:aws:sns:us-west-2:526237104669:theme-park-FAT-controller```
-US N Virginia - us-east-1 | ```arn:aws:sns:us-east-1:526237104669:theme-park-FAT-controller```
-US Ohio - us-east-2 | ```arn:aws:sns:us-east-2:526237104669:theme-park-FAT-controller```
-Frankfurt - eu-central-1 | ```arn:aws:sns:eu-central-1:526237104669:theme-park-FAT-controller```
-Sydney - ap-southeast-2 | ```arn:aws:sns:ap-southeast-2:526237104669:theme-park-FAT-controller```
-
-![Add SNS trigger](../../images/2-realtime-lambda2.png)
+![Add SNS trigger](../../images/2-realtime-lambda2b.png)
 
 6. Leave *Enable trigger* checked, and choose *Add*.
 

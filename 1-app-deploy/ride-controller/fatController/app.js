@@ -16,7 +16,7 @@
 // James Beswick, AWS Serverless Team - @jbeswick for help/questions.
 // This isn't part of the workshop, but feel free to look around...
 
-const { getRides, updateRide, saveMessage } = require('./ddb')
+const { getRides, updateRide } = require('./ddb')
 const { sendSNS } = require('./sns')
 
 exports.handler = async (event) => {
@@ -29,7 +29,7 @@ exports.handler = async (event) => {
         await updateRide(updatedRide)
 
         ridesMessages.push({
-          rideID: ride.ID,
+          rideId: ride.ID,
           inService: ride.inService,
           wait: ride.wait,
           lastUpdated: ride.lastUpdated
@@ -38,8 +38,10 @@ exports.handler = async (event) => {
     )
 
     // Push new ride times to messaging table
-    const message = JSON.stringify(ridesMessages)
-    await sendSNS(message)
+    await sendSNS({
+      type: "summary",
+      msg: JSON.stringify(ridesMessages)
+    })
 }
 
 /* Simple algorithm to change ride times every minute and

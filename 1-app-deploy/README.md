@@ -200,18 +200,18 @@ cd ~/environment/theme-park-backend/1-app-deploy/ride-controller/
 ```
 5. Use SAM CLI to deploy the first part of the infrastructure by running the following commands:
 ```
-sam build
-
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name ride-times --capabilities CAPABILITY_IAM
 ```
 
-6. Change directory:
+This will take a few minutes to deploy. You can see the deployment progress in the console. Wait until you see the ``Successfully created/updated stack - ride-times`` confirmation message in the console before continuing.
+
+6. Now, change directory:
 ```
 cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
 ```
-7. Use SAM CLI to deploy the infrastructure by running the following commands:
+7. Use SAM CLI to deploy the second part of the infrastructure by running the following commands:
 ```
 sam build
 

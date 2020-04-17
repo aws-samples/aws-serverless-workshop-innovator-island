@@ -23,7 +23,7 @@ const sendSNS = async (Message) => {
   // Send to SNS
   try {
     const result = await new AWS.SNS({apiVersion: '2010-03-31'}).publish({
-      Message,
+      Message: JSON.stringify(Message),
       TopicArn
     }).promise()
     console.log('SNS result: ', result)
