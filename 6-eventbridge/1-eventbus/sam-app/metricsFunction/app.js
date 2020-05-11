@@ -1,7 +1,7 @@
 // Invoked as an EventBridge target, publishes data to CloudWatch Metrics.
 
 // Receives summary ride data. This functions iterates through the message,
-// and publishes each ride time to CloudWatch Metricsglobal.fetch = require('node-fetch');
+// and publishes each ride time to CloudWatch Metrics
 
 const AWS = require("aws-sdk")
 AWS.config.region = ( process.env.AWS_REGION )
