@@ -13,7 +13,7 @@ exports.handler = async (event) => {
     Namespace: 'InnovatorIsland'
   }
 
-  // Incoming mess
+  // Incoming message
   const msg = JSON.parse(event.detail.msg)
 
   msg.map((stat) => {
