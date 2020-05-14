@@ -235,10 +235,10 @@ Set a number of environment variables to represent the custom names of resources
 
 ```console
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-FINAL_BUCKET=$(aws s3 ls | grep finalbucket | cut -d' ' -f 3)
-PROCESSING_BUCKET=$(aws s3 ls | grep processingbucket | cut -d' ' -f 3)
-UPLOAD_BUCKET=$(aws s3 ls | grep uploadbucket | cut -d' ' -f 3)  
-DDB_TABLE=$(aws dynamodb list-tables | grep theme-park-backend | awk '{$1=$1};1' | sed 's/",\?//g')
+FINAL_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id FinalBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
+PROCESSING_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id ProcessingBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
+UPLOAD_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id UploadBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
+DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
 echo $FINAL_BUCKET
 echo $PROCESSING_BUCKET
 echo $UPLOAD_BUCKET
@@ -289,7 +289,7 @@ This will return all the data in the table together with a "ScannedCount", which
 2. Call the API Gateway endpoint URL which SAM has created. First, run the following command in the console to show the endpoint URL:
 
 ```
-aws cloudformation describe-stacks --stack-name theme-park-backend | grep -A 2 InitStateApi
+aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='InitStateApi'].OutputValue" --output text
 ```
 **Note the ```OutputValue``` for the InitStateApi** - this is your API Gateway endpoint. You will need this in later sections.
 
