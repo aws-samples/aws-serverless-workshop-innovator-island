@@ -6,7 +6,7 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 
 ## How it works
 
-* The Controller publishes updates every minute to an Amazon SNS topic in another AWS Account. This topic's permissions are set to be publicly readable.
+* The Controller publishes updates every minute to an Amazon SNS topic. This has already been created for you.
 * You will create a Lambda function in your account that is invoked whenever notifications arrive on this topic. This function will store the message in DynamoDB and forward the message to IoT Core.
 * Finally, you will update the front-end application configuration to listen to this IoT endpoint, and republish the frontend.
 

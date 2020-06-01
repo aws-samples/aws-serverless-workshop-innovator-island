@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.526.0",
-    "csv-parse": "^4.8.2"
+    "aws-sdk": "^2.687.0",
+    "csv-parse": "^4.10.1"
   },
   "devDependencies": {},
   "description": ""
