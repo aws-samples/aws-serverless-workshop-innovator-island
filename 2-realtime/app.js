@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 const ddb = new AWS.DynamoDB.DocumentClient()
 const iotdata = new AWS.IotData({ endpoint: process.env.IOT_DATA_ENDPOINT })
 
-/* MODULE 3 - Real-time ride wait times
+/* MODULE 2 - Real-time ride wait times
 
    This function listens to an SNS topic published by the Flow & Traffic Controller
    which provides ride waiting times throughout the park. The handler stores the 

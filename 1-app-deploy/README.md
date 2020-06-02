@@ -291,7 +291,7 @@ This will return all the data in the table together with a "ScannedCount", which
 ```
 aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='InitStateApi'].OutputValue" --output text
 ```
-**Note the ```OutputValue``` for the InitStateApi** - this is your API Gateway endpoint. You will need this in later sections.
+**Note the command's output for the InitStateApi** - this is your API Gateway endpoint. You will need this in later sections.
 
 3. Once you have the endpoint URL, select the URL link in the Cloud9 terminal and select Open: 
 

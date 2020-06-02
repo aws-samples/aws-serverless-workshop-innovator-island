@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "James Beswick, AWS Serverless",
+  "license": "MIT-0",
   "dependencies": {
-    "aws-sdk": "^2.538.0"
+    "aws-sdk": "^2.688.0"
   }
 }

@@ -27,6 +27,16 @@ Once configured, you will:
 - Test the backend using a sample image to ensure the flow is working as expected.
 - Test the frontend by taking a selfie against the green screens in the workshop room, and Tweet it to the world!
 
+## Set up environment variables
+
+Run the following commands in the Cloud9 terminal to set environment variables used in this workshop:
+
+```console
+AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+```
+
 ## Deploy the infrastructure
 
 There are three sub-sections to this module:

@@ -23,6 +23,16 @@ The theme park uses a proprietary system called the **Flow & Traffic Controller*
 * The DynamoDB table only stores the last message. This initial state is needed when the front-end application is first loaded.
 * The IoT topic is the conduit from the serverless backend to the front-end application. Any messages posted here will be received by the front-end.
 
+## Set up environment variables
+
+Run the following commands in the Cloud9 terminal to set environment variables used in this workshop:
+
+```console
+AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+```
+
 ## Create the Lambda function
 
 **:white_check_mark: Step-by-step Instructions**
@@ -79,15 +89,15 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 ```
 3. Next, enter the following command to retrieve the value for DDB_TABLE_NAME:
 ```
-aws dynamodb list-tables
+aws dynamodb list-tables | grep backend
 ```
 ![Module 2 - Terminal](../images/2-realtime-lambda5.png)
 
 4. Go back to the browser tab with the `theme-park-ridetimes` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and then choose **Add environment variable**.
 
 5. Enter the three environment variables with the three values, as follows:
-- IOT_DATA_ENDPOINT - the value from step 2 above.
-- DDB_TABLE_NAME - the value from step 3 above.
+- IOT_DATA_ENDPOINT - the value from step 2 above (without quotes).
+- DDB_TABLE_NAME - the value from step 3 above (without quotes).
 - IOT_TOPIC: `theme-park-rides`
 
 ![Module 2 - Environment vars](../images/2-realtime-lambda6.png)

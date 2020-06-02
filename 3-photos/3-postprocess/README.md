@@ -62,10 +62,10 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 ```
 3. Next, enter the following command to retrieve the value for `DDB_TABLE_NAME`:
 ```
-aws dynamodb list-tables
+aws dynamodb list-tables | grep backend
 ```
 
-4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and enter the two environment variables names along with the values you retrieved in Cloud9:
+4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Scroll down to the *Environment variables* card, click **Edit**, and enter the two environment variables names along with the values you retrieved in Cloud9 (without quotes):
 
 ![Module 2 - Environment vars](../../images/3-photos-composite6.png)
 
@@ -81,9 +81,9 @@ In this section, you will update the frontend with the API endpoint where it can
 
 2. In the terminal, run this command to show the uploads API from when the backend was deployed in module 1:
 ```
-aws cloudformation describe-stacks --stack-name theme-park-backend | grep -A2 -B2  UploadApi
+aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='UploadApi'].OutputValue" --output text
 ```
-3. Copy the *OutputValue* to the clipboard:
+3. Copy the output URL to the clipboard:
 
 ![Module 3 - Output](../../images/3-photos-postprocess-uploadAPI.png)
 
