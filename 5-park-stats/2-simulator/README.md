@@ -86,6 +86,8 @@ aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 
 ## Next steps
 
-At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. Wait until the simulation finishes before continuing.
+At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. Wait until the simulation finishes before continuing, and shows a 200 status code.
+
+![Simulator finished](../../images/module5-simulator-finished.png)
 
 Next, you will analyze the data for business insights with Amazon QuickSight. To start the next section, [click here to continue](../3-quicksight/README.md).

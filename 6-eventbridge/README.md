@@ -30,6 +30,16 @@ You are going to connect the SNS topic with the ride data to Amazon EventBridge,
 * EventBridge receives these events and uses rules to decide where they should be routed.
 * Events are routed to any number of downstream consumers, which are completely decoupled from the event producers.
 
+## Set up environment variables
+
+Run the following commands in the Cloud9 terminal to set environment variables used in this workshop:
+
+```console
+AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+```
+
 ## Configure the infrastructure
 
 There are two sub-sections to this module:

@@ -28,6 +28,16 @@ There are three types of event currently monitored in the park: *Entry*, *Ride* 
 2. Firehose aggegrates data into objects stored in a dedicated S3 bucket.
 3. QuickSight uses the objects in the S3 bucket as a data source for analysis.
 
+## Set up environment variables
+
+Run the following commands in the Cloud9 terminal to set environment variables used in this workshop:
+
+```console
+AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+```
+
 ## Configure the infrastructure
 
 There are three sub-sections to this module:

@@ -92,7 +92,7 @@ EventBridge will now filter events on the default bus and send events matching t
 
 ## 2. Creating alerts for Info/Warning outage events.
 
-In this section you will consume the enriches events from the default event bus and route to interested targets.
+In this section you will consume the enriched events from the default event bus and route to interested targets.
 
 First, you create two SNS topics. The first is for outages of type "Info" and "Warning", which you will route to your email. 
 
@@ -109,6 +109,7 @@ First, you create two SNS topics. The first is for outages of type "Info" and "W
 3. On the *Create topic* page:
 - For *Name*, enter `theme-park-events-outages-alerts-info`.
 - For *Display name*, enter `Topic for info and warning alerts`.
+- Choose **Create topic**.
 
 ![CloudWatch log streams](../../images/module6-2-sns-2.png)
 
@@ -278,3 +279,22 @@ Within a few seconds, you will receive an SMS on your phone with the emergency a
 Congratulations! You have completed building the theme park application. Please drop by the Innovator Island Human Resource office - we need talented developers like you!
 
 Feel free to experiment with the completed application, and browse the AWS Management Console to see the backend services you have configured. Thanks for participating!
+
+## Cleaning up resources
+
+To remove and delete resource used by this workshop:
+
+1. For QuickSight:
+- From the QuickSight console, select the admin menu and choose **Manage QuickSight**.
+- Select *Account settings* and choose **Unsubscribe**.
+- This deletes all visualizations and stops billing.
+
+2. For Cloud9:
+- From the [Cloud 9 console](https://console.aws.amazon.com/cloud9/home), select your instance and choose **Delete**.
+- This deletes all workshop data from the instance and stops billing.
+
+3. In CloudFormation:
+- From the [CloudFormation console](https://console.aws.amazon.com/cloudformation/home), select each stack beginning with `theme-park` and choose **Delete**.
+- This deletes all resources associated with the stacks deployed in various modules.
+
+
