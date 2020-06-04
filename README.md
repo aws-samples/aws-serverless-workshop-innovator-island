@@ -28,7 +28,7 @@ JavaScript executed in the frontend browser application sends and receives data 
 
 See the diagram below for the complete architecture.
 
-![Overall architecture](./images/architecture.png)
+![Overall architecture](./images/architecture-light.png)
 
 ## Start here
 
