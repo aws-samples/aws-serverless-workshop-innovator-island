@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Flow & Traffic Controller system provides the web app with ride times via an SNS topic in another AWS account. 
+The Flow & Traffic Controller system provides the web app with ride times via an SNS topic. 
 
 Now the guests know about wait times and outages, but the park's maintenance staff don't know when ride systems are down. They would like notifications when problems occur. Since you have deployed the previous app already, we want to address this new requirement without making any changes to the existing infrastructure.
 
@@ -25,7 +25,7 @@ You are going to connect the SNS topic with the ride data to Amazon EventBridge,
 
 ![Module 6 architecture](../images/module6-overview-arch.png)
 
-* The *Flow & Traffic Controller* exists in a separate AWS account owned by the theme park. You are provided with the SNS topic ARN to use.
+* The *Flow & Traffic Controller* is a separate system in the park. You are provided with the SNS topic ARN to use.
 * The Lambda function receive new messages from the SNS topic. It parses this message and sends events to the EventBridge event bus.
 * EventBridge receives these events and uses rules to decide where they should be routed.
 * Events are routed to any number of downstream consumers, which are completely decoupled from the event producers.
