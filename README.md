@@ -32,16 +32,17 @@ See the diagram below for the complete architecture.
 
 ## Start here
 
-After setting up your Cloud9 environment, follow the modules in order:
+After completing the Initial Setup, follow the remaining modules in order:
 
 Module # | Feature | Description
 ------------ | ------------- | -------------
-1 | Deploy the App | Deploy the initial frontend and backend applications.
-2 | Ride wait times | Integrate your application with the ride systems so guests can see wait times.
-3 | Ride photos | Build a photo processing flow so guests can take selfies around the park.
-4 | Translation | Help international guests understand the app by adding language translation.
-5 | Analyzing visitor stats | Collecting and analyzing large amounts of data from park guests.
-6 | Developing event-based architecture | Routing park maintenance events depending upon severity.
+[0](./0-setup/README.md) | Initial Setup | Setup the development environment and clone the repositories.
+[1](./1-app-deploy/README.md) | Deploy the App | Deploy the initial frontend and backend applications.
+[2](./2-realtime/README.md) | Ride wait times | Integrate your application with the ride systems so guests can see wait times.
+[3](./3-photos/README.md) | Ride photos | Build a photo processing flow so guests can take selfies around the park.
+[4](./4-translate/README.md) | Translation | Help international guests understand the app by adding language translation.
+[5](./5-park-stats/README.md) | Analyzing visitor stats | Collecting and analyzing large amounts of data from park guests.
+[6](./6-eventbridge/README.md) | Developing event-based architecture | Routing park maintenance events depending upon severity.
 
 If you run out of time in the workshop, don't panic! This GitHub repository is public and is available after your workshop ends.
 
@@ -55,7 +56,7 @@ If you are using your own AWS account, this workshop uses AWS services that are 
 
 ### Next steps
 
-:white_check_mark: Proceed to the [Module 1](./1-app-deploy/README.md), where you'll start setting up your application.
+:white_check_mark: Proceed to [Module 0](./0-setup/README.md), where you'll start setting up the development environment.
 
 [amplify-console]: https://aws.amazon.com/amplify/console/
 [cognito]: https://aws.amazon.com/cognito/
