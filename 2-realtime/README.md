@@ -59,7 +59,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 ![Module 2 - SNS completed](../images/2-realtime-lambda3.png)
 
-6. Back in the Cloud9 browser tab, in the left directory panel navigate navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
+6. Back in the Cloud9 browser tab, in the left directory panel navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
 
 7. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
 
