@@ -36,7 +36,7 @@ This section shows how to set up and configure a Kinesis Firehose delivery strea
 - For *Region*, enter your current region.
 - Choose *Create S3 bucket*.
 
-**:star:You can find your AWS Account ID by clicking your name in the menu bar at the top of the page.**
+**:star:You can find your AWS Account ID by clicking your name in the menu bar at the top of the page. If you can not find your AWS Account ID, you could also use a telephone number without any spaces or dashes.**
 
 ![Setup S3 bucket](../../images/module5-1-firehose-setup3.png)
 

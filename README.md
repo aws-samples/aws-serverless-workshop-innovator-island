@@ -43,6 +43,8 @@ Module # | Feature | Description
 [4](./4-translate/README.md) | Translation | Help international guests understand the app by adding language translation.
 [5](./5-park-stats/README.md) | Analyzing visitor stats | Collecting and analyzing large amounts of data from park guests.
 [6](./6-eventbridge/README.md) | Developing event-based architecture | Routing park maintenance events depending upon severity.
+[Cleanup](./00-cleanup/README.md) | Cleanup workshop resources | How to remove all of the workshop's resources from your account.
+
 
 If you run out of time in the workshop, don't panic! This GitHub repository is public and is available after your workshop ends.
 
@@ -50,7 +52,7 @@ If you run out of time in the workshop, don't panic! This GitHub repository is p
 
 If you are using an account provided at an AWS event, the account will be cleaned up automatically. 
 
-If you are using your own AWS account, this workshop uses AWS services that are mostly covered by the Free Tier allowance (if your account is less than 12 months old) but it may incur some costs. To minimize cost, make sure you deprovision and delete those resources when you are finished.
+If you are using your own AWS account, this workshop uses AWS services that are mostly covered by the Free Tier allowance (if your account is less than 12 months old) but it may incur some costs. To minimize cost, make sure you deprovision and delete those resources when you are finished. You can find the instructions for how to do that under [Cleanup](./00-cleanup/README.md).
 
 **:loudspeaker: You are liable for the costs incurred of running this workshop.**
 

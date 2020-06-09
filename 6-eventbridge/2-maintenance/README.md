@@ -280,21 +280,6 @@ Congratulations! You have completed building the theme park application. Please 
 
 Feel free to experiment with the completed application, and browse the AWS Management Console to see the backend services you have configured. Thanks for participating!
 
-## Cleaning up resources
+### Next steps
 
-To remove and delete resource used by this workshop:
-
-1. For QuickSight:
-- From the QuickSight console, select the admin menu and choose **Manage QuickSight**.
-- Select *Account settings* and choose **Unsubscribe**.
-- This deletes all visualizations and stops billing.
-
-2. For Cloud9:
-- From the [Cloud 9 console](https://console.aws.amazon.com/cloud9/home), select your instance and choose **Delete**.
-- This deletes all workshop data from the instance and stops billing.
-
-3. In CloudFormation:
-- From the [CloudFormation console](https://console.aws.amazon.com/cloudformation/home), select each stack beginning with `theme-park` and choose **Delete**.
-- This deletes all resources associated with the stacks deployed in various modules.
-
-
+[Click here](../../00-cleanup/README.md) to see cleanup instructions for this workshop.
