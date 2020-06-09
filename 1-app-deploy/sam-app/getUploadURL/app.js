@@ -15,7 +15,7 @@
 
 'use strict'
 
-const uuidv4 = require('uuid/v4')
+const { v4: uuidv4 } = require('uuid')
 const AWS = require('aws-sdk')
 AWS.config.update({ region: process.env.AWS_REGION })
 const s3 = new AWS.S3()
