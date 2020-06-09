@@ -282,4 +282,4 @@ Feel free to experiment with the completed application, and browse the AWS Manag
 
 ### Next steps
 
-[Click here](../00-cleanup/README.md) to see cleanup instructions for this workshop.
+[Click here](../../00-cleanup/README.md) to see cleanup instructions for this workshop.
