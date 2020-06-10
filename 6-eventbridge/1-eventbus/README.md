@@ -86,9 +86,7 @@ In this section, you will connect a Lambda function that publishes data to Cloud
 
 ![Select targets](../../images/module6-1-eventbridge-3.png)
 
-8. Choose **Add target**
-
-9. Choose **Create**.
+8. Choose **Create**.
 
 EventBridge will now filter events on the default bus and send events matching the pattern to the Lambda function that populates CloudWatch metrics.
 
