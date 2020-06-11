@@ -14,7 +14,7 @@ Using the data from the simulation, you will use Amazon QuickSight to answer que
 
 ![Sign up for QuickSight](../../images/module5-3-signup.png)
 
-3. In the *Create your QuickSight account* page, leave the **Enterprise** option selected and choose **Continue**.
+3. In the *Create your QuickSight account* page, select the **Standard** option and choose **Continue**.
 
 ![Enterprise plan](../../images/module5-3-signup-2.png)
 

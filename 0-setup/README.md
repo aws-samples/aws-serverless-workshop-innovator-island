@@ -21,6 +21,7 @@ Use a single region for the entirety of this workshop. This workshop only suppor
 - us-east-1 (US East - Northern Virginia)
 - ap-southeast-2 (Sydney, Australia)
 - eu-central-1 (Frankfurt, Germany)
+- eu-west-1 (Dublin, Ireland)
 
 ### AWS Cloud9 IDE
 

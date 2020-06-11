@@ -53,10 +53,11 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 | us-east-1 | US East - Northern Virginia | `arn:aws:lambda:us-east-1:678705476278:layer:Chromakey:1`
 | eu-central-1 | Frankfurt | `arn:aws:lambda:eu-central-1:678705476278:layer:Chromakey:1`
 | ap-southeast-2 | Sydney | `arn:aws:lambda:ap-southeast-2:678705476278:layer:Chromakey:1`
+| eu-west-1 | Dublin | `arn:aws:lambda:eu-west-1:678705476278:layer:Chromakey:1`
 
 Paste the ARN into the *Layer version ARN* field. Select **Add**.
 
-**:star: If you'e interested in seeing the contents and structure of the Lambda layer, you can [download the zip file](https://innovator-island.s3-us-west-2.amazonaws.com/cv2-layer.zip). This is not required for the workshop.
+**:star: If you're interested in seeing the contents and structure of the Lambda layer, you can [download the zip file](https://innovator-island.s3-us-west-2.amazonaws.com/cv2-layer.zip). This is not required for the workshop.
 
 ![Module 3 - Add layer](../../images/3-photos-chroma3.png)
 
