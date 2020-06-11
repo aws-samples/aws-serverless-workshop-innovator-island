@@ -20,6 +20,8 @@ Each of the following sections provides an implementation overview and detailed,
 
 :heavy_exclamation_mark: Please ensure you have completed the [Setup Guide](/0-setup) first!
 
+:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=uLTRI0ijmjw).
+
 ## How it works - Frontend
 
 * You will create a code repository in [AWS CodeCommit](https://aws.amazon.com/codecommit/).
