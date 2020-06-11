@@ -19,6 +19,7 @@ Once you have built the back-end resources needed, you will update the front-end
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. Remember: if you have any questions, contact one of the AWS employees located around the room.
 
 :heavy_exclamation_mark: Please ensure you have completed the [Setup Guide](/0-setup) first!
+:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=uLTRI0ijmjw).
 
 ## How it works - Frontend
 
