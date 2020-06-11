@@ -98,7 +98,7 @@ aws dynamodb list-tables | grep backend
 5. Enter the three environment variables with the three values, as follows:
 - IOT_DATA_ENDPOINT - the value from step 2 above (without quotes).
 - DDB_TABLE_NAME - the value from step 3 above (without quotes).
-- IOT_TOPIC: `theme-park-rides`
+- IOT_TOPIC - `theme-park-rides`
 
 ![Module 2 - Environment vars](../images/2-realtime-lambda6.png)
 
