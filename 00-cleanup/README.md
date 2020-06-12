@@ -41,6 +41,11 @@ To remove and delete resources used by this workshop:
 1. Open the [AWS CodeCommit console][codecommit-console], and select the repository created for this workshop. Select **Delete repository** from the upper right of the page.
 1. Complete the repository deletion process.
 
+### 9. S3 Buckets
+1. Open the [S3 console][s3-console], filter by `theme-park-`. Select each bucket one by one and then choose **Delete**.
+1. Complete the bucket deletion process.
+1. Repeat this process for any remaining buckets.
+
 [amplify-console-console]: https://console.aws.amazon.com/amplify/home
 [api-gw-console]: https://console.aws.amazon.com/apigateway/home
 [cloud9-console]: https://console.aws.amazon.com/cloud9/home
@@ -54,4 +59,5 @@ To remove and delete resources used by this workshop:
 [kinesis-console]: https://console.aws.amazon.com/kinesis/home
 [firehose-console]: https://console.aws.amazon.com/firehose/home
 [sns-console]: https://console.aws.amazon.com/sns/home
+[s3-console]: https://console.aws.amazon.com/s3/home
 
