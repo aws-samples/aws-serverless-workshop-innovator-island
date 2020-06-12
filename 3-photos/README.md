@@ -4,6 +4,8 @@
 
 Park guests love taking photos on the rides and attractions. This app feature will let guests take a selfie and see a composited picture in the application. From here, they can publish their masterpiece on social media.
 
+:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=fcNWup_TmVA).
+
 ## How it works
 
 * The front-end calls an API endpoint to get a presigned URL to upload the photo to S3. This enables the front-end application to upload directly to S3 without a webserver. This results in a new JPG object in the S3 **Upload** bucket.
