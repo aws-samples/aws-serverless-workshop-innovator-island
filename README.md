@@ -1,10 +1,16 @@
 ## The Innovator Island Workshop
 
-In this workshop, you will be deploying a completely serverless web application built with AWS services.
+In this workshop, you will be deploying a completely [serverless](https://aws.amazon.com/serverless/) web application built with AWS services.
+
+You can follow this workshop at your own pace using the instructions in this repo, or attend a session at an AWS event where it is run.
+
+If you are doing it at your own pace, there are video tutorials for each of the modules.
 
 If you're attending this workshop at an AWS event, your instructor will provide an overview of the steps involved. There are AWS employees available to help with any of your questions - don't be afraid to ask if you get stuck!
 
 # Welcome to the Theme Park!
+
+![InnovatorIsland](./images/innovator-island_logo.png)
 
 This exciting new theme park, built on the remote island of Isla Sanserver, combines rollercoasters and rides with shows and exhibits. The park is the creation of the billionaire entrepreneur behind Wild Rydes, the unicorn taxi service that sold in 2018. The park will open every day and expects up to 50,000 visitors daily. It's self-guided, using a web application that guests can browse on their smartphones. 
 
@@ -44,7 +50,6 @@ Module # | Feature | Description
 [5](./5-park-stats/README.md) | Analyzing visitor stats | Collecting and analyzing large amounts of data from park guests.
 [6](./6-eventbridge/README.md) | Developing event-based architecture | Routing park maintenance events depending upon severity.
 [Cleanup](./00-cleanup/README.md) | Cleanup workshop resources | How to remove all of the workshop's resources from your account.
-
 
 If you run out of time in the workshop, don't panic! This GitHub repository is public and is available after your workshop ends.
 
