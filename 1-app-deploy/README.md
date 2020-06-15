@@ -251,8 +251,6 @@ The terminal now looks like this, echoing back all the set environment variables
 
 ![Module 1 env vars](../images/1-app-deploy-envvars.png)
 
-SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop, 2 x Lambda functions and a Lambda Layer, 3 x S3 buckets, a DynamoDBTable, Cognito UserPool, AWS IoT thing and a number of IAM Roles and Policies.
-
 ## Populate the DynamoDB Table
 
 DynamoDB is a key-value and document database which we will use to store information about all the rides and attractions throughout the park.
