@@ -8,6 +8,8 @@ When participants exit each ride, they tap the wristband on a ratings collection
 
 In this section, you build the *Amazon Kinesis Firehose delivery stream* to receive the data. You'll set up a simulator to generate example messages, and then use *Amazon QuickSight* for find insights about the park's visitors.
 
+:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=PZlrwWqeq7Q&list=PLJo-rJlep0EAkkjo7w_RmTV3S27tTmXDg).
+
 ## How it works
 
 Every tap from a wristband creates an IoT message routed to the Amazon Kinesis Firehose delivery stream. 
