@@ -42,7 +42,7 @@ To remove and delete resources used by this workshop:
 1. Complete the repository deletion process.
 
 ### 9. S3 Buckets
-1. Open the [S3 console][s3-console], filter by `theme-park-`. Select each bucket one by one and then choose **Delete**.
+1. Open the [S3 console][s3-console], filter by `theme-park-`. Select each bucket one by one, delete any objects in the bucket first,  then choose **Delete**.
 1. Complete the bucket deletion process.
 1. Repeat this process for any remaining buckets.
 
