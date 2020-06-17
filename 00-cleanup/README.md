@@ -24,7 +24,6 @@ To remove and delete resources used by this workshop:
 
 ### 4. Resources in CloudFormation
 1.  From the [CloudFormation console][cloudformation-console], select each stack beginning with `theme-park` and choose **Delete**.
-1.  Repeat this process for the stack beginning with `ride-times`
 1.  This deletes all resources associated with the stacks deployed in various modules. Note this process takes a few minutes.
 
 ### 5. Manually created Lambda functions
@@ -57,7 +56,6 @@ To remove and delete resources used by this workshop:
 ### 11. CloudWatch
 1. Open the [Amazon CloudWatch][cloudwatch-console]
 1. Navigate to *Logs | Log groups*, and select all log groups beginning with `theme-park`. From *Actions* in the top right corner, select **Delete log groups(s)** and choose **Delete**.
-1.  Repeat this process for the log groups beginning with `ride-times`
 1. Navigate to *Dashboards*. Select the `InnovatorIsland` Dashboard, and from *Actions* in the top right corner, select **Delete dashboard** and choose **Delete dashboard**.
 
 
