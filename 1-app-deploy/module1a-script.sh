@@ -24,4 +24,5 @@ git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repo
 
 #############Deploy the site with the AWS Amplify Console
 
-read -p "Manually create Amplify Console App and then continue with module1b-script.sh
+read -p "Manually create Amplify Console App and then continue with module1b-script.sh"
+
