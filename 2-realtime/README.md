@@ -51,7 +51,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 ![Module 2 - Create Function](../images/2-realtime-lambda1.png)
 
-3. Expand the *Designer* section. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the SNS topic starting with `ride-times`: 
+3. Expand the *Designer* section. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the SNS topic starting with `theme-park-ride-times`: 
 
 ![Module 2 - SNS](../images/2-realtime-lambda2b.png)
 
