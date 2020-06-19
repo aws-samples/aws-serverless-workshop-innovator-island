@@ -24,10 +24,12 @@ To remove and delete resources used by this workshop:
 
 ### 4. Resources in CloudFormation
 1.  From the [CloudFormation console][cloudformation-console], select each stack beginning with `theme-park` and choose **Delete**.
+1.  Select each stack beginning with `ride-times` and choose **Delete**.
 1.  This deletes all resources associated with the stacks deployed in various modules. Note this process takes a few minutes.
 
 ### 5. Manually created Lambda functions
 1.  From the [Lambda console][lambda-console], filter by `theme-park-`. Select each function one by one and then choose Actions and **Delete**.
+1.  Filter by `ride-times-`. Select each function one by one and then choose Actions and **Delete**.
 1.  This will remove all functions manually created in this workshop.
 
 ### 6. Kinesis Firehose
@@ -56,6 +58,7 @@ To remove and delete resources used by this workshop:
 ### 11. CloudWatch
 1. Open the [Amazon CloudWatch][cloudwatch-console]
 1. Navigate to *Logs | Log groups*, and select all log groups beginning with `theme-park`. From *Actions* in the top right corner, select **Delete log groups(s)** and choose **Delete**.
+1. Still on *Logs | Log groups*, select all log groups beginning with `ride-times`. From *Actions* in the top right corner, select **Delete log groups(s)** and choose **Delete**.
 1. Navigate to *Dashboards*. Select the `InnovatorIsland` Dashboard, and from *Actions* in the top right corner, select **Delete dashboard** and choose **Delete dashboard**.
 
 
