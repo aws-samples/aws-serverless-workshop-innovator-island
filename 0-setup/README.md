@@ -80,7 +80,7 @@ else
 fi
 ```
 
-Make sure you get a supprted AWS Region message for your chosen Region.
+Make sure the response confirms your Region is supported.
 
 ![Module 0 Region check](../images/0-setup-region-check.png)
 
