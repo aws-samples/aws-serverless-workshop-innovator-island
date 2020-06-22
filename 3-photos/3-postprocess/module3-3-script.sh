@@ -6,6 +6,7 @@ LAMBDA_ROLE=$(aws cloudformation describe-stack-resource --stack-name theme-park
 LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'"' -f 4)
 DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
 IOT_ENDPOINT_HOST=$(aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep endpointAddress | cut -d'"' -f 4)
+FINAL_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id FinalBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
 
 aws lambda create-function \
     --function-name theme-park-photos-postprocess   \
@@ -17,12 +18,10 @@ aws lambda create-function \
 
 ##Adding the S3 trigger
 
-POSTPROCESS_FUNCTION=$(aws lambda get-function --function-name theme-park-photos-postprocess | grep FunctionArn | cut -d'"' -f 4)
-
 aws lambda add-permission --function-name $POSTPROCESS_FUNCTION --action lambda:InvokeFunction --statement-id s3-to-lambda-postprocess --principal s3.amazonaws.com --source-arn "arn:aws:s3:::$FINAL_BUCKET" --source-account $accountId
 
-POSTPROCESS_FUNCTION_ARN=$(aws lambda get-function --function-name $POSTPROCESS_FUNCTION | grep FunctionArn | cut -d'"' -f 4)
-POSTPROCESS_NOTIFICATION_CONFIGURATION='{"LambdaFunctionConfigurations":[{"Id":"'$POSTPROCESS_FUNCTION'-event","LambdaFunctionArn":"'$POSTPROCESS_FUNCTION_ARN'","Events": ["s3:ObjectCreated:*"]}]}'
+POSTPROCESS_FUNCTION_ARN=$(aws lambda get-function --function-name theme-park-photos-postprocess | grep FunctionArn | cut -d'"' -f 4)
+POSTPROCESS_NOTIFICATION_CONFIGURATION='{"LambdaFunctionConfigurations":[{"Id":"'theme-park-photos-postprocess'-event","LambdaFunctionArn":"'$POSTPROCESS_FUNCTION_ARN'","Events": ["s3:ObjectCreated:*"]}]}'
 aws s3api put-bucket-notification-configuration --bucket $FINAL_BUCKET --notification-configuration "$POSTPROCESS_NOTIFICATION_CONFIGURATION"
 
 ##Update frontend
