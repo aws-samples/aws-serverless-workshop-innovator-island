@@ -8,7 +8,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 ##Creating the Chromakey Lambda function
 cd ~/environment/theme-park-backend/3-photos/1-chromakey/
-zip 3-photos-1-chromakey.zip lambda_function.py
+zip 3-photos-1-chromakey.zip app.py
 LAMBDA_ROLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id ThemeParkLambdaRole --query "StackResourceDetail.PhysicalResourceId" --output text)
 LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'"' -f 4)
 
@@ -26,14 +26,22 @@ aws lambda create-function \
     --function-name theme-park-photos-chromakey  \
     --runtime python3.6 \
     --zip-file fileb://3-photos-1-chromakey.zip \
-    --handler lambda_function.lambda_handler \
+    --handler app.lambda_handler \
     --role $LAMBDA_ROLE_ARN \
 	--memory-size 3008 \
 	--timeout 10 \
 	--environment "Variables={OUTPUT_BUCKET_NAME=$PROCESSING_BUCKET,HSV_LOWER='(36, 100, 100)',HSV_UPPER='(70 ,255, 255)'}" \
 	--layers $LAYER_ARN
 
-aws lambda add-permission --function-name theme-park-photos-chromakey --action lambda:InvokeFunction --statement-id s3-to-lambda --principal s3.amazonaws.com --source-arn "arn:aws:s3:::$UPLOAD_BUCKET" --source-account $accountId
+##Adding the S3 trigger
+
+CHROMAKEY_FUNCTION=$(aws lambda get-function --function-name theme-park-photos-chromakey | grep FunctionArn | cut -d'"' -f 4)
+
+aws lambda add-permission --function-name theme-park-photos-chromakey --action lambda:InvokeFunction --statement-id s3-to-lambda-chromakey --principal s3.amazonaws.com --source-arn "arn:aws:s3:::$UPLOAD_BUCKET" --source-account $accountId
+
+CHROMAKEY_FUNCTION_ARN=$(aws lambda get-function --function-name theme-park-photos-chromakey | grep FunctionArn | cut -d'"' -f 4)
+CHROMAKEY_NOTIFICATION_CONFIGURATION='{"LambdaFunctionConfigurations":[{"Id":"'theme-park-photos-chromakey'-event","LambdaFunctionArn":"'$CHROMAKEY_FUNCTION_ARN'","Events": ["s3:ObjectCreated:*"]}]}'
+aws s3api put-bucket-notification-configuration --bucket $UPLOAD_BUCKET --notification-configuration "$CHROMAKEY_NOTIFICATION_CONFIGURATION"
 
 ## Test Upload
 cd ~/environment/theme-park-backend/3-photos/
