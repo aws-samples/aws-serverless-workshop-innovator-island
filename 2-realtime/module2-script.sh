@@ -5,6 +5,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 COGNITO_POOLID=$(aws cognito-identity list-identity-pools  --max-results 10 | grep -B 1 ThemeParkIdentityPool | grep IdentityPoolId | cut -d'"' -f 4)
 IOT_ENDPOINT_HOST=$(aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep endpointAddress | cut -d'"' -f 4)
+DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
 
 ##Create Ridetimes Lambda Function and subscribe to SNS Topic
 cd ~/environment/theme-park-backend/2-realtime/
