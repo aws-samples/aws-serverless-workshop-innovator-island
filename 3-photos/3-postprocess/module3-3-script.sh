@@ -30,4 +30,3 @@ sed -i "s@photoUploadURL: ''@photoUploadURL: '$PHOTO_UPLOAD_URL'@g" ~/environmen
 cd ~/environment/theme-park-frontend/
 git commit -am "Module 3 - Photo compositing"
 git push
-
