@@ -18,10 +18,10 @@ aws lambda create-function \
 
 ##Adding the S3 trigger
 
-aws lambda add-permission --function-name $POSTPROCESS_FUNCTION --action lambda:InvokeFunction --statement-id s3-to-lambda-postprocess --principal s3.amazonaws.com --source-arn "arn:aws:s3:::$FINAL_BUCKET" --source-account $accountId
+aws lambda add-permission --function-name theme-park-photos-postprocess --action lambda:InvokeFunction --statement-id s3-to-lambda-postprocess --principal s3.amazonaws.com --source-arn "arn:aws:s3:::$FINAL_BUCKET" --source-account $accountId
 
 POSTPROCESS_FUNCTION_ARN=$(aws lambda get-function --function-name theme-park-photos-postprocess | grep FunctionArn | cut -d'"' -f 4)
-POSTPROCESS_NOTIFICATION_CONFIGURATION='{"LambdaFunctionConfigurations":[{"Id":"'theme-park-photos-postprocess'-event","LambdaFunctionArn":"'$POSTPROCESS_FUNCTION_ARN'","Events": ["s3:ObjectCreated:*"]}]}'
+POSTPROCESS_NOTIFICATION_CONFIGURATION='{"LambdaFunctionConfigurations":[{"Id":"theme-park-photos-postprocess-event","LambdaFunctionArn":"'$POSTPROCESS_FUNCTION_ARN'","Events": ["s3:ObjectCreated:*"]}]}'
 aws s3api put-bucket-notification-configuration --bucket $FINAL_BUCKET --notification-configuration "$POSTPROCESS_NOTIFICATION_CONFIGURATION"
 
 ##Update frontend
