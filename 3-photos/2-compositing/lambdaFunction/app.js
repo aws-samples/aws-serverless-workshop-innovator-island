@@ -4,6 +4,7 @@ const AWS = require('aws-sdk')
 AWS.config.update({ region: process.env.AWS_REGION })
 const s3 = new AWS.S3()
 const Jimp = require('jimp')
+const fs = require('fs');
 
 // Wrapping promise around Jimp callback
 const getBuffer = function(image) {
@@ -42,17 +43,21 @@ exports.handler = async (event) => {
   // Composite with branding frame (branding in front)
   composited = await composited.composite(branding, 0, 0, { mode: Jimp.BLEND_SOURCE_OVER })
 
+  // Save to temp location as JPEG
+  const output_filename = params.Key.replace('.png', '.jpg')
+  const output_path = `/tmp/${output_filename}`
+  await composited.writeAsync(output_path)
+
   // Save to S3
   const outParams = {
     Bucket: process.env.OUTPUT_BUCKET_NAME,
-    Key: params.Key.replace('.png', '.jpg'),  
-    ContentType: 'image/jpeg',
-    Body: await getBuffer(composited),
+    Key: output_filename,
+    ContentType: Jimp.MIME_JPEG,
+    Body: fs.readFileSync(output_path),
     ACL: 'public-read'
   }
   console.log(outParams)
   console.log(await s3.putObject(outParams).promise())
-  return
 }
 
 /*
