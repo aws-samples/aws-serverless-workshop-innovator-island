@@ -8,6 +8,8 @@ Now the guests know about wait times and outages, but the park's maintenance sta
 
 In this module, you are going to build new functionality that allows the park's maintenance teams to get alerts from the ride systems. 
 
+:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=PZlrwWqeq7Q&list=PLJo-rJlep0EAkkjo7w_RmTV3S27tTmXDg).
+
 ## How it works
 
 You are going to connect the SNS topic with the ride data to Amazon EventBridge, a serverless event bus service.
