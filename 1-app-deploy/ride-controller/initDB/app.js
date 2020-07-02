@@ -27,7 +27,7 @@ exports.handler = async function (event, context) {
     await initRides()
     await sendResponse(event, context, 'SUCCESS', { 'Message': 'Resource creation successful!' })
   } else if (event.RequestType === 'Update') {
-    console.log('UDPATE!')
+    console.log('UPDATE!')
     // Put your custom update logic here
     await initRides()
     await sendResponse(event, context, 'SUCCESS', { 'Message': 'Resource update successful!' })
@@ -48,7 +48,7 @@ function sendResponse (event, context, responseStatus, responseData) {
   return new Promise((resolve, reject) => {
 
     console.log('Sending response ' + responseStatus)
-    var responseBody = JSON.stringify({
+    const responseBody = JSON.stringify({
       Status: responseStatus,
       Reason: 'See the details in CloudWatch Log Stream: ' + context.logStreamName,
       PhysicalResourceId: context.logStreamName,
