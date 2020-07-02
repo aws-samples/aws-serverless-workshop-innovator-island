@@ -21,28 +21,6 @@ const documentClient = new AWS.DynamoDB.DocumentClient()
 
 const masterTable = process.env.DDBtable
 
-// Updates ride in the table
-const saveMessage = async (msg) => {
-  // console.log('saveMessage to messaging table')
-  // return new Promise((resolve, reject) => {
-  //   const params = {
-  //     TableName: messagingTable,
-  //     Item: {
-  //       'ride-times': 'summary',
-  //       msg: JSON.stringify(msg)
-  //     }
-  //   }
-  //   documentClient.put(params, function(err, data) {
-  //     if (err) {
-  //       console.error('updateRide error: ', err)
-  //       reject(err)
-  //     } else {
-  //       resolve(data)
-  //     }
-  //   })
-  // })
-}
-
 // Get all rides from the table
 const getRides = async () => {
   const result = await documentClient.scan({
@@ -62,4 +40,4 @@ const updateRide = async (ride) => {
   }).promise()
 }
 
-module.exports = { getRides, updateRide, saveMessage }
+module.exports = { getRides, updateRide }
