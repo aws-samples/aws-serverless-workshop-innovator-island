@@ -5,7 +5,7 @@ const documentClient = new AWS.DynamoDB.DocumentClient()
 const TableName = process.env.DDBtable
 const initRideState = require('./initRideState')
 
-// BathWrite params template
+// BatchWrite params template
 const params = {
   RequestItems: {
     [TableName]: []
