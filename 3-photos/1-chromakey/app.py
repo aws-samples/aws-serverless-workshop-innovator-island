@@ -3,6 +3,7 @@ import json
 import cv2
 import logging
 import boto3
+import botocore
 
 s3 = boto3.client('s3')
 logger = logging.getLogger()
@@ -25,7 +26,7 @@ def upload_file(file_name, bucket, object_name=None):
     s3_client = s3
     try:
         response = s3_client.upload_file(file_name, bucket, object_name)
-    except ClientError as e:
+    except botocore.exceptions.ClientError as e:
         logging.error(e)
         return False
     return True
