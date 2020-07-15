@@ -36,8 +36,9 @@ Lambda functions can be written in different runtimes and can also use pre-packa
    - In the *Trigger configuration* dropdown, select **S3**. 
    - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-uploadbucket`. 
    - For *Event Type* select **All object create events** from the dropdown. 
-   - Leave **Enable trigger** checked, and select **Add**.
+   - Leave **Enable trigger** checked
    - Read the Recursive invocation warning, and select the checkbox to confirm that you have read and understood the warning
+   - Select **Add**.
 
 ![Module 3 - Add trigger](../../images/3-photos-chroma7.png)
 
