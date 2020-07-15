@@ -42,13 +42,11 @@ This section shows how to set up and configure a Kinesis Firehose delivery strea
 
 7. Back in the *Select a destination* page, choose **Next**.
 
-8. On the *Configure settings* page, scroll down to the *Permissions* section. Choose **Create new or choose**. In the IAM window, choose **Allow**.
+8. On the *Configure settings* page, scroll down to the *Permissions* section. Choose **Create or update IAM role**. Make a note of the role name that has been generated for your role.
 
 ![Setup IAM](../../images/module5-1-firehose-setup4.png)
 
-9. Back in the *Configure settings* page, note that the role name now appears, and then choose **Next**.
-
-![Finalize setup](../../images/module5-1-firehose-setup5.png)
+9. Choose **Next**.
 
 10. On the *Review page*, check your settings and then choose **Create delivery stream**.
 
