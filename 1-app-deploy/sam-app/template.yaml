@@ -66,7 +66,10 @@ Resources:
           KeyType: HASH
         - AttributeName: sortKey
           KeyType: RANGE
-      BillingMode: PAY_PER_REQUEST 
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2    
 
   ##########################################
   # S3 Buckets                             #
