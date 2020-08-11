@@ -18,8 +18,11 @@ Resources:
       KeySchema:
       - AttributeName: ID
         KeyType: HASH
-      BillingMode: PAY_PER_REQUEST    
-
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2     
+        
   # Function to simulate ride times and closures
   UpdateRides:
     Type: AWS::Serverless::Function
