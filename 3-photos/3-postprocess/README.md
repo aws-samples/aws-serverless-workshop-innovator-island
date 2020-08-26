@@ -46,7 +46,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 ### Adding environment variables
 
-This function uses three environment variables:
+This function uses two environment variables:
 - `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
 - `DDB_TABLE_NAME`: the DynamoDB table name used by the application.
 
