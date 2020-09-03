@@ -103,6 +103,13 @@ git clone https://github.com/aws-samples/aws-serverless-workshop-innovator-islan
 sudo yum install jq -y
 ```
 
+5. Finally, update the tools and software in your Cloud9 instance with these commands:
+```
+cd ~/environment/theme-park-backend/0-setup/
+chmod 744 bootstrap.sh   
+./bootstrap.sh
+```
+
 ### :star: Tips
 
 :bulb: Keep an open scratch pad in Cloud9 or a text editor on your local computer for notes. When the step-by-step directions tell you to note something such as an ID or Amazon Resource Name (ARN), copy and paste that into your scratch pad.
