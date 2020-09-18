@@ -65,11 +65,11 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 7. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
 
-8. On the top right of the window, **Select *Save* to save the changes.**
-
-This Lambda function code reads the latest message from the SNS topic, writes it to DynamoDB and then pushes the message to the frontend application via an IoT topic.
+8. On the top right of the Function code panel, select **Deploy** to save the changes and deploy the function.
 
 ![Module 2 - Paste code](../images/2-realtime-lambda4.png)
+
+This Lambda function code reads the latest message from the SNS topic, writes it to DynamoDB and then pushes the message to the frontend application via an IoT topic.
 
 ## Adding environment variables
 

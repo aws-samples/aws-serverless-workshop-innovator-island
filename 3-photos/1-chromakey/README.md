@@ -71,7 +71,7 @@ Paste the ARN into the *Layer version ARN* field. Select **Add**.
 
 ![Module 3 - Paste code](../../images/3-photos-chroma5.png)
 
-6. **Select *Save* to save the changes**.
+6. Select **Deploy** in the *Function code* panel to save the changes.
 
 ### Adding environment variables
 
@@ -116,6 +116,8 @@ In this section, you will modify the memory and timeout settings for the Lambda 
 The chromakey process uses memory-intensive libraries to complete the graphics processing. By allocating the maximum memory, this function will complete processing more quickly.
 
 3. Select **Save** to update the function.
+
+4. **Click *Deploy* in the *Function Code* panel to deploy these changes**.
 
 ## Test the function
 
