@@ -40,11 +40,11 @@ After you will test with the sample image, and then perform a test from the fron
 
 6. Copy the code from `3-postprocess/app.js` onto the clipboard and paste into the `index.js` tab in the Lambda function overwriting the existing content:
 
-7. **Select *Save* to save the changes.**
+7. **Select *Deploy* in the *Function Code* panel to save the changes and deploy the function.**
 
 ![Module 3 - Paste code](../../images/3-photos-composite5.png)
 
-### Adding environment variables
+### Adding environment variablesW
 
 This function uses two environment variables:
 - `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
