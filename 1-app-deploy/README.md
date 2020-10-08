@@ -224,7 +224,7 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-backend --capab
 This will take a few minutes to deploy. You can see the deployment progress in the console. Wait until you see the ``Successfully created/updated stack - theme-park-backend`` confirmation message in the console before continuing.
 
 SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop:
-- 2 Lambda functions and a Lambda Layer
+- 2 Lambda functions
 - 3 S3 buckets
 - A DynamoDBTable
 - A Cognito UserPool
@@ -251,7 +251,7 @@ The terminal now looks like this, echoing back all the set environment variables
 
 ![Module 1 env vars](../images/1-app-deploy-envvars.png)
 
-SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop, 2 x Lambda functions and a Lambda Layer, 3 x S3 buckets, a DynamoDBTable, Cognito UserPool, AWS IoT thing and a number of IAM Roles and Policies.
+SAM has now used CloudFormation to deploy a stack of backend resources which will be used for the rest of the workshop, 2 x Lambda functions, 3 x S3 buckets, a DynamoDBTable, Cognito UserPool, AWS IoT thing and a number of IAM Roles and Policies.
 
 ## Populate the DynamoDB Table
 
