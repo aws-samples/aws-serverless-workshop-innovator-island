@@ -74,10 +74,10 @@ def lambda_handler(event, context):
     # (36, 25, 25) - most extreme
     # (36, 50, 50) - average
     # (36, 100, 100) - relaxed
-    lower_range = eval(os.environ["HSV_LOWER"])
+    lower_range = tuple(json.loads(os.environ["HSV_LOWER"]))
 
     # (70, 255, 255) - default
-    upper_range = eval(os.environ["HSV_UPPER"])
+    upper_range = tuple(json.loads(os.environ["HSV_UPPER"]))
     print('Lower HSV range: ', lower_range)
     print('Upper HSV range: ', upper_range)
     
