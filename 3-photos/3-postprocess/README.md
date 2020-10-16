@@ -132,6 +132,10 @@ In the workshop room, there are a number of physical greenscreens. Find an avail
 4. Position yourself in the greenscreen so that green completely fills the background, and your body and face are located in the middle of the frame.
 5. Upload the photo.
 
+> If you do not have access to a greenscreen, you can download a sample image to use. Navigate back to your cloud9 instance, and locate 3-photos/green-screen-test.jpg.
+> 
+> Right click on this image, and select download. You can now use this image in place of creating your own.
+
 The frontend application will notify you when the photo is uploaded. You will see a second notification when the composited photo is ready to view.
 
 You will see a Gallery icon has appeared in the toolbar. Click on this icon to view your composited photo.
