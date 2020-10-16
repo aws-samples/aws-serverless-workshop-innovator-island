@@ -93,8 +93,8 @@ aws s3 ls | grep theme-park-backend-processingbucket
 3. Go back to the browser tab with the `theme-park-photos-chromakey` Lambda function open. Scroll down to the *Environment variables* card and click **Edit**. Enter the three environment variables with the three values, as follows:
 
 - `OUTPUT_BUCKET_NAME`: the value from step 2 above.
-- `HSV_LOWER`: (36, 100, 100)
-- `HSV_UPPER`: (70 ,255, 255)
+- `HSV_LOWER`: [36, 100, 100]
+- `HSV_UPPER`: [70 ,255, 255]
 
 ![Module 3 - Environment vars](../../images/3-photos-chroma6.png)
 
