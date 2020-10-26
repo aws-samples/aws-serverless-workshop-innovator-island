@@ -95,9 +95,9 @@ aws s3 ls | grep theme-park-backend-processingbucket
 
 - `OUTPUT_BUCKET_NAME`: the value from step 2 above.
 - `HSV_LOWER`: [36, 100, 100]
-- `HSV_UPPER`: [70 ,255, 255]
+- `HSV_UPPER`: [75 ,255, 255]
 
-![Module 3 - Environment vars](../../images/3-photos-chroma6.png)
+![Module 3 - Environment vars](../../images/3-photos-chroma6-b.png)
 
 4. **Select *Save* to save these changes.**
 
