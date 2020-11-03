@@ -19,7 +19,6 @@ Using the data from the simulation, you will use Amazon QuickSight to answer que
 ![Enterprise plan](../../images/module5-3-signup-2.png)
 
 4. In the next page in the sign-up process:
-- Leave *Use Role Based Federation (SSO)* selected.
 - For *Region*, select the region in the dropdown you have been using in the workshop.
 - For *QuickSight account name*, enter `theme-park-admin-` followed by your AWS account ID.
 - For *Notification email address*, enter your email address.
