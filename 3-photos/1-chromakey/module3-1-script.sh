@@ -30,7 +30,7 @@ aws lambda create-function \
     --role $LAMBDA_ROLE_ARN \
 	--memory-size 3008 \
 	--timeout 10 \
-	--environment "Variables={OUTPUT_BUCKET_NAME=$PROCESSING_BUCKET,HSV_LOWER='(36, 100, 100)',HSV_UPPER='(70 ,255, 255)'}" \
+	--environment "Variables={OUTPUT_BUCKET_NAME=$PROCESSING_BUCKET,HSV_LOWER='[36, 100, 100]',HSV_UPPER='[70 ,255, 255]'}" \
 	--layers $LAYER_ARN
 
 ##Adding the S3 trigger
