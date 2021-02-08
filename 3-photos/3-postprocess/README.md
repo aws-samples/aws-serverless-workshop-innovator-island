@@ -18,7 +18,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
 
-3. Open the *Choose or create an execution role* section:
+3. Open the *Change default execution role* section:
 -  Select the *Use an existing role* radio button. 
 - Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
 - Select this role.

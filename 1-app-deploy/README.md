@@ -81,11 +81,11 @@ git config --global credential.UseHttpPath true
 ```
 mkdir ~/environment/theme-park-frontend
 cd ~/environment/theme-park-frontend
-wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend.zip
+wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend-202102.zip
 ```
 4. Unzip the code:
 ```
-unzip theme-park-frontend.zip 
+unzip theme-park-frontend-202102.zip 
 ```
 
 Within the Cloud9 file browser on the left hand side you can see the theme-park-frontend files have been downloaded into a separate local directory from the theme-park-backend.
@@ -96,7 +96,7 @@ Within the Cloud9 file browser on the left hand side you can see the theme-park-
 ```
 cd ~/environment/theme-park-frontend/
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend master
+git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend main
 
 ```
 ![Module 1 git push](../images/module1-git-push.png)
@@ -114,7 +114,7 @@ Next you'll use the AWS Amplify Console to deploy the frontend website you've ju
 
 ![Module 1 connect app](../images/module1-connect-app.png)
 
-4. Select *theme-park-frontend* under **Recently updated repositories**, then choose *master* under **Branch**. Select **Next**.
+4. Select *theme-park-frontend* under **Recently updated repositories**, then choose *main* under **Branch**. Select **Next**.
 
 ![Module 1 add repo](../images/module1-amplify-add-repo.png)
 

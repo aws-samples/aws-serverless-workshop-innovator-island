@@ -43,7 +43,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
 
-3. Open the *Choose or create an execution role* section:
+3. Open the *Change default execution role* section:
 -  Select the *Use an existing role* radio button. 
 - Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
 - Select this role.
