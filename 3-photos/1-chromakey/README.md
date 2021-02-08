@@ -46,7 +46,7 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 ![Module 3 - Trigger added](../../images/3-photos-chroma2.png)
 
-3. Select **Add a layer**. Select the *Provide a layer version ARN* radio button. Depending on the selected region, copy the ARN to the clipboard: 
+3. Select **Add a layer**. Select the *Specify an ARN* radio button. Depending on the selected region, copy the ARN to the clipboard: 
 
 | Region | Region Name | Layer ARN |
 |:-------|:------------|:----------|
@@ -111,13 +111,11 @@ In this section, you will modify the memory and timeout settings for the Lambda 
 
 ![Module 3 - Basic settings](../../images/3-photos-chroma11.png)
 
-2. Change the *Memory (MB)* slider to **3008 MB**. Change the *Timeout* values to **0** min and **10** sec. 
+2. Change the *Memory (MB)* value to **3008 MB**. Change the *Timeout* values to **0** min and **10** sec. 
 
 The chromakey process uses memory-intensive libraries to complete the graphics processing. By allocating the maximum memory, this function will complete processing more quickly.
 
 3. Select **Save** to update the function.
-
-4. **Click *Deploy* in the *Function Code* panel to deploy these changes**.
 
 ## Test the function
 
@@ -146,15 +144,15 @@ aws s3 cp ./green-screen-test.png s3://youruploadbucketname
 
 ![Module 3 - S3](../../images/3-photos-chroma12.png)
 
-6. Select the `theme-park-backend-processingbucket`.
+7. Select the `theme-park-backend-processingbucket`.
 
 ![Module 3 - S3](../../images/3-photos-chroma14.png)
 
-7. Check the `green-screen-test.png` object, then select **Download**.
+8. Check the `green-screen-test.png` object, then select the *Actions* dropdown and choose **Download**.
 
-8. Save the file locally and open in an image viewer. 
+9. Save the file locally and open in an image viewer. 
 
-9. You will see the original green screen image has been modified showing the person with the green background now removed. The Lambda function has been invoked when the photo was uploaded to the S3 bucket. The function ran a chromakey process using a library imported using a Lambda Layer which removed the green screen and then wrote the resulting image to another S3 bucket.
+10. You will see the original green screen image has been modified showing the person with the green background now removed. The Lambda function has been invoked when the photo was uploaded to the S3 bucket. The function ran a chromakey process using a library imported using a Lambda Layer which removed the green screen and then wrote the resulting image to another S3 bucket.
 
 ## Next steps
 

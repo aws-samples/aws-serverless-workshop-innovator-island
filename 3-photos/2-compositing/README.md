@@ -73,7 +73,7 @@ Now you have created the Lambda function, you need to configure how it is invoke
    - In the *Trigger configuration* dropdown, Select **S3**. 
    - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-processingbucket`. 
    - For *Event Type* select **All object create events** from the dropdown. 
-   - Leave *Enable trigger* checked, and select **Add**.
+   - Check the *Recursive invocation* acknowledgement, and select **Add**.
 
 ## Test the function
 

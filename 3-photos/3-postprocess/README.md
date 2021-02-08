@@ -16,7 +16,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
-2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
+2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
 
 3. Open the *Choose or create an execution role* section:
 -  Select the *Use an existing role* radio button. 
@@ -30,7 +30,7 @@ After you will test with the sample image, and then perform a test from the fron
    - In the *Trigger configuration* dropdown, select **S3**. 
    - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-finalbucket`. 
    - For *Event Type* select **All object create events** from the dropdown. 
-   - Leave *Enable trigger* checked, and select **Add**.
+   - Check the *Recursive invocation* acknowledgement, and select **Add**.
 
 ![Module 3 - Add trigger](../../images/3-photos-composite3.png)
 
@@ -40,7 +40,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 6. Copy the code from `3-postprocess/app.js` onto the clipboard and paste into the `index.js` tab in the Lambda function overwriting the existing content:
 
-7. **Select *Deploy* in the *Function Code* panel to save the changes and deploy the function.**
+7. Select *Deploy* in the *Function Code* panel to save the changes and deploy the function.
 
 ![Module 3 - Paste code](../../images/3-photos-composite5.png)
 

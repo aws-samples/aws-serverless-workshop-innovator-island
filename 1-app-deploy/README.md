@@ -108,9 +108,9 @@ Next you'll use the AWS Amplify Console to deploy the frontend website you've ju
 **:white_check_mark: Step-by-step Instructions**
 
 1. Launch [Amplify Console](https://console.aws.amazon.com/amplify/home).
-2. Scroll down to the *Deploy* section and select **Get Started**.
+2. Scroll down to the *Deliver* section and select **Get Started**.
 ![Module 1 amplify splash](../images/module1-amplify-splash.png)
-3. Under *Get started with the Amplify Console*, select **AWS CodeCommit** and select **Continue**.
+3. Under *Host your web app*, select **AWS CodeCommit** and select **Continue**.
 
 ![Module 1 connect app](../images/module1-connect-app.png)
 

@@ -41,7 +41,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
-2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 12.x` is selected under *Runtime*. 
+2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
 
 3. Open the *Choose or create an execution role* section:
 -  Select the *Use an existing role* radio button. 
@@ -65,7 +65,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 7. Go back to the browser tab with the Lambda console. In the *Function Code* card, click on the `index.js` file paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
 
-8. On the top right of the Function code panel, select **Deploy** to save the changes and deploy the function.
+8. Above the Function code panel, select **Deploy** to save the changes and deploy the function.
 
 ![Module 2 - Paste code](../images/2-realtime-lambda4.png)
 
