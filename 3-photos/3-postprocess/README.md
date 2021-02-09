@@ -140,8 +140,6 @@ The frontend application will notify you when the photo is uploaded. You will se
 
 You will see a Gallery icon has appeared in the toolbar. Click on this icon to view your composited photo.
 
-Finally, click the *Share on Twitter* button. Tweet out your photo with the hashtag #InnovatorIsland!
-
 ## Next steps
 
 [Click here](../../4-translate/README.md) to continue to Module 4.
