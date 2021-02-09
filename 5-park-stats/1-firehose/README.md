@@ -42,7 +42,9 @@ This section shows how to set up and configure a Kinesis Firehose delivery strea
 
 7. Back in the *Select a destination* page, choose **Next**.
 
-8. On the *Configure settings* page, scroll down to the *Permissions* section. Choose **Create or update IAM role**. Make a note of the role name that has been generated for your role.
+8. On the *Configure settings* page:
+- In the *S3 buffer conditions* section, change *Buffer size* to 10. 
+- Scroll down to the *Permissions* section. Choose **Create or update IAM role**. Make a note of the role name that has been generated for your role.
 
 ![Setup IAM](../../images/module5-1-firehose-setup4.png)
 
