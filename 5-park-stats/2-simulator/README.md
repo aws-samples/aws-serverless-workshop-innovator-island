@@ -54,7 +54,7 @@ cd ~/environment/theme-park-backend/5-park-stats/2-simulator/sam-app
 DELIVERY_STREAM=$(aws firehose describe-delivery-stream --delivery-stream-name theme-park-streaming-data --query "DeliveryStreamDescription.DeliveryStreamARN")
 echo $DELIVERY_STREAM
 ```
-![Delivery stream variable](../..images/5-2-delivery-stream-var.png)
+![Delivery stream variable](../../images/5-2-delivery-stream-var.png)
 
 4. Now, build and deploy the SAM application:
 ```
@@ -63,7 +63,7 @@ sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 sam deploy --template-file packaged.yaml --stack-name theme-park-simulator --capabilities CAPABILITY_IAM --parameter-overrides StreamArn=$DELIVERY_STREAM
 ```
 
-The *parameter-overrides* option allows you to pass parameters into the deployment in the deployment process. In this case, you are passing the Kinesis delivery stream ARN into the StreamArn parameter. Learn more about sam deploy options in the [documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
+The *parameter-overrides* option allows you to pass parameters into the deployment in the deployment process. In this case, you are passing the Kinesis delivery stream ARN into the *StreamArn parameter* in the SAM template. Learn more about sam deploy options in the [documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
 
 This will take a few minutes to deploy - wait for the confirmation message in the console before continuing.
 
