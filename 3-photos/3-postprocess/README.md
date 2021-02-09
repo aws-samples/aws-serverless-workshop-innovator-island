@@ -44,7 +44,7 @@ After you will test with the sample image, and then perform a test from the fron
 
 ![Module 3 - Paste code](../../images/3-photos-composite5.png)
 
-### Adding environment variablesW
+### Adding environment variables
 
 This function uses two environment variables:
 - `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
