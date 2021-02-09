@@ -17,18 +17,6 @@ const MAX_MINS = (60 * 12)  // 12 hrs of park opening time
 const MAX_PARK_CAPACITY = 50000  // Max people in park
 const ACTIONS_PER_MIN = 800  // Simulator limit
 const MIN_TIME_BETWEEN_ACTIONS = 30  // Min delay between rides
-let totalMin = 1
-let hour = 1, min = 0
-
-let visitors = []
-let visitorId = 0
-
-let totals = {
-  visitors: 0,
-  rides: 0,
-  exits: 0,
-  entries: 0
-}
 
 // Pad leading zeros (e.g. 1 --> 001)
 function pad(num, size) {
@@ -39,6 +27,19 @@ function pad(num, size) {
 
 const main = async () => {
   console.time("main")
+
+  let totalMin = 1
+  let hour = 1, min = 0
+
+  let visitors = []
+  let visitorId = 0
+  
+  let totals = {
+    visitors: 0,
+    rides: 0,
+    exits: 0,
+    entries: 0
+  }  
 
   while (totalMin < MAX_MINS) {
     // Move time forward by one minute

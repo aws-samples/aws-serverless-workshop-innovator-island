@@ -78,6 +78,8 @@ aws lambda list-functions | grep theme-park-simulator | grep FunctionName
 ```
 aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 ```
+![Invoke Lambda function](../../images/module5-2-simulator-invoke-lambda.png)
+
 7. The simulator is now running and takes 4-5 minutes to complete. Continue with the workshop without waiting.
 
 ## Observing the output in S3
