@@ -1,3 +1,7 @@
+/*! Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *  SPDX-License-Identifier: MIT-0
+ */
+
 // Libraries
 const moment = require('moment')
 const probabilities = require('./lib/probabilities')
@@ -11,7 +15,7 @@ timeStart.setMinutes(00)
 
 const MAX_MINS = (60 * 12)  // 12 hrs of park opening time
 const MAX_PARK_CAPACITY = 50000  // Max people in park
-const ACTIONS_PER_MIN = 1000  // Simulator limit
+const ACTIONS_PER_MIN = 800  // Simulator limit
 const MIN_TIME_BETWEEN_ACTIONS = 30  // Min delay between rides
 let totalMin = 1
 let hour = 1, min = 0

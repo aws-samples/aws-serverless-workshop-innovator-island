@@ -1,3 +1,7 @@
+/*! Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *  SPDX-License-Identifier: MIT-0
+ */
+
 // Returns a geo point within a circle around a point, biased towards the center point.
 
 const getRandomPoint = function (center, radius) {

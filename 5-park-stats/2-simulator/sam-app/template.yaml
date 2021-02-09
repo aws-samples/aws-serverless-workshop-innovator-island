@@ -6,6 +6,8 @@ Parameters:
   StreamName:
     Type: String
     Default: 'theme-park-streaming-data'
+  StreamArn:
+    Type: String
 
 Globals:
   Function:
@@ -25,6 +27,6 @@ Resources:
       Policies:
         - Statement:
           - Effect: Allow
-            Resource: '*'
+            Resource: !Ref StreamArn
             Action:
               - firehose:PutRecordBatch
