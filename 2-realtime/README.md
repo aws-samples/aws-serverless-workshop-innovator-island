@@ -183,6 +183,50 @@ In this module you:
 
 Once you have seen the new functionality in the published application URL, proceed to the next module, where you will add ride photo processing.
 
+### Challenges for advanced learners
+
+
+> The challenges are optional. If you finish early, we do encourage you to go through it to make the most learning out of this workshop.
+
+1. Why is ride updated every minute? Which line in the code causes that?
+    <details>
+        <summary>Hint#1</summary>
+ 
+        The answer lies in the stack you deployed in the previous module. `theme-park-ride-times`  (in the folder `1-app-deploy/ride-controller`)
+    </details>
+    <details>
+        <summary>Hint#2</summary>
+ 
+        Look at the `template.yaml` file. Find the `UpdateRides` function. Check its "Events" property
+    </details>
+2. How is the message passed from SNS to IoT topic?
+    <details>
+        <summary>Hint#1</summary>
+ 
+        In the Lambda function you created in this module, you add "Trigger" from SNS. This causes Lambda to be called with the passed message from SNS.
+    </details>
+    <details>
+        <summary>Hint#2</summary>
+ 
+        Look at the code you put in the Lambda function. Find `iotdata.publish` in that code.
+    </details>
+3. How does frontend retrieve messages from the IoT topic?
+    <details>
+        <summary>Hint#1</summary>
+ 
+        Frontend open a WebSocket with IoT endpoint to receive messages from IoT topic via MQTT (a pub-sub protocol). There must be a code related to this in `theme-park-frontend` folder 
+    </details>
+    <details>
+        <summary>Hint#2</summary>
+ 
+        Use CMD + Shift + F (or CTRL + Shift + F in Windows) to search all files in the `theme-park-frontend` folder. Use keywords like 'iot' or 'mqtt'
+    </details>
+    <details>
+        <summary>Hint#3</summary>
+ 
+        Search for `mqttClient.on`. See how mqttClient is initialized, how it gets the credential to authenticate with endpoint, and how it handle `mqttClient.on('message').
+    </details>
+
 ## Next steps ## 
 
 [Click here](../3-photos/README.md) to continue to Module 3.
