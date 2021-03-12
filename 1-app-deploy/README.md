@@ -368,35 +368,35 @@ In the next module, you will add realtime waiting times for the rides.
     <details>
         <summary>Hint#1</summary>
  
-        Check "Build settings" menu in your Amplify project. Edit the "App build specification section" 
+    Check "Build settings" menu in your Amplify project. Edit the "App build specification section" 
     </details>
 2. Which resources are deployed in the `ride-controller` folders? Could you summarize the responsibility of this stack?
     <details>
         <summary>Hint#1</summary>
  
-        Check file `1-app-deploy/ride-controller/template.yaml`. 
+    Check file `1-app-deploy/ride-controller/template.yaml`. 
     </details>
     <details>
         <summary>Hint#2</summary>
  
-        Look at the two "AWS::Serverless::Function" resources there. Look at its code (from `CodeUri` property) and how it is triggered (from `Events` property)
+    Look at the two "AWS::Serverless::Function" resources there. Look at its code (from `CodeUri` property) and how it is triggered (from `Events` property)
     </details>
-3. We extracted the `$DDB_TABLE` with this code `DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
-`. Could you explain what it does? If you want to extract other resources, how would you change the CLI?
+3. We extracted the variable `$DDB_TABLE` with this code `DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
+`. Could you explain what it does? If you want to extract other resources, how would you change the command?
     <details>
         <summary>Hint#1</summary>
  
-        `$(...COMMAND...)` is called "Command substitution". It executes the command insight and return the output of that command to the DDB_TABLE (instead of printing it out on the screen)
+    `$(...COMMAND...)` is called "Command substitution". It executes the command insight and return the output of that command to the DDB_TABLE (instead of printing it out on the screen)
     </details>
     <details>
         <summary>Hint#2</summary>
  
-        Go to CloudFormation console, select check the `theme-park-backend`, and choose "Resources" tab
+    Go to CloudFormation console, select check the `theme-park-backend`, and choose "Resources" tab
     </details>
     <details>
         <summary>Hint#3</summary>
  
-        Change `--logical-resource-id DynamoDBTable` to `--logical-resource-id UserPool`. What is the returned value?
+    Change `--logical-resource-id DynamoDBTable` to `--logical-resource-id UserPool`. What is the returned value?
     </details>
 ### Next steps
 
