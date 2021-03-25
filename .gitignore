@@ -130,3 +130,7 @@ packaged.yaml
 .aws-sam
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows
+
+# Hugo default output directory
+/public
+lesson.zip

@@ -1,0 +1,32 @@
+#name - DNS-friendly name for the workshop. This will be used when generating the hosting URL (ie. https://my-first-workshop.workshops.aws/)
+name: Innovator Island
+#title - The title of your workshop
+title: Build a serverless web app for a theme park
+#description - A short description that will be displayed in search results
+description: In this workshop, you will be deploying a completely serverless web application built with AWS services.
+#categories - Refer to official AWS categories covered by the workshop content here
+categories: 
+  - Serverless
+  - Compute
+#services - Refer to the official AWS service names covered by the workshop content here
+services: 
+   - API Gateway
+   - Lambda
+   - Amplify
+   - SNS
+   - SQS
+   - AWS SAM
+#level - Approximate skill level needed for this workshop
+level: 200 
+#duration - Estimated duration in minutes
+duration: 120 
+#cost - Cost in USD. If the content is offered without cost, enter 0
+cost: 0
+#author - Amazon alias of the primary author of the content
+author: jbeswick 
+#audience - Names of the personas associated with this workshop
+audience: 
+  - IT professional
+  - Frontend developer
+  - Backend developer
+  - DevOps professional
