@@ -10,9 +10,9 @@
   "license": "MIT-0",
   "description": "",
   "dependencies": {
-    "aws-sdk": "^2.610.0",
-    "chance": "^1.1.4",
-    "faker": "^4.1.0",
-    "moment": "^2.24.0"
+    "aws-sdk": "^2.871.0",
+    "chance": "^1.1.7",
+    "faker": "^5.4.0",
+    "moment": "^2.29.1"
   }
 }

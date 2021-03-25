@@ -14,9 +14,9 @@ timeStart.setHours(7) // Park opens at 7am
 timeStart.setMinutes(00)
 
 const MAX_MINS = (60 * 12)  // 12 hrs of park opening time
-const MAX_PARK_CAPACITY = 50000  // Max people in park
-const ACTIONS_PER_MIN = 800  // Simulator limit
-const MIN_TIME_BETWEEN_ACTIONS = 30  // Min delay between rides
+const MAX_PARK_CAPACITY = 30000  // Max people in park
+const ACTIONS_PER_MIN = 250  // Simulator limit
+const MIN_TIME_BETWEEN_ACTIONS = 40  // Min delay between rides
 
 // Pad leading zeros (e.g. 1 --> 001)
 function pad(num, size) {
