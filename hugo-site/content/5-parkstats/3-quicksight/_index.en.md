@@ -25,7 +25,7 @@ Using the data from the simulation, you will use Amazon QuickSight to answer que
 - For *Region*, select the region in the dropdown you have been using in the workshop.
 - For *QuickSight account name*, enter `theme-park-admin-` followed by your AWS account ID.
 - For *Notification email address*, enter your email address.
-- Uncheck any checked boxes - this creates a popup.
+- Click *Choose S3 buckets* and a popup dialog will appear.
 
 {{% notice info %}}
 You can find your AWS Account ID by clicking your name in the menu bar at the top of the page. If you can not find your AWS Account ID, you could also use a telephone number without any spaces or dashes.
@@ -99,14 +99,17 @@ You must change the datatypes of some fields for QuickSight to use these properl
 
 2. Hover your mouse over the *visitor.home.longitude* field, click the elipsis (...), select *Change data type* and then select **Longitude**.
 
-3. Choose **Add calculated field**.
+2. Hover your mouse over the *rating* field, click the elipsis (...), select *Change data type* and then select **Integer**.
+
+
+4. Choose **Add calculated field**.
 - For *Name*, enter **minutesInPark**.
 - In the formula box, enter `dateDiff(visitor.arrivalTime, timestamp, "MI")`.
 - Choose **Save**.
 
 ![Calculated field](/images/module5-3-configure8.png)
 
-4. Choose **Save & visualize**.
+5. Choose **Save & visualize**.
 
 ![Dataset](/images/module5-3-configure-7.png)
 
