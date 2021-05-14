@@ -9,11 +9,35 @@ This function implements [chroma key processing](https://en.wikipedia.org/wiki/C
 
 Lambda functions can be written in different runtimes and can also use pre-packaged libraries of code called Lambda layers.
 
-- This section shows how you can use different runtimes for different tasks. The chroma key processing function uses an open source Python library called OpenCV. This function is deployed using Python 3.6 while the other functions are written in Node.
-- The OpenCV library must be compiled using the target operating system, which for Lambda is Amazon Linux 2. To simplify deployment, this was already created and has been packaged as a Lambda layer. You will link this layer to your function.
+- This section shows how you can use different runtimes for different tasks. The chroma key processing function uses an open source Python library called OpenCV. This function is deployed using Python 3.7 while the other functions are written in Node.
+- The OpenCV library must be compiled using the target operating system, which for Lambda is Amazon Linux 2. To simplify deployment, this was already created as a zip file for you to create a layer.
 
 *More information on the services introduced in this section:*
 * [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+
+## Creating the OpenCV Lambda layer
+
+### Step-by-step instructions ###
+
+1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
+
+2. In the terminal enter the following command to download the code for the layer:
+```
+mkdir ~/environment/lambda-layer
+cd ~/environment/lambda-layer
+wget https://innovator-island.s3-us-west-2.amazonaws.com/opencv-python-37.zip
+```
+3. Upload the zipped code package to your S3 deployment bucket:
+```
+aws s3 cp opencv-python-37.zip s3://$s3_deploy_bucket
+```
+4. Create the Lambda layer:
+```
+aws lambda publish-layer-version --layer-name python-opencv-37 --description "OpenCV for Python 3.7" --content S3Bucket=$s3_deploy_bucket,S3Key=opencv-python-37.zip --compatible-runtimes python3.7
+```
+After a few seconds, the JSON response in the terminal confirms the `LayerArn` and `Version` of the new layer.
+
+![Module 3 - Create layer](/images/3-photos-create-layer.png)
 
 ## Creating the Chromakey Lambda function
 
@@ -21,10 +45,10 @@ Lambda functions can be written in different runtimes and can also use pre-packa
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
-2. Select **Create function**. Enter `theme-park-photos-chromakey` for *Function name* and ensure `Python 3.6` is selected under *Runtime*.
+2. Select **Create function**. Enter `theme-park-photos-chromakey` for *Function name* and ensure `Python 3.7` is selected under *Runtime*.
 
 {{% notice warning %}}
-Ensure you have selected `Python 3.6` under *Runtime* to avoid an error.
+Ensure you have selected `Python 3.7` under *Runtime* to avoid an error.
 {{% /notice %}}
 
 3. Open the *Change default execution role* section:
@@ -44,38 +68,27 @@ Ensure you have selected `Python 3.6` under *Runtime* to avoid an error.
 
 ![Module 3 - Add trigger](/images/3-photos-chroma7.png)
 
-5. Back on the Lambda function page, select the *Code* tab. Scroll down to the *Layers* card.
+5. Back on the Lambda function page, select the *Code* tab. Scroll down to the *Layers* card. Select **Add a layer**.
 
 ![Module 3 - Trigger added](/images/3-photos-chroma2.png)
 
-6. Select **Add a layer**. Select the *Specify an ARN* radio button. Depending on the selected region, copy the ARN to the clipboard: 
+6. On the *Add layer* page:
+  - Select the *Custom layers* radio button.
+  - In the *Custom layers* dropdown, choose `python-opencv-37`.
+  - In the *Version* dropdown, choose `1`.
+  - Select **Add**.
 
-| Region | Region Name | Layer ARN |
-|:-------|:------------|:----------|
-| us-west-2 | US West - Oregon | `arn:aws:lambda:us-west-2:678705476278:layer:Chromakey:1`
-| us-east-2 | US East - Ohio | `arn:aws:lambda:us-east-2:678705476278:layer:Chromakey:1`
-| us-east-1 | US East - Northern Virginia | `arn:aws:lambda:us-east-1:678705476278:layer:Chromakey:1`
-| eu-central-1 | Frankfurt | `arn:aws:lambda:eu-central-1:678705476278:layer:Chromakey:1`
-| ap-southeast-2 | Sydney | `arn:aws:lambda:ap-southeast-2:678705476278:layer:Chromakey:1`
-| eu-west-1 | Dublin | `arn:aws:lambda:eu-west-1:678705476278:layer:Chromakey:1`
+![Module 3 - Trigger added](/images/3-photos-add-layer.png)
 
-7. Paste the ARN into the *Layer version ARN* field. Select **Add**.
-
-{{% notice info %}}
-If you're interested in seeing the contents and structure of the Lambda layer, you can [download the zip file](https://innovator-island.s3-us-west-2.amazonaws.com/cv2-layer.zip). This is not required for the workshop.
-{{% /notice %}}
-
-![Module 3 - Add layer](/images/3-photos-chroma3.png)
-
-8. Back on the Lambda function page, select the *Code* tab to view the *Code source* card.
+7. Back on the Lambda function page, select the *Code* tab to view the *Code source* card.
 
 ![Module 3 - Open code panel](/images/3-photos-chroma4.png)
 
-9. Copy the code from the file in Cloud9 by navigating to `3-photos/1-chromakey/app.py` onto the clipboard and paste into the `lambda_function.py` tab in the Lambda function:
+8. Copy the code from the file in Cloud9 by navigating to `3-photos/1-chromakey/app.py` onto the clipboard and paste into the `lambda_function.py` tab in the Lambda function:
 
 ![Module 3 - Paste code](/images/3-photos-chroma5.png)
 
-10. Select **Deploy** in the *Code source* card to save the changes.
+9. Select **Deploy** in the *Code source* card to save the changes.
 
 ### Adding environment variables
 
