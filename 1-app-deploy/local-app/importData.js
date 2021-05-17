@@ -2,7 +2,7 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
- const fs = require('fs')
+const fs = require('fs')
 const parse = require('csv-parse')
 const AWS = require('aws-sdk')
 AWS.config.update({ region: process.argv[2] })
@@ -71,10 +71,10 @@ const uploadFileToDynamoDB = (err, data) => {
 const rs = fs.createReadStream(CSV_FILENAME)
 
 // Command line provides region and DDB table name
-if(!process.argv[2])
-  return console.error('Missing REGION in command line parameters.')
-if(!process.argv[3])
-  return console.error('Missing DYNAMODB TABLE NAME in command line parameters.')
+if(!process.argv[2] || process.argv[2] === "")
+  return console.error('Missing REGION in command line parameters - check your environment variables have been set.')
+if(!process.argv[3] || process.argv[2] === "")
+  return console.error('Missing DYNAMODB TABLE NAME in command line parameters - check your environment variables have been set.')
 
 // Upload the data
 const parser = parse({

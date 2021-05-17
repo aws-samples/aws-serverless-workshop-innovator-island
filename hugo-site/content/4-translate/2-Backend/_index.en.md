@@ -18,13 +18,30 @@ weight = 12
 
 4. Select your target languages. On line 23, the ```targetLanguages``` array shows a list of languages for translation. Currently this is set to French, Spanish and Japanese - you can modify this array to include of the supported language codes (show on line 16 in the ```possibleLanguages``` array). Choose 4-5 different languages.
 5. **Save** the file after making any changes.
-6. In the terminal, execute the local Node application by running the following commands which will use Amazon Translate to create the translation file:
+ 
+### Starting the translation process
+
+1. In the terminal, run the following command to install local dependencies for the Node.js script:
 
 ```
 cd ~/environment/theme-park-backend/4-translate/local-app/
 npm install 
+```
+
+2. If you are running this workshop in any region except South America (São Paulo) sa-east-1, set the AWS_REGION variable using your region:
+```
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+```
+
+3. If are running this workshop in the South America (São Paulo) sa-east-1 Region, the Amazon Translate service is not supported in this region. Instead, set the AWS_REGION variable to use the service in US East (N. Virginia) us-east-1:
+```
+AWS_REGION='us-east-1'
+```
+
+4. Run the local Node application by running the following commands which will use Amazon Translate to create the translation file:
+
+```
 node ./translate.js $AWS_REGION
 ```
 
-After a few seconds, the function completes and has created a new file in the same directory called ```translations.json```. Click on the file in the left panel of the IDE to inspect the contents. You will see it contains translations of the string resources in the target languages.
+5. After a few seconds, the function completes and has created a new file in the same directory called ```translations.json```. Click on the file in the left panel of the IDE to inspect the contents. You will see it contains translations of the string resources in the target languages.
