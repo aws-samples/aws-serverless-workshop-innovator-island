@@ -47,6 +47,7 @@ const flushBatch = async () => {
       console.log(`Firehose batch sequence ${sequenceId}. Failure: : ${result}`)
     }
     sequenceId++
+    batch = []
   } catch (err) {
     console.error(err)
   }
