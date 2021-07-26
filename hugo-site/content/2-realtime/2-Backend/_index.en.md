@@ -38,31 +38,31 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
-2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
+2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*.
 
 3. Open the *Change default execution role* section:
--  Select the *Use an existing role* radio button. 
-- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
+-  Select the *Use an existing role* radio button.
+- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**.
 - Select this role.
 - Select **Create function**.
 
 ![Module 2 - Create Function](../images/2-realtime-lambda1.png)
 
-4. Expand the *Function overview* section. Select **+ Add trigger**. 
+4. Expand the *Function overview* section. Select **+ Add trigger**.
 
 ![Module 2 - Create Function 2](../images/2-realtime-lambda1a.png)
 
-5. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the SNS topic starting with `theme-park-ride-times`: 
+5. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the SNS topic starting with `theme-park-ride-times`:
 
 ![Module 2 - SNS](../images/2-realtime-lambda2b.png)
 
-6. Leave *Enable trigger* checked, and choose *Add*.
+6. Choose *Add*.
 
 7. Back in the function view, select the **Code** tab. This opens the code source panel below.
 
 ![Module 2 - SNS completed](../images/2-realtime-lambda3.png)
 
-8. Back in the Cloud9 browser tab, in the left directory panel navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard. 
+8. Back in the Cloud9 browser tab, in the left directory panel navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard.
 
 9. Go back to the browser tab with the Lambda console. In the *Code source* card, open the `index.js` file. Paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
 
@@ -115,5 +115,3 @@ aws dynamodb list-tables | grep backend
 {{% notice warning %}}
 Ensure you have entered the environment variables into the *Environment variables* card, not the *Tags* card.
 {{% /notice %}}
-
-

@@ -7,7 +7,7 @@ weight = 12
 
 In the first part of this section, you will create a Lambda function to send the data from the SNS topic to Amazon EventBridge.
 
-The second part, you will create a CloudWatch Metrics dashboard that enables Park Management to monitor all ride times. 
+The second part, you will create a CloudWatch Metrics dashboard that enables Park Management to monitor all ride times.
 
 ## Inside this section
 
@@ -29,7 +29,7 @@ sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabilities CAPABILITY_IAM
 ```
-3. After the SAM deployment is complete, go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*. 
+3. After the SAM deployment is complete, go to the Lambda console - from the AWS Management Console, select **Services** then select **Lambda** under *Compute*.
 
 4. Select the Lambda function with the name beginning `theme-park-events-PublishFunction`.
 
@@ -37,23 +37,23 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabi
 - The code iterates through the list of ride wait times in the incoming SNS message. It creates an event for each ride time and publishes to the default bus in EventBridge. For these events, the DetailType is `waitTimes`.
 - It also publishes a single summary event to the EventBridge default bus using the DetailType `waitTimesSummary`.
 
-5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the topic beginning with `ride-times`: 
+5. Make sure the *Designer* section is expanded. Select **+ Add trigger**. In the *Trigger configuration* dropdown, choose **SNS**. In the SNS topic selector, select the topic beginning with `ride-times`:
 
 ![Add SNS trigger](/images/2-realtime-lambda2b.png)
 
-6. Leave *Enable trigger* checked, and choose *Add*.
+6. Choose *Add*.
 
 The Lambda function is now receiving events from the SNS trigger, and publishing to EventBridge.
 
 ## 2. Publishing ride data to CloudWatch Metrics.
 
-Now you are publishing ride events to EventBridge, you can build applications, services and functions based upon those events. You configure EventBridge rules to filter events and send those to designated targets. 
+Now you are publishing ride events to EventBridge, you can build applications, services and functions based upon those events. You configure EventBridge rules to filter events and send those to designated targets.
 
 In this section, you will connect a Lambda function that publishes data to CloudWatch Metrics to EventBridge. The Lambda function was created in the last SAM deployment, so you only need to build the EventBridge rule to invoke the function.
 
 ### Step-by-step instructions ###
 
-1. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. **Make sure your region is correct.** 
+1. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. **Make sure your region is correct.**
 
 2. Open the side menu on the left and select **Rules**. Choose **Create rule**
 
@@ -115,7 +115,7 @@ You have to wait a couple of minutes for this new metric to appear in CloudWatch
 
 5. Click the edit pencil next to the graph title, and enter `Ride times`.
 
-6. Select the *Actions* dropdown and choose *Add to dashboard*. 
+6. Select the *Actions* dropdown and choose *Add to dashboard*.
 
 - Click *Create new* and enter `InnovatorIsland` for the dashboard name.
 - For widget type, select *Number*.
