@@ -24,7 +24,7 @@ Once you have built the backend resources needed, you will update the front-end 
 
 ## Deploy the backend infrastructure
 
-This is a good time to introduce [SAM the Squirrel](https://aws.amazon.com/serverless/sam/) - SAM is the theme park's mascot. SAM also stands for Serverless Application Model which is an open-source framework that makes it easier to deploy serverless infrastructure. 
+This is a good time to introduce [SAM the Squirrel](https://aws.amazon.com/serverless/sam/) - SAM is the theme park's mascot. SAM also stands for Serverless Application Model which is an open-source framework that makes it easier to deploy serverless infrastructure.
 
 This allows you to specify your application requirements in code and SAM transforms and expands the SAM syntax into AWS CloudFormation to deploy your application. You will see and use SAM templates throughout this workshop.
 
@@ -38,7 +38,7 @@ In this section, you will complete your first SAM deployment which will build mu
 1. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
 2. Create a deployment bucket in S3 with a unique name. SAM will upload its code to the bucket to deploy your application services. You will also store this bucket name as an environment variable ```s3_deploy_bucket``` which will make it easier to type future deployment commands. In the terminal, run the following commands which pulls your ``accountID`` from the Cloud9 Instance metadata and then creates and displays a unique S3 bucket name:
-   
+
 ```
 accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 
@@ -74,8 +74,6 @@ cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
 ```
 7. Use SAM CLI to deploy the second part of the infrastructure by running the following commands:
 ```
-sam build
-
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-backend --capabilities CAPABILITY_IAM
@@ -90,8 +88,8 @@ SAM has now used CloudFormation to deploy a stack of backend resources which wil
 - An AWS IoT thing
 - Several IAM roles and policies.
 
-8. Configure environment variables. 
-   
+8. Configure environment variables.
+
 Set a number of environment variables to represent the custom names of resources deployed in your account. These commands use the AWS CLI to retrieve the CloudFormation resource names and then construct the environment variables using Linux string manipulation commands ``grep`` and ``cut``. This makes it easier to type deployment commands in later modules. In the terminal, run:
 
 ```console
@@ -157,7 +155,7 @@ aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stac
 ```
 **Note the command's output for the InitStateApi** - this is your API Gateway endpoint. You will need this in later sections.
 
-3. Once you have the endpoint URL, select the URL link in the Cloud9 terminal and select Open: 
+3. Once you have the endpoint URL, select the URL link in the Cloud9 terminal and select Open:
 
 ![Module 1 open InitStateAPIURL](../images/module2-open-initstateAPIURL.png)
 

@@ -61,9 +61,8 @@ echo $DELIVERY_STREAM
 ```
 ![Delivery stream variable](/images/5-2-delivery-stream-var.png)
 
-4. Now, build and deploy the SAM application:
+4. Now, package and deploy the SAM application:
 ```
-sam build
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 sam deploy --template-file packaged.yaml --stack-name theme-park-simulator --capabilities CAPABILITY_IAM --parameter-overrides StreamArn=$DELIVERY_STREAM
 ```
@@ -93,7 +92,7 @@ aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 
 1. Go to the S3 console - from the AWS Management Console, select **Services** then select **S3** under *Storage*. **Make sure your region is correct.**
 
-2. Select the bucket beginning with the name `theme-park-data` to view its contents. 
+2. Select the bucket beginning with the name `theme-park-data` to view its contents.
 
 3. Click through the folders (year, month, day, hour) until reaching the sub-folder with the streaming data objects.
 
