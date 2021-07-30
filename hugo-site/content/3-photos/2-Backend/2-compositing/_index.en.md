@@ -49,13 +49,15 @@ cd ~/environment/theme-park-backend/3-photos/2-compositing
 aws s3 ls | grep finalbucket
 ```
 
-3. In the terminal, execute the following SAM CLI commands which will **build** and **package** the code with the same SAM S3 deployment bucket previously used and then **deploy** the application specifying the S3 Final Bucket name for the Lambda function to use:
+3. In the terminal, execute the following SAM CLI commands which will **build** the SAM application, **package** the code with the same SAM S3 deployment bucket previously used and then **deploy** the application specifying the S3 Final Bucket name for the Lambda function to use:
 ```
+sam build
+
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-photos --capabilities CAPABILITY_IAM --parameter-overrides "FinalBucketName"=$FINAL_BUCKET
 
-```
+``` 
 This will take a few minutes to deploy - wait for the confirmation message in the console before continuing.
 
 ## Adding the S3 trigger
@@ -69,9 +71,9 @@ Now you have created the Lambda function, you need to configure how it is invoke
 2. Select the function with the name `theme-park-photos-CompositeFunction-XXXXXXXXX`.
 
 3. Select **+ Add Trigger**:
-   - In the *Trigger configuration* dropdown, Select **S3**.
-   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-processingbucket`.
-   - For *Event Type* select **All object create events** from the dropdown.
+   - In the *Trigger configuration* dropdown, Select **S3**. 
+   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-processingbucket`. 
+   - For *Event Type* select **All object create events** from the dropdown. 
    - Check the *Recursive invocation* acknowledgement, and select **Add**.
 
 ## Test the function
@@ -105,7 +107,7 @@ aws s3 cp ./green-screen-test.png s3://$UPLOAD_BUCKET
 
 7. Check the `green-screen-test.jpg` object, then select **Download**.
 
-8. Save the file locally and open in an image viewer.
+8. Save the file locally and open in an image viewer. 
 
 9. You will see photo of the person has had the green background removed, and is now composited with the theme park background and logo graphics.
 
