@@ -45,6 +45,10 @@ accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/docu
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 ```
 
+{{% notice info %}}
+Environment variables are not stored in the terminal. Any time you close Cloud9 or open a new terminal, you will need to rerun these commands to set environment variables. This section is provided in each module.
+{{% /notice %}}
+
 ## Configure the infrastructure
 
 There are two sub-sections to this module:
