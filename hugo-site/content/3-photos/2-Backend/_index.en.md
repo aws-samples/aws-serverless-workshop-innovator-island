@@ -7,7 +7,9 @@ weight = 12
 
 Park guests love taking photos on the rides and attractions. This app feature will let guests take a selfie and see a composited picture in the application. From here, they can publish their masterpiece on social media.
 
-:video_camera: This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=fcNWup_TmVA).
+{{% notice info %}}
+This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=aNgmgZjzNr4).
+{{% /notice %}}
 
 ## How it works
 
@@ -43,6 +45,10 @@ UPLOAD_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-pa
 accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 ```
+
+{{% notice info %}}
+Environment variables are not stored in the terminal. Any time you close Cloud9 or open a new terminal, you will need to rerun these commands to set environment variables. This section is provided in each module.
+{{% /notice %}}
 
 ## Deploy the infrastructure
 

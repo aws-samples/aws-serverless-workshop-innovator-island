@@ -45,24 +45,27 @@ After a few seconds, the JSON response in the terminal confirms the `LayerArn` a
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
-2. Select **Create function**. Enter `theme-park-photos-chromakey` for *Function name* and ensure `Python 3.7` is selected under *Runtime*.
+2. Select **Create function**:
+- Enter `theme-park-photos-chromakey` for *Function name*.
+- Ensure `Python 3.7` is selected under *Runtime*.
+- For *Architecture*, select `x86_64`.
 
 {{% notice warning %}}
 Ensure you have selected `Python 3.7` under *Runtime* to avoid an error.
 {{% /notice %}}
 
 3. Open the *Change default execution role* section:
--  Select the *Use an existing role* radio button. 
-- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
+-  Select the *Use an existing role* radio button.
+- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**.
 - Select this role.
 - Choose **Create function**.
 
 ![Module 3 - Create Function](/images/3-photos-chroma1.png)
 
 4. In the *Function overview panel*, select **+ Add Trigger**:
-   - In the *Trigger configuration* dropdown, select **S3**. 
-   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-uploadbucket`. 
-   - For *Event Type* select **All object create events** from the dropdown. 
+   - In the *Trigger configuration* dropdown, select **S3**.
+   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-uploadbucket`.
+   - For *Event Type* select **All object create events** from the dropdown.
    - Read the *Recursive invocation* warning, and select the checkbox to confirm that you have read and understood the warning.
    - Choose **Add**.
 
@@ -130,7 +133,7 @@ In this section, you will modify the memory and timeout settings for the Lambda 
 
 ![Module 3 - Basic settings](/images/3-photos-chroma11.png)
 
-2. Choose **Edit**. Change the *Memory (MB)* value to **3008 MB**. Change the *Timeout* values to **0** min and **10** sec. 
+2. Choose **Edit**. Change the *Memory (MB)* value to **3008 MB**. Change the *Timeout* values to **0** min and **10** sec.
 
 ![Module 3 - Basic settings](/images/3-photos-basicsettings.png)
 
@@ -171,7 +174,7 @@ aws s3 cp ./green-screen-test.png s3://youruploadbucketname
 
 8. Check the `green-screen-test.png` object, then select the *Actions* dropdown and choose **Download**.
 
-9. Save the file locally and open in an image viewer. 
+9. Save the file locally and open in an image viewer.
 
 10. You will see the original green screen image has been modified showing the person with the green background now removed. The Lambda function has been invoked when the photo was uploaded to the S3 bucket. The function ran a chromakey process using a library imported using a Lambda Layer which removed the green screen and then wrote the resulting image to another S3 bucket.
 

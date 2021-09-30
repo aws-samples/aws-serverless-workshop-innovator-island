@@ -3,14 +3,14 @@ title = "Overview"
 weight = 11
 +++
 
-The Flow & Traffic Controller system provides the web app with ride times via an SNS topic. 
+The Flow & Traffic Controller system provides the web app with ride times via an SNS topic.
 
 Now the guests know about wait times and outages, but the park's maintenance staff don't know when ride systems are down. They would like notifications when problems occur. Since you have deployed the previous app already, we want to address this new requirement without making any changes to the existing infrastructure.
 
-In this module, you are going to build new functionality that allows the park's maintenance teams to get alerts from the ride systems. 
+In this module, you are going to build new functionality that allows the park's maintenance teams to get alerts from the ride systems.
 
 {{% notice info %}}
-This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=PZlrwWqeq7Q&list=PLJo-rJlep0EAkkjo7w_RmTV3S27tTmXDg).
+This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=FOwoq6uEcJw).
 {{% /notice %}}
 
 ## How it works

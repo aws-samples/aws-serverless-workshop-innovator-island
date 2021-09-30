@@ -17,7 +17,7 @@ weight = 12
 
 ![Module 3 architecture](../images/module3-overview.png)
 
-* The Flow & Traffic Controller exists in a separate AWS account owned by the theme park. You are provided with the SNS topic ARN to use.
+* The Flow & Traffic Controller is already deployed and publishes updates to an SNS topic.
 * The Lambda function receives new messages as an event payload and parses out the message. It then stores the message in a DynamoDB table and forwards to an IoT topic.
 * The DynamoDB table only stores the last message. This initial state is needed when the front-end application is first loaded.
 * The IoT topic is the conduit from the serverless backend to the front-end application. Any messages posted here will be received by the front-end.
@@ -32,13 +32,25 @@ accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/docu
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 ```
 
+{{% notice info %}}
+Environment variables are not stored in the terminal. Any time you close Cloud9 or open a new terminal, you will need to rerun these commands to set environment variables. This section is provided in each module.
+{{% /notice %}}
+
 ## Create the Lambda function
 
 ### Step-by-step instructions ###
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.** You will see some Lambda functions that SAM has already deployed.
 
-2. Select **Create function**. Ensure **Author from scratch** is selected. Enter `theme-park-ridetimes` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*.
+2. Select **Create function**:
+- Ensure **Author from scratch** is selected.
+- Enter `theme-park-ridetimes` for *Function name*.
+- Ensure `Node.js 14.x` is selected under *Runtime*.
+- For *Architecture*, choose `arm64`.
+
+{{% notice info %}}
+Lambda functions that use arm64 architecture (AWS Graviton2 processor) can achieve significantly better better price and performance than the equivalent function running on x86_64 architecture. For more information, read this [documentation page](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html?icmpid=docs_lambda_help).
+{{% /notice %}}
 
 3. Open the *Change default execution role* section:
 -  Select the *Use an existing role* radio button.
@@ -64,7 +76,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 8. Back in the Cloud9 browser tab, in the left directory panel navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard.
 
-9. Go back to the browser tab with the Lambda console. In the *Code source* card, open the `index.js` file. Paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.  
+9. Go back to the browser tab with the Lambda console. In the *Code source* card, open the `index.js` file. Paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.
 
 10. Above the *Code source* panel, select **Deploy** to save the changes and deploy the function.
 

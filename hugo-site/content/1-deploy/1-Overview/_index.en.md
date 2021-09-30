@@ -24,7 +24,7 @@ Please ensure you have completed the [Setup Guide](/0-setup) first!
 {{% /notice %}}
 
 {{% notice info %}}
-This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=uLTRI0ijmjw).
+This module is also available to [watch on YouTube](https://www.youtube.com/watch?v=GhZpSYQ6F9M).
 {{% /notice %}}
 
 {{% button href="https://github.com/aws-samples/aws-serverless-workshop-innovator-island" icon="fab fa-github" %}}See the GitHub repo{{% /button %}}
