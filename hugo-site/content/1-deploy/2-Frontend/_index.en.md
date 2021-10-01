@@ -64,23 +64,29 @@ git config --global credential.UseHttpPath true
 ```
 mkdir ~/environment/theme-park-frontend
 cd ~/environment/theme-park-frontend
-wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend-202102.zip
+wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend-202110.zip
 ```
 4. Unzip the code:
 ```
-unzip theme-park-frontend-202102.zip 
+unzip theme-park-frontend-202110.zip
 ```
 
 Within the Cloud9 file browser on the left hand side you can see the theme-park-frontend files have been downloaded into a separate local directory from the theme-park-backend.
 
 ![Module 1 cloud9 files](../images/module1-cloud9files.png)
 
-5. Push the downloaded code to populate your recently created CodeCommit repository:
+5. Set up the local Git repository and the commit:
 ```
 cd ~/environment/theme-park-frontend/
+git init -b main
+git add .
+git commit -am "First commit"
+```
+
+6. Push the downloaded code to populate your recently created CodeCommit repository:
+```
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
 git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend main
-
 ```
 ![Module 1 git push](../images/module1-git-push.png)
 
@@ -107,7 +113,7 @@ Next you'll use the AWS Amplify Console to deploy the frontend website you've ju
 
 6. On the *Review* page, verify the settings and select **Save and deploy**.
 
-The deployment process will take a few minutes to complete. Once the build has a completed the **Verify** stage, select the Amplify provided link for your app. 
+The deployment process will take a few minutes to complete. Once the build has a completed the **Verify** stage, select the Amplify provided link for your app.
 
 ![Module 1 amplify URL](../images/module1-amplify-URL.png)
 
