@@ -26,7 +26,7 @@ To simulate the load expected from a full park of visitors, you will deploy a si
         "firstName": "Kacie",
         "lastName": "Kahn",
         "age": 18,
-        "birthday":                      
+        "birthday":
             "month": 7,
             "day": 25
         },
@@ -93,11 +93,11 @@ aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 
 1. Go to the S3 console - from the AWS Management Console, select **Services** then select **S3** under *Storage*. **Make sure your region is correct.**
 
-2. Select the bucket beginning with the name `theme-park-data` to view its contents. 
+2. Select the bucket beginning with the name `theme-park-data` to view its contents.
 
 3. Click through the folders (year, month, day, hour) until reaching the sub-folder with the streaming data objects.
 
-![Lambda function name](/images/module5-2-simulator-s3.png)
+![Lambda function name](/images/module5-2-simulator-s3b.png)
 
 4. Click the refresh icon on this page while the simulation is running to see new objects as they are written to the bucket by Kinesis.
 
