@@ -109,7 +109,7 @@ You must change the datatypes of some fields for QuickSight to use these properl
 
 ![Calculated field](/images/module5-3-configure8.png)
 
-5. Choose **Save & visualize**.
+5. Choose **Save & publish**.
 
 ![Dataset](/images/module5-3-configure-7.png)
 

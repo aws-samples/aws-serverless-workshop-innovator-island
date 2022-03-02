@@ -105,7 +105,8 @@ aws s3 cp ./green-screen-test.png s3://$UPLOAD_BUCKET
 
 ![Module 3 - S3](../../images/3-photos-composite1.png)
 
-7. Check the `green-screen-test.jpg` object, then select **Download**.
+7. Check the `green-screen-test.jpg` object, then select **Download**. 
+**Note**: if you don't see the file in the bucket, check that ["Block Public Access" S3 setting](https://s3.console.aws.amazon.com/s3/settings) is turned OFF for your AWS account. If it is ON, you will need to turn it off, repeat step 4 again and refresh the final S3 bucket to see if the file has appeared.
 
 8. Save the file locally and open in an image viewer. 
 

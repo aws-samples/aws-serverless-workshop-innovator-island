@@ -24,12 +24,8 @@ This section shows how to set up and configure a Kinesis Firehose delivery strea
 
 2. Create a bucket for Kinesis Firehose to deliver its output. The bucket name will be `theme-park-data-` followed by your AWS Account ID.
 
-{{% notice info %}}
-You can find your AWS Account ID by clicking your name in the menu bar at the top of the page. If you can not find your AWS Account ID, you could also use a telephone number without any spaces or dashes.
-{{% /notice %}}
-
 ```
-aws s3 mb s3://theme-park-data-YOURACCOUNTID
+aws s3 mb s3://theme-park-data-${accountId}
 ```
 
 ![S3 bucket](/images/module5-1-firehose-createbucket.png)
