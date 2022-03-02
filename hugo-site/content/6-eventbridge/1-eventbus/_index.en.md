@@ -109,7 +109,7 @@ You have to wait a couple of minutes for this new metric to appear in CloudWatch
 
 ![Select All](/images/module6-1-cloudwatch2.png)
 
-4. Select the *Graph options* tab, then under *Widget type* choose the *Number* radio button. Leave *Latest value* selected.
+4. Select the *Options* tab, then under *Widget type* choose the *Number* radio button. Leave *Latest value* selected.
 
 ![Graph options](/images/module6-1-cloudwatch3.png)
 

@@ -27,3 +27,5 @@ If you do not have access to a green screen, you can use the sample image provid
 
 1. The frontend application will notify you when the photo is uploaded. You will see a second notification when the composited photo is ready to view.
 2. You will see a *Gallery* icon has appeared in the toolbar of the application. Click on this icon to view your composited photo.
+**Note**: if you don't see the photo in the gallery, check that ["Block Public Access" S3 setting](https://s3.console.aws.amazon.com/s3/settings) is turned OFF for your AWS account. If it is ON, you will need to turn it off and refresh the photo gallery page.
+
