@@ -3,7 +3,7 @@ title = "AWS Cloud9 IDE"
 weight = 13
 +++
 
-[AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes pre-packaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) pre-installed so you don’t need to install files or configure your laptop for this workshop. 
+[AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes pre-packaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) pre-installed so you don’t need to install files or configure your laptop for this workshop.
 
 Your Cloud9 environment will have access to the same AWS resources as the user with which you logged into the AWS Management Console. We strongly recommend using Cloud9 to complete this workshop.
 
@@ -21,11 +21,11 @@ Take a few minutes now and setup your Cloud9 development environment. Cloud9 wor
 
 1. Select **Next step**.
 
-1. You may leave **Environment settings** at their defaults for launching a new **t2.micro** EC2 instance based on Amazon Linux which will be paused after **30 minutes** of inactivity. Select **Next step**.
+1. For *Instance type*, choose **t3.small**. Keep the defaults in the other sections. Select **Next step**.
 
 1. Review the environment settings and select **Create environment**. It will take a few minutes for your Cloud9 environment to be provisioned and prepared.
 
-1. Once ready, your IDE will open to a welcome screen. Below that, you should see a terminal prompt. Close the *Welcome* tab and drag up the terminal window to give yourself more space to work in. 
+1. Once ready, your IDE will open to a welcome screen. Below that, you should see a terminal prompt. Close the *Welcome* tab and drag up the terminal window to give yourself more space to work in.
 
 ![Cloud9](../images/0-setup-cloud9.png)
 
@@ -33,7 +33,7 @@ You can run AWS CLI commands in here just like you would on your local computer.
 
 Keep your AWS Cloud9 IDE opened in a browser tab throughout this workshop.
 
-Verify that your user is logged in by running the command `aws sts get-caller-identity`. Copy and paste the command into the Cloud9 terminal window. 
+Verify that your user is logged in by running the command `aws sts get-caller-identity`. Copy and paste the command into the Cloud9 terminal window.
 
 ```console
 aws sts get-caller-identity
@@ -55,9 +55,9 @@ Run these commands in the Cloud9 terminal window:
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
 SUPPORTED_REGIONS=("us-west-2" "us-east-1" "us-east-2" "eu-central-1" "eu-west-1" "ap-southeast-2" )
 if [[ ! " ${SUPPORTED_REGIONS[@]} " =~ " ${AWS_REGION} " ]]; then
-    /bin/echo -e "\e[1;31m'$AWS_REGION' is not a supported AWS Region, delete this Cloud9 instance and restart the workshop in a supported AWS Region.\e[0m" 
+    /bin/echo -e "\e[1;31m'$AWS_REGION' is not a supported AWS Region, delete this Cloud9 instance and restart the workshop in a supported AWS Region.\e[0m"
 else
-    /bin/echo -e "\e[1;32m'$AWS_REGION' is a supported AWS Region\e[0m" 
+    /bin/echo -e "\e[1;32m'$AWS_REGION' is a supported AWS Region\e[0m"
 fi
 ```
 

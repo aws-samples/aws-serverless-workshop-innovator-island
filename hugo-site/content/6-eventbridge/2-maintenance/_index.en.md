@@ -38,19 +38,22 @@ sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-outages --capabilities CAPABILITY_IAM
 ```
-3. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. **Make sure your region is correct.** 
+3. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. **Make sure your region is correct.**
 
 4. Open the side menu on the left and select **Rules**. Choose **Create rule**
 
 ![Create rule](/images/module6-1-eventbridge-1.png)
 
-5. In the Create rule page:
+5. In step 1, the *Define rule detail* page, enter:
 - For *Name*, enter `theme-park-events-outages`.
 - For Description, enter `Rule to filter rides with current outages.`
-- In *Define Pattern*, select the **Event pattern** radio button.
-- Select *Custom pattern* to open the *Event pattern* panel.
+- For *Event bus*, keep *default*.
+- Keep the rule enabled and keep the *Rule type* as an event pattern.
+- Choose **Next**.
 
-5. In the *Event pattern* panel, copy and paste the following pattern:
+6. In step 2, the *Build event pattern* page, enter:
+- For *Event source*, choose *Other*.
+- In the *Event pattern* panel, copy and paste the following pattern:
 
 ```
 {
@@ -67,27 +70,27 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-outages --capab
   }
 }
 ```
-6. Choose **Save** in the *Event pattern* panel.
+7. Choose **Next** .
 
-![Save event pattern](/images/module6-2-eventbridge-1.png)
-
-7. In the *Select targets* panel:
-- Click the *Target* dropdown and select *Lambda function*.
-- In the *Function* dropdown, select the function name beginning with `theme-park-outages-PublishFunction`.
-
-8. Choose **Add target**. In the second target panel:
+8. In step 3, the *Select targets* page, in the *Target 1* panel:
+- For *Target types*, choose **AWS service**.
 - Click the *Target* dropdown and select *CloudWatch log group*.
 - Under *Log group*, next to the radio button with named */aws/events/*, enter `theme-park-outages`.
 
+
 ![Create rule](/images/module6-2-eventbridge-2.png)
 
-9. Choose **Create**.
+9. Choose **Next**.
 
-10. Navigate to CloudWatch - from the AWS Management Console, select **Services** then select **CloudWatch** under *Management & Governance*.
+10. In the *Configure tags* page, choose **Next**.
 
-11. From the menu on the left, select **Log groups** under the *Logs* category.
+11. In the *Review and create page*, check all the settings match those you have supplied. Choose **Create rule**.
 
-11. Choose the log group called `/aws/events/theme-park-outages`. After a minute or two, a log stream will appear - click to open this stream.
+12. Navigate to CloudWatch - from the AWS Management Console, select **Services** then select **CloudWatch** under *Management & Governance*.
+
+13. From the menu on the left, select **Log groups** under the *Logs* category.
+
+14. Choose the log group called `/aws/events/theme-park-outages`. After a minute or two, a log stream will appear - click to open this stream.
 
 ![CloudWatch Logs](/images/module6-2-cloudwatch-1.png)
 
@@ -99,17 +102,18 @@ EventBridge will now filter events on the default bus and send events matching t
 
 In this section you will consume the enriched events from the default event bus and route to interested targets.
 
-First, you create two SNS topics. The first is for outages of type "Info" and "Warning", which you will route to your email. 
+First, you create two SNS topics. The first is for outages of type "Info" and "Warning", which you will route to your email.
 
 ### Step-by-step instructions ###
 
-1. Go to SNS - from the AWS Management Console, select **Services** then select **Simple Notification Service** under *Application Integration*. **Make sure your region is correct.** 
+1. Go to SNS - from the AWS Management Console, select **Services** then select **Simple Notification Service** under *Application Integration*. **Make sure your region is correct.**
 
 2. Select **Topics** on the left side menu, then choose **Create topic**.
 
 ![CloudWatch log streams](/images/module6-2-sns-1.png)
 
 3. On the *Create topic* page:
+- For *Type*, choose *Standard*.
 - For *Name*, enter `theme-park-events-outages-alerts-info`.
 - For *Display name*, enter `Topic for info and warning alerts`.
 - Choose **Create topic**.
@@ -134,19 +138,22 @@ First, you create two SNS topics. The first is for outages of type "Info" and "W
 
 ![Subscription confirmed](/images/module6-2-sns-5.png)
 
-9. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. 
+9. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*.
 
 10. Open the side menu on the left and select **Rules**. Choose **Create rule**.
 
 ![Create rule](/images/module6-1-eventbridge-1.png)
 
-11. In the Create rule page:
+11. In step 1, the *Define rule detail* page, enter:
 - For *Name*, enter `theme-park-events-outages-alerts-info`.
-- For Description, enter `Info and Warning outages`
-- In *Define Pattern*, select the **Event pattern** radio button.
-- Select *Custom pattern* to open the *Event pattern* panel.
+- For Description, enter `Info and Warning outages.`
+- For *Event bus*, keep *default*.
+- Keep the rule enabled and keep the *Rule type* as an event pattern.
+- Choose **Next**.
 
-12. In the *Event pattern* panel, copy and paste the following pattern:
+12. In step 2, the *Build event pattern* page, enter:
+- For *Event source*, choose *Other*.
+- In the *Event pattern* panel, copy and paste the following pattern:
 
 ```
 {
@@ -164,17 +171,22 @@ First, you create two SNS topics. The first is for outages of type "Info" and "W
   }
 }
 ```
-13. Choose **Save** in the *Event pattern* panel.
+13. Choose **Next**.
 
-14. In the *Select targets* panel:
+14. In step 3, the *Select targets* page, in the *Target 1* panel:
+- For *Target types*, choose **AWS service**.
 - Click the *Target* dropdown and select *SNS topic*.
-- In the *Topic* dropdown, select the function name beginning with `theme-park-events-outages-alerts-info`.
+- Under *Log group*, next to the radio button with named */aws/events/*, enter `theme-park-events-outages-alerts-info`.
 
 ![SNS target](/images/module6-2-sns-6.png)
 
 15. Choose **Create**.
 
-You will now start to receive emails at your email address when outages occur with the *Info* or *Warning* state. 
+16. In the *Configure tags* page, choose **Next**.
+
+17. In the *Review and create page*, check all the settings match those you have supplied. Choose **Create rule**.
+
+You will now start to receive emails at your email address when outages occur with the *Info* or *Warning* state.
 
 ## 3. Creating alerts for Emergency outage events.
 
@@ -192,15 +204,17 @@ You may be charged by your phone service carrier for receiving SMS messages.
 
 ### Step-by-step instructions ###
 
-1. Go to SNS - from the AWS Management Console, select **Services** then select **Simple Notification Service** under *Application Integration*. **Make sure your region is correct.** 
+1. Go to SNS - from the AWS Management Console, select **Services** then select **Simple Notification Service** under *Application Integration*. **Make sure your region is correct.**
 
 2. Select **Topics** on the left side menu, then choose **Create topic**.
 
 ![Create SNS topic](/images/module6-2-sns-1.png)
 
 3. On the *Create topic* page:
+- For *Type*, select **Standard**.
 - For *Name*, enter `theme-park-events-outages-alerts-emergency`.
 - For *Display name*, enter `Topic for emergency alerts`.
+- Choose **Create topic**.
 
 ![CloudWatch log streams](/images/module6-2-sns-b1.png)
 
@@ -210,27 +224,29 @@ You may be charged by your phone service carrier for receiving SMS messages.
 
 5. On the *Create subscription* page:
 - For *Protocol* enter `SMS`.
+- Choose **Add phone number**. Enter your phone number and language and choose **Add phone number**.
 - For *Endpoint*, enter your cell phone or mobile number, including the country code.
 
 ![Subscription details](/images/module6-2-sns-b3.png)
 
 6. Choose **Create subscription**.
 
-7. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*. 
+7. Go to EventBridge - from the AWS Management Console, select **Services** then select **EventBridge** under *Application Integration*.
 
 8. Open the side menu on the left and select **Rules**. Choose **Create rule**.
 
 ![Create rule](/images/module6-1-eventbridge-1.png)
 
-11. In the Create rule page:
+9. In step 1, the *Define rule detail* page, enter:
 - For *Name*, enter `theme-park-events-outages-alerts-emergency`.
 - For Description, enter `Emergency outages`
-- In *Define Pattern*, select the **Event pattern** radio button.
-- Select *Custom pattern* to open the *Event pattern* panel.
+- For *Event bus*, keep *default*.
+- Keep the rule enabled and keep the *Rule type* as an event pattern.
+- Choose **Next**.
 
-![Create rule](/images/module6-2-eventbridg-b1.png)
-
-12. In the *Event pattern* panel, copy and paste the following pattern:
+12. In step 2, the *Build event pattern* page, enter:
+- For *Event source*, choose *Other*.
+- In the *Event pattern* panel, copy and paste the following pattern:
 
 ```
 {
@@ -247,17 +263,20 @@ You may be charged by your phone service carrier for receiving SMS messages.
   }
 }
 ```
-13. Choose **Save** in the *Event pattern* panel.
+13. Choose **Next**.
 
-14. In the *Select targets* panel:
+14. In step 3, the *Select targets* page, in the *Target 1* panel:
+- For *Target types*, choose **AWS service**.
 - Click the *Target* dropdown and select *SNS topic*.
 - In the *Topic* dropdown, select the function name beginning with `theme-park-events-outages-alerts-emergency`.
 
-![SNS target](/images/module6-2-eventbridg-b2.png)
+15. Choose **Next**.
 
-15. Choose **Create**.
+16. In the *Configure tags* page, choose **Next**.
 
-You will now start to receive SMS message at your phone number when emergency outages occur on rides. 
+17. In the *Review and create page*, check all the settings match those you have supplied. Choose **Create rule**.
+
+You will now start to receive SMS message at your phone number when emergency outages occur on rides.
 
 ## 4. Create a test event.
 

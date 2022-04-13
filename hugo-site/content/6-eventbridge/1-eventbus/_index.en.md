@@ -59,13 +59,18 @@ In this section, you will connect a Lambda function that publishes data to Cloud
 
 ![Create rule](/images/module6-1-eventbridge-1.png)
 
-3. In the *Create rule* page:
+3. In step 1, the *Define rule detail* page, enter:
 - For *Name*, enter `theme-park-events-metrics`.
 - For Description, enter `Rule to populate ride data to CloudWatch metrics.`
-- In *Define Pattern*, select the **Event pattern** radio button.
-- Select *Custom pattern* to open the *Event pattern* panel.
+- For *Event bus*, keep *default*.
+- Keep the rule enabled and keep the *Rule type* as an event pattern.
+- Choose **Next**.
 
-4. In the *Event pattern* panel, copy and paste the following pattern:
+![Create rule](/images/module6-1-eventbridge-rule1.png)
+
+4. In step 2, the *Build event pattern* page, enter:
+- For *Event source*, choose *Other*.
+- In the *Event pattern* panel, copy and paste the following pattern:
 
 ```
 {
@@ -77,17 +82,19 @@ In this section, you will connect a Lambda function that publishes data to Cloud
   ]
 }
 ```
-5. Choose **Save** in the *Event pattern* panel.
+5. Choose **Next**.
 
-![Save event pattern](/images/module6-1-eventbridge-2.png)
-
-7. In the *Select targets* panel:
-- Click the *Target* dropdown and select *Lambda function*.
+6. In the *Select targets* page, in the *Target 1* panel:
+- In *Target types*, choose *AWS service*.
+- Click the *Select a target* dropdown and select *Lambda function*.
 - In the *Function* dropdown, select the function name beginning with `theme-park-events-MetricsFunction`.
+- Choose **Next**.
 
 ![Select targets](/images/module6-1-eventbridge-3.png)
 
-8. Choose **Create**.
+7. In the *Configure tags* page, choose **Next**.
+
+8. In the *Review and create page*, check all the settings match those you have supplied. Choose **Create rule**.
 
 EventBridge will now filter events on the default bus and send events matching the pattern to the Lambda function that populates CloudWatch metrics.
 
@@ -97,7 +104,7 @@ EventBridge will now filter events on the default bus and send events matching t
 
 1. Go to the AWS Management Console, click **Services** then select **CloudWatch** under Management & Governance. **Make sure your region is correct.**
 
-2. On the left-side menu, choose **Metrics**. Click the custom namespace called **InnovatorIsland**.
+2. On the left-side menu, choose **Metrics**, then **All metrics**. In the *Metrics* panel, click the custom namespace called **InnovatorIsland**.
 
 {{% notice info %}}
 You have to wait a couple of minutes for this new metric to appear in CloudWatch Metrics.
@@ -109,7 +116,7 @@ You have to wait a couple of minutes for this new metric to appear in CloudWatch
 
 ![Select All](/images/module6-1-cloudwatch2.png)
 
-4. Select the *Options* tab, then under *Widget type* choose the *Number* radio button. Leave *Latest value* selected.
+4. Select the *Options* tab, then under *Widget type* choose the *Number* option. Under *Value*, leave the *Latest value* option selected.
 
 ![Graph options](/images/module6-1-cloudwatch3.png)
 

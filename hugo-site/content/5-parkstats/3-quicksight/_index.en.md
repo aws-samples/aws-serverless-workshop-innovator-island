@@ -17,15 +17,15 @@ Using the data from the simulation, you will use Amazon QuickSight to answer que
 
 ![Sign up for QuickSight](/images/module5-3-signup.png)
 
-3. In the *Create your QuickSight account* page, select the **Standard** option and choose **Continue**.
+3. In the *Create your QuickSight account* page, select the **Standard** option.
 
 ![Enterprise plan](/images/module5-3-signup-2.png)
 
-4. In the next page in the sign-up process:
+4. In the *Create your QuickSight account* page in the sign-up process:
 - For *Region*, select the region in the dropdown you have been using in the workshop.
 - For *QuickSight account name*, enter `theme-park-admin-` followed by your AWS account ID.
 - For *Notification email address*, enter your email address.
-- Click *Choose S3 buckets* and a popup dialog will appear.
+- In *Allow access and autodiscovery for these resources*, Click *Select S3 buckets* and a popup dialog will appear.
 
 {{% notice info %}}
 You can find your AWS Account ID by clicking your name in the menu bar at the top of the page. If you can not find your AWS Account ID, you could also use a telephone number without any spaces or dashes.
@@ -136,7 +136,7 @@ You must change the datatypes of some fields for QuickSight to use these properl
 
 ![Analysis dashboard](/images/module5-3-configure-12.png)
 
-Each of the visualization challenges is completed using the analysis dashboard. 
+Each of the visualization challenges is completed using the analysis dashboard.
 
 ## Building visualizations
 
@@ -151,5 +151,3 @@ Add each of the following visualizations to your analysis dashboard:
 Once you have the five visualulations on your worksheet, rename your worksheet, and resize the visualizations to fit the dashboard.
 
 ![Completed dashboard](/images/module5-3-visualization-all.png)
-
-
