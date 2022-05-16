@@ -69,7 +69,7 @@ aws amplify delete-app --app-id 'your-app-id'
 ### 7. Kinesis Firehose
 1. From Cloud9, run:
 ```
-aws kinesis delete-stream --stream-name theme-park-streaming-data
+aws firehose delete-delivery-stream --delivery-stream-name theme-park-streaming-data
 ```
 
 ### 8. SNS Topics
