@@ -17,20 +17,20 @@ After you will test with the sample image, and then perform a test from the fron
 
 1. Go to the Lambda console - from the AWS Management Console, select **Services** then select [**Lambda**](https://console.aws.amazon.com/lambda) under *Compute*. **Make sure your region is correct.**
 
-2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 14.x` is selected under *Runtime*. 
+2. Select **Create function**. Enter `theme-park-photos-postprocess` for *Function name* and ensure `Node.js 16.x` is selected under *Runtime*.
 
 3. Open the *Change default execution role* section:
--  Select the *Use an existing role* radio button. 
-- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**. 
+-  Select the *Use an existing role* radio button.
+- Click the *Existing role* drop-down, and enter **ThemeParkLambdaRole** until the filter matches a single available role beginning with *theme-park-backend-ThemeParkLambdaRole**.
 - Select this role.
 - Select **Create function**.
 
 ![Module 3 - Create Function](../../images/3-photos-composite2.png)
 
 3. Select **+ Add trigger**:
-   - In the *Trigger configuration* dropdown, select **S3**. 
-   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-finalbucket`. 
-   - For *Event Type* select **All object create events** from the dropdown. 
+   - In the *Trigger configuration* dropdown, select **S3**.
+   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-finalbucket`.
+   - For *Event Type* select **All object create events** from the dropdown.
    - Check the *Recursive invocation* acknowledgement, and select **Add**.
 
 ![Module 3 - Add trigger](../../images/3-photos-composite3.png)
@@ -92,7 +92,7 @@ aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stac
 
 ![Module 3 - Output](../../images/3-photos-postprocess-uploadAPI.png)
 
-4. In the Cloud9 terminal, in the left directory panel navigate to **theme-park-frontend/src**. 
+4. In the Cloud9 terminal, in the left directory panel navigate to **theme-park-frontend/src**.
 
 5. Locate the `config.js` file and double-click to open in the editor.
 
@@ -107,7 +107,7 @@ This file contains a JSON configuration for the frontend. The file is separated 
 ### Push to CodeCommit and deploy via Amplify
 
 1. In the Cloud9 terminal, change to the front-end directory with the following command:
-``` 
+```
 cd ~/environment/theme-park-frontend/
 ```
 2. Commit to CodeCommit by executing the following commands:
@@ -116,10 +116,9 @@ git commit -am "Module 3 - Photo compositing"
 git push
 ```
 3. After the commit is completed, go to the [Amplify Console](https://console.aws.amazon.com/amplify/).
-   
+
 4. In the *All apps* section, click **theme-park-frontend**. You will see a new build has automatically started as a result of the new commit in the underlying code repo. This build will take a few minutes until the *Verify* stage is complete
 
 5. Open the published application URL in a browser.
 
 6. Click on one of the ride profiles to open the ride description page. You can see a new button has appeared - "Add ride photo".
-

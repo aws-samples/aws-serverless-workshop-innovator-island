@@ -12,15 +12,15 @@ Globals:
 
 Resources:
   CompositeFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambdaFunction/
       Handler: app.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs14.x
       MemorySize: 2048
       Environment:
         Variables:
-          OUTPUT_BUCKET_NAME: !Ref FinalBucketName  
+          OUTPUT_BUCKET_NAME: !Ref FinalBucketName
       Policies:
         - Statement:
           - Effect: Allow

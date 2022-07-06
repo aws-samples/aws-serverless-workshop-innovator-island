@@ -45,7 +45,7 @@ Environment variables are not stored in the terminal. Any time you close Cloud9 
 2. Select **Create function**:
 - Ensure **Author from scratch** is selected.
 - Enter `theme-park-ridetimes` for *Function name*.
-- Ensure `Node.js 14.x` is selected under *Runtime*.
+- Ensure `Node.js 16.x` is selected under *Runtime*.
 - For *Architecture*, choose `arm64`.
 
 {{% notice info %}}

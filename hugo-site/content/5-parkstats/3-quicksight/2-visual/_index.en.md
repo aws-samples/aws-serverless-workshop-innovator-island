@@ -22,7 +22,7 @@ This visualization uses latitude/longitude data in the *Entry* park events to sh
 1. Drag **visitor.home.latitude** and **visitor.home.longitude** from the *Fields list* to the Geospatial box in the *Field wells*.
 1. Click the title of the visualization and rename from *Insight* to *Where are the visitors from?*.
 
-The finished visualization looks like the map below.
+The finished visualization looks like the map below. Note that this visualization only shows the top 10,000 data points.
 
 ![Completed visualization](/images/module5-3-visualization-2.png)
 

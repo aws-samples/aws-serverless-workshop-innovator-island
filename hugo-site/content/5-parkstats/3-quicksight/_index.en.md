@@ -31,8 +31,6 @@ Using the data from the simulation, you will use Amazon QuickSight to answer que
 You can find your AWS Account ID by clicking your name in the menu bar at the top of the page. If you can not find your AWS Account ID, you could also use a telephone number without any spaces or dashes.
 {{% /notice %}}
 
-![Enterprise plan](/images/module5-3-signup3.png)
-
 5. In the *Select Amazon S3 buckets* popup, uncheck *Select All* then check the S3 bucket beginning with `theme-park-data`. Choose **Finish**.
 
 ![S3 buckets](/images/module5-3-signup-4.png)

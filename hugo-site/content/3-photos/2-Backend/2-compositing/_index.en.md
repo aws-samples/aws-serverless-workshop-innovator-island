@@ -13,7 +13,7 @@ In this part, you will use the AWS Serverless Application Model (SAM) to automat
 
 ## SAM and YAML
 
-The AWS SAM template file is a YAML or JSON configuration file. You use the template to declare all of the AWS resources that make up your serverless application.   
+The AWS SAM template file is a YAML or JSON configuration file. You use the template to declare all of the AWS resources that make up your serverless application.
 
 1. Go to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
@@ -57,7 +57,7 @@ sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-photos --capabilities CAPABILITY_IAM --parameter-overrides "FinalBucketName"=$FINAL_BUCKET
 
-``` 
+```
 This will take a few minutes to deploy - wait for the confirmation message in the console before continuing.
 
 ## Adding the S3 trigger
@@ -71,9 +71,9 @@ Now you have created the Lambda function, you need to configure how it is invoke
 2. Select the function with the name `theme-park-photos-CompositeFunction-XXXXXXXXX`.
 
 3. Select **+ Add Trigger**:
-   - In the *Trigger configuration* dropdown, Select **S3**. 
-   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-processingbucket`. 
-   - For *Event Type* select **All object create events** from the dropdown. 
+   - In the *Trigger configuration* dropdown, Select **S3**.
+   - In the Bucket dropdown, select the bucket name beginning with `theme-park-backend-processingbucket`.
+   - For *Event Type* select **All object create events** from the dropdown.
    - Check the *Recursive invocation* acknowledgement, and select **Add**.
 
 ## Test the function
@@ -105,10 +105,13 @@ aws s3 cp ./green-screen-test.png s3://$UPLOAD_BUCKET
 
 ![Module 3 - S3](../../images/3-photos-composite1.png)
 
-7. Check the `green-screen-test.jpg` object, then select **Download**. 
-**Note**: if you don't see the file in the bucket, check that ["Block Public Access" S3 setting](https://s3.console.aws.amazon.com/s3/settings) is turned OFF for your AWS account. If it is ON, you will need to turn it off, repeat step 4 again and refresh the final S3 bucket to see if the file has appeared.
+7. Check the `green-screen-test.jpg` object, then select **Download**.
 
-8. Save the file locally and open in an image viewer. 
+{{% notice warning %}}
+If you don't see the file in the bucket, check that ["Block Public Access" S3 setting](https://s3.console.aws.amazon.com/s3/settings) is turned OFF for your AWS account. If it is ON, you will need to turn it off, repeat step 4 again and refresh the final S3 bucket to see if the file has appeared.
+{{% /notice %}}
+
+8. Save the file locally and open in an image viewer.
 
 9. You will see photo of the person has had the green background removed, and is now composited with the theme park background and logo graphics.
 

@@ -28,17 +28,15 @@ aws cloudformation list-stacks | grep theme-park
 ```
 aws cloudformation delete-stack --stack-name your-stack-name
 ```
+3. Use the CloudFormation console to ensure the stacks are deleted before continuining.
 
 ### 3. Manually created Lambda resources
-1. From Cloud9, get a list of Lambda functions manually created in this workshop:
+1. From Cloud9, delete Lambda functions that were created in the console:
 ```
-aws lambda list-functions | grep theme-park
+aws lambda delete-function --function-name theme-park-photos-chromakey
+aws lambda delete-function --function-name theme-park-photos-postprocess
 ```
-2. Delete each function beginning with `theme-park`, replacing `your-function-name` with the function name:
-```
-aws lambda delete-function --function-name your-function-name
-```
-3. Delete the OpenCV Lambda layer:
+2. Delete the OpenCV Lambda layer:
 ```
 aws lambda delete-layer-version --layer-name python-opencv-37 --version-number 1
 ```
@@ -61,7 +59,7 @@ aws amplify delete-app --app-id 'your-app-id'
 
 ### 6. Quicksight
 1.  From the [QuickSight console][quicksight-console], select the admin menu(top right) and choose **Manage QuickSight**.
-1.  Select *Account settings* and choose **Unsubscribe**.
+1.  Select *Account settings* and choose **Delete account**. Type **confirm** in the following dialog box and choose **Delete account**.
 1.  This deletes all visualizations and stops billing.
 1.  Take not of the IAM roles and policies
 1.  From the [IAM console][iam-console], navigate to Roles, and then Policies and delete the Quicksight IAM role and policy.

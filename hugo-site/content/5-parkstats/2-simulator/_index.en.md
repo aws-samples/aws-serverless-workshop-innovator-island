@@ -79,13 +79,13 @@ aws lambda list-functions | grep theme-park-simulator | grep FunctionName
 ```
 ![Lambda function name](/images/module5-2-simulator-getname.png)
 
-6. Copy the name value to the clipboard (exclude the quotes). Now invoke the Lambda function:
+6. Copy the name value to the clipboard (exclude the quotes). Now invoke the Lambda functio asynchronously:
 ```
-aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
+aws lambda invoke --function-name ENTER_FUNCTION_NAME --invocation-type Event --payload '{}' response.json
 ```
 ![Invoke Lambda function](/images/module5-2-simulator-invoke-lambda.png)
 
-7. The simulator is now running and takes 4-5 minutes to complete. Continue with the workshop without waiting.
+7. The simulator is now running in the background and takes 4-5 minutes to complete. Continue with the workshop without waiting.
 
 ## Observing the output in S3
 
@@ -103,8 +103,6 @@ aws lambda invoke --function-name ENTER_FUNCTION_NAME output.txt
 
 ## Next steps
 
-At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. Wait until the simulation finishes before continuing, and shows a 200 status code.
-
-![Simulator finished](/images/module5-simulator-finished.png)
+At this stage, the simulation is running and logging output to Kinesis. Your delivery stream is aggregating the data into the dedicated S3 bucket. Wait 4-5 minutes until the simulation finishes before continuing.
 
 Next, you will analyze the data for business insights with Amazon QuickSight. To start the next section, [click here to continue](./3-quicksight.html).
