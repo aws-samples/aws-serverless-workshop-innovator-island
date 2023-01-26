@@ -119,11 +119,11 @@ You must change the datatypes of some fields for QuickSight to use these properl
 
 2. In *Your Data Sets*, choose **theme-park-data**.
 
-![Your data sets](/images/module5-3-configure10.png)
+![Your data sets](/images/module5-3-configure-10-08312022.png)
 
-3. Choose **Create analysis**.
+3. Choose **USE IN ANALYSIS**.
 
-![Your data sets](/images/module5-3-configure11.png)
+![Your data sets](/images/module5-3-configure-11-08312022.png)
 
 4. In the analysis dashboard, note the following areas on the display, since you will need these to build the data visualizations:
 - 1 - Analysis menu bar.
