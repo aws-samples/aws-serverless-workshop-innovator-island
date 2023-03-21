@@ -2,7 +2,7 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
- // Library documentation: https://www.npmjs.com/package/jimp
+// Library documentation: https://www.npmjs.com/package/jimp
 
 const AWS = require('aws-sdk')
 AWS.config.update({ region: process.env.AWS_REGION })
@@ -58,7 +58,7 @@ exports.handler = async (event) => {
     Key: output_filename,
     ContentType: Jimp.MIME_JPEG,
     Body: fs.readFileSync(output_path),
-    ACL: 'public-read'
+    //ACL: 'public-read'
   }
   console.log(outParams)
   console.log(await s3.putObject(outParams).promise())

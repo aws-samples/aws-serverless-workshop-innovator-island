@@ -52,6 +52,7 @@ After you will test with the sample image, and then perform a test from the fron
 This function uses two environment variables:
 - `IOT_DATA_ENDPOINT`: the IoT endpoint hostname.
 - `DDB_TABLE_NAME`: the DynamoDB table name used by the application.
+- - `WEB_APP_DOMAIN`: the Cloudfront distribution used to serve photos.
 
 In this section, you will retrieve and configure these Environment Variables for the function.
 
@@ -67,14 +68,18 @@ aws iot describe-endpoint --endpoint-type iot:Data-ATS
 ```
 aws dynamodb list-tables | grep backend
 ```
+4. Next, enter the following command to retrieve the value for `WEB_APP_DOMAIN`:
+```bash
+aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='WebAppDomain'].OutputValue" --output text
+```
 
-4. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Select the *Configuration* tab, then select *Environment variables* from the menu. Choose **Edit**.
+5. Go back to the browser tab with the `theme-park-photos-postprocess` Lambda function open. Select the *Configuration* tab, then select *Environment variables* from the menu. Choose **Edit**.
 
-5. Enter the two environment variables names along with the values you retrieved in Cloud9 (without quotes):
+6. Enter the two environment variables names along with the values you retrieved in Cloud9 (without quotes):
 
 ![Module 2 - Environment vars](../../images/3-photos-composite6.png)
 
-6. Choose **Save** to save these changes.
+7. Choose **Save** to save these changes.
 
 ## Update the frontend
 
