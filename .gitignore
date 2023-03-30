@@ -134,3 +134,6 @@ packaged.yaml
 # Hugo default output directory
 hugo-site/public
 lesson.zip
+
+#IntelliJ IDEA
+.idea
