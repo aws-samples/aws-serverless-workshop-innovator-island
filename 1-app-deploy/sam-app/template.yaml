@@ -48,7 +48,7 @@ Resources:
           Properties:
             Path: '/Upload'
             Method: get
-
+  
   ##########################################
   # Application's DynamoDB table           #
   ##########################################
@@ -70,7 +70,7 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 2
         WriteCapacityUnits: 2
-
+  
   ##########################################
   # S3 Buckets                             #
   ##########################################
@@ -112,7 +112,7 @@ Resources:
       ThingName: "theme-park-realtime"
       AttributePayload:
         Attributes: {}
-
+  
   UserPool:
     Type: "AWS::Cognito::UserPool"
     Properties:
@@ -123,7 +123,7 @@ Resources:
           AttributeDataType: String
           Mutable: false
           Required: true
-
+  
   # Creates a User Pool Client to be used by the identity pool
   UserPoolClient:
     Type: "AWS::Cognito::UserPoolClient"
@@ -131,7 +131,7 @@ Resources:
       ClientName: ThemeParkUserPoolClient
       GenerateSecret: false
       UserPoolId: !Ref UserPool
-
+  
   # Creates a federated Identity pool
   IdentityPool:
     Type: "AWS::Cognito::IdentityPool"
@@ -142,7 +142,7 @@ Resources:
         - ClientId: !Ref UserPoolClient
           ProviderName: !GetAtt UserPool.ProviderName
 
-  # Create a role for unauthorized access to AWS resources.
+  # Create a role for unauthorized access to AWS resources. 
   CognitoUnAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -181,7 +181,7 @@ Resources:
                   - iot:Receive
                 Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
 
-  # Create a role for authorized acces to AWS resources.
+  # Create a role for authorized acces to AWS resources. 
   CognitoAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -232,7 +232,7 @@ Resources:
   #######################################################
   # Resources for Custom Role for user Lambda functions #
   #######################################################
-
+  
   ThemeParkLambdaRole:
     Type: AWS::IAM::Role
     Properties:
