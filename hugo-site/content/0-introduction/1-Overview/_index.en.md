@@ -23,9 +23,10 @@ Amplify Console provides a simple, Git-based workflow for deploying and hosting 
 Amplify will be used to host static web resources including HTML, CSS, JavaScript, and image files which are loaded in the user's browser via S3. 
 
 ### Backend
-The backend application architecture uses [AWS Lambda][lambda], [Amazon API Gateway][api-gw], [Amazon S3][s3], [Amazon DynamoDB][dynamodb], and [Amazon Cognito][cognito]. 
+The backend application architecture uses [AWS Lambda][lambda], [Amazon API Gateway][api-gw], [Amazon S3][s3], [Amazon DynamoDB][dynamodb], [Amazon Cognito][cognito], and [Amazon Cloudfront][cloudfront]. 
 
 JavaScript executed in the frontend browser application sends and receives data from a public backend API built using API Gateway and Lambda. DynamoDB provides a persistence data storage layer which is used by the API's Lambda functions.
+Amazon Cloudfront serves processed photos from an Amazon S3 Storage.
 
 See the diagram below for the complete architecture.
 
@@ -38,3 +39,4 @@ See the diagram below for the complete architecture.
 [api-gw]: https://aws.amazon.com/api-gateway/
 [s3]: https://aws.amazon.com/s3/
 [dynamodb]: https://aws.amazon.com/dynamodb/
+[cloudfront]: https://aws.amazon.com/cloudfront/

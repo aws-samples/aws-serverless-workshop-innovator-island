@@ -102,7 +102,6 @@ Resources:
         BlockPublicPolicy: true
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
-
   ##########################################
   # Resources for realtime messaging       #
   ##########################################
