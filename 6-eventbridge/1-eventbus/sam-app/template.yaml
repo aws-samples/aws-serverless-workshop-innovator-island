@@ -12,7 +12,7 @@ Resources:
     Properties:
       CodeUri: publishFunction/
       Handler: app.handler
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       MemorySize: 128
       Policies:
         - Statement:
@@ -26,7 +26,7 @@ Resources:
     Properties:
       CodeUri: metricsFunction/
       Handler: app.handler
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       MemorySize: 128
       Policies:
         - Statement:
