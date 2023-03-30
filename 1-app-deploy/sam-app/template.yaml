@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Innovator Island - Theme park backend
-
+  
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -17,10 +17,10 @@ Resources:
       Runtime: nodejs14.x
       Environment:
         Variables:
-          DDB_TABLE_NAME: !Ref DynamoDBTable
+          DDB_TABLE_NAME: !Ref DynamoDBTable     
       Policies:
       - DynamoDBCrudPolicy:
-          TableName: !Ref DynamoDBTable
+          TableName: !Ref DynamoDBTable      
       Events:
         InitStateAPI:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -30,7 +30,7 @@ Resources:
 
   S3UploaderFunction:
     # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Type: AWS::Serverless::Function
+    Type: AWS::Serverless::Function 
     Properties:
       CodeUri: getUploadURL/
       Handler: app.handler
@@ -40,37 +40,37 @@ Resources:
         Variables:
           UploadBucket: !Ref UploadBucket
       Policies:
-      - S3CrudPolicy:
-          BucketName: !Ref UploadBucket
+        - S3CrudPolicy:
+            BucketName: !Ref UploadBucket
       Events:
         HttpPost:
           Type: Api
           Properties:
             Path: '/Upload'
-            Method: get
-  
+            Method: get  
+
   ##########################################
   # Application's DynamoDB table           #
   ##########################################
 
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
-    Properties:
-      AttributeDefinitions:
-      - AttributeName: partitionKey
-        AttributeType: S
-      - AttributeName: sortKey
-        AttributeType: S
-      KeySchema:
-      - AttributeName: partitionKey
-        KeyType: HASH
-      - AttributeName: sortKey
-        KeyType: RANGE
+    Properties: 
+      AttributeDefinitions: 
+        - AttributeName: partitionKey
+          AttributeType: S
+        - AttributeName: sortKey
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: partitionKey
+          KeyType: HASH
+        - AttributeName: sortKey
+          KeyType: RANGE
       BillingMode: PROVISIONED
       ProvisionedThroughput:
         ReadCapacityUnits: 2
-        WriteCapacityUnits: 2
-  
+        WriteCapacityUnits: 2     
+
   ##########################################
   # S3 Buckets                             #
   ##########################################
@@ -81,19 +81,20 @@ Resources:
       CorsConfiguration:
         CorsRules:
         - AllowedHeaders:
-          - "*"
+            - "*"
           AllowedMethods:
-          - GET
-          - PUT
-          - POST
-          - DELETE
-          - HEAD
+            - GET
+            - PUT
+            - POST
+            - DELETE
+            - HEAD
           AllowedOrigins:
-          - "*"
+            - "*"
 
   ProcessingBucket:
     Type: 'AWS::S3::Bucket'
 
+  
   FinalBucket:
     Type: 'AWS::S3::Bucket'
     Properties:
@@ -102,27 +103,28 @@ Resources:
         BlockPublicPolicy: true
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
+
   ##########################################
   # Resources for realtime messaging       #
   ##########################################
 
   ThemeParkRealtime:
-    Type: "AWS::IoT::Thing"
-    Properties:
-      ThingName: "theme-park-realtime"
-      AttributePayload:
-        Attributes: {}
-  
+      Type: "AWS::IoT::Thing"
+      Properties:
+          ThingName: "theme-park-realtime"
+          AttributePayload: 
+              Attributes: {}  
+
   UserPool:
     Type: "AWS::Cognito::UserPool"
     Properties:
       UserPoolName: ThemeParkUserPool
       MfaConfiguration: "OFF"
       Schema:
-      - Name: email
-        AttributeDataType: String
-        Mutable: false
-        Required: true
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
   
   # Creates a User Pool Client to be used by the identity pool
   UserPoolClient:
@@ -138,87 +140,87 @@ Resources:
     Properties:
       IdentityPoolName: ThemeParkIdentityPool
       AllowUnauthenticatedIdentities: true
-      CognitoIdentityProviders:
-      - ClientId: !Ref UserPoolClient
-        ProviderName: !GetAtt UserPool.ProviderName
+      CognitoIdentityProviders: 
+        - ClientId: !Ref UserPoolClient
+          ProviderName: !GetAtt UserPool.ProviderName
 
   # Create a role for unauthorized access to AWS resources. 
   CognitoUnAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
-      AssumeRolePolicyDocument:
+      AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement:
-        - Effect: "Allow"
-          Principal:
-            Federated: "cognito-identity.amazonaws.com"
-          Action:
-          - "sts:AssumeRoleWithWebIdentity"
-          Condition:
-            StringEquals:
-              "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
-            "ForAnyValue:StringLike":
-              "cognito-identity.amazonaws.com:amr": unauthenticated
-      Policies:
-      - PolicyName: "CognitoAuthorizedPolicy"
-        PolicyDocument:
-          Version: "2012-10-17"
-          Statement:
           - Effect: "Allow"
-            Action:
-            - "cognito-sync:*"
-            Resource: !Join [ "", [ "arn:aws:cognito-sync:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":identitypool/", !Ref IdentityPool] ]
-          - Effect: Allow
-            Action:
-            - iot:Connect
-            Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":client/theme*" ] ]
-          - Effect: Allow
-            Action:
-            - iot:Subscribe
-            Resource: "*"
-          - Effect: Allow
-            Action:
-            - iot:Receive
-            Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
+            Principal: 
+              Federated: "cognito-identity.amazonaws.com"
+            Action: 
+              - "sts:AssumeRoleWithWebIdentity"
+            Condition:
+              StringEquals: 
+                "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
+              "ForAnyValue:StringLike":
+                "cognito-identity.amazonaws.com:amr": unauthenticated
+      Policies:
+        - PolicyName: "CognitoAuthorizedPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                  - "cognito-sync:*"
+                Resource: !Join [ "", [ "arn:aws:cognito-sync:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":identitypool/", !Ref IdentityPool] ]
+              - Effect: Allow
+                Action:
+                  - iot:Connect
+                Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":client/theme*" ] ]
+              - Effect: Allow
+                Action:
+                  - iot:Subscribe
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - iot:Receive
+                Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
 
   # Create a role for authorized acces to AWS resources. 
   CognitoAuthorizedRole:
     Type: "AWS::IAM::Role"
     Properties:
-      AssumeRolePolicyDocument:
+      AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement:
-        - Effect: "Allow"
-          Principal:
-            Federated: "cognito-identity.amazonaws.com"
-          Action:
-          - "sts:AssumeRoleWithWebIdentity"
-          Condition:
-            StringEquals:
-              "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
-            "ForAnyValue:StringLike":
-              "cognito-identity.amazonaws.com:amr": authenticated
-      Policies:
-      - PolicyName: "CognitoAuthorizedPolicy"
-        PolicyDocument:
-          Version: "2012-10-17"
-          Statement:
           - Effect: "Allow"
-            Action:
-            - "cognito-sync:*"
-            Resource: !Join [ "", [ "arn:aws:cognito-sync:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":identitypool/", !Ref IdentityPool] ]
-          - Effect: Allow
-            Action:
-            - iot:Connect
-            Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":client/theme*" ] ]
-          - Effect: Allow
-            Action:
-            - iot:Subscribe
-            Resource: "*"
-          - Effect: Allow
-            Action:
-            - iot:Receive
-            Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
+            Principal: 
+              Federated: "cognito-identity.amazonaws.com"
+            Action: 
+              - "sts:AssumeRoleWithWebIdentity"
+            Condition:
+              StringEquals: 
+                "cognito-identity.amazonaws.com:aud": !Ref IdentityPool
+              "ForAnyValue:StringLike":
+                "cognito-identity.amazonaws.com:amr": authenticated
+      Policies:
+        - PolicyName: "CognitoAuthorizedPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                  - "cognito-sync:*"
+                Resource: !Join [ "", [ "arn:aws:cognito-sync:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":identitypool/", !Ref IdentityPool] ]
+              - Effect: Allow
+                Action:
+                  - iot:Connect
+                Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":client/theme*" ] ]
+              - Effect: Allow
+                Action:
+                  - iot:Subscribe
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - iot:Receive
+                Resource: !Join [ "", [ "arn:aws:iot:", !Ref "AWS::Region", ":", !Ref "AWS::AccountId", ":topic/*" ] ]
 
   # Assigns the roles to the Identity Pool
   IdentityPoolRoleMapping:
@@ -237,44 +239,43 @@ Resources:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: 2012-10-17
+        Version: 2012-10-17      
         Statement:
-        - Action:
-          - sts:AssumeRole
-          Effect: Allow
-          Principal:
-            Service:
-            - lambda.amazonaws.com
+          - Action:
+            - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
       Policies:
       - PolicyName: ThemeParkAccess
         PolicyDocument:
-          Version: 2012-10-17
+          Version: 2012-10-17      
           Statement:
-          - Effect: "Allow"
-            Action:
-            - "s3:*"
-            Resource:
-            - !Sub ${UploadBucket.Arn}/*
-            - !Sub ${ProcessingBucket.Arn}/*
-            - !Sub ${FinalBucket.Arn}/*
-          - Effect: "Allow"
-            Action:
-            - "dynamodb:*"
-            Resource:
-            - !GetAtt DynamoDBTable.Arn
-          - Effect: "Allow"
-            Action:
-            - "iot:*"
-            Resource:
-            - "*"
-          - Effect: "Allow"
-            Action:
-            - "logs:CreateLogGroup"
-            - "logs:CreateLogStream"
-            - "logs:PutLogEvents"
-            Resource:
-            - "*"
-
+            - Effect: "Allow"
+              Action:
+                - "s3:*"
+              Resource:
+                - !Sub ${UploadBucket.Arn}/*
+                - !Sub ${ProcessingBucket.Arn}/*
+                - !Sub ${FinalBucket.Arn}/*
+            - Effect: "Allow"
+              Action:
+                - "dynamodb:*"
+              Resource:
+                - !GetAtt DynamoDBTable.Arn
+            - Effect: "Allow"
+              Action:
+                - "iot:*"
+              Resource:
+                - "*"
+            - Effect: "Allow"
+              Action:
+                - "logs:CreateLogGroup"
+                - "logs:CreateLogStream"
+                - "logs:PutLogEvents"
+              Resource:
+                - "*"                
   Final3BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -332,6 +333,7 @@ Resources:
           ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_All
 
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -345,7 +347,7 @@ Outputs:
   IdentityPoolId:
     Value: !Ref IdentityPool
     Export:
-      Name: "IdentityPool::Id"
+      Name: "IdentityPool::Id"    
   IotEndpoint:
     Value: !Ref ThemeParkRealtime
   UploadBucketName:
