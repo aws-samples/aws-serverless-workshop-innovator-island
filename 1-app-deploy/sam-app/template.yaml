@@ -14,7 +14,7 @@ Resources:
       CodeUri: getInitState/
       Handler: app.lambdaHandler
       MemorySize: 128
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       Environment:
         Variables:
           DDB_TABLE_NAME: !Ref DynamoDBTable     
@@ -35,7 +35,7 @@ Resources:
       CodeUri: getUploadURL/
       Handler: app.handler
       MemorySize: 128
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       Environment:
         Variables:
           UploadBucket: !Ref UploadBucket
@@ -94,8 +94,15 @@ Resources:
   ProcessingBucket:
     Type: 'AWS::S3::Bucket'
 
+  
   FinalBucket:
     Type: 'AWS::S3::Bucket'
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
 
   ##########################################
   # Resources for realtime messaging       #
@@ -269,6 +276,63 @@ Resources:
                 - "logs:PutLogEvents"
               Resource:
                 - "*"                
+  Final3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FinalBucket
+      PolicyDocument:
+        Id: PolicyForCompositeFunction
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowCompositeFunction
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: s3:*
+            Resource: !Sub arn:aws:s3:::${FinalBucket}/*
+            Condition:
+              ArnLike:
+                AWS:SourceArn: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:theme-park-photos-CompositeFunction
+          - Sid: AllowCloudFrontServicePrincipal
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub arn:aws:s3:::${FinalBucket}/*
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}
+
+  WebAppOriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub "${AWS::StackName}-web-app-origin-access-control"
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !Sub ${FinalBucket}.s3.${AWS::Region}.amazonaws.com
+            Id: !Sub ${FinalBucket}.s3.${AWS::Region}.amazonaws.com
+            OriginAccessControlId: !GetAtt WebAppOriginAccessControl.Id
+            S3OriginConfig: {}
+        Enabled: "true"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: !Sub ${FinalBucket}.s3.${AWS::Region}.amazonaws.com
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # CachingOptimized
+          OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf # CORS-S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_All
+
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -292,3 +356,7 @@ Outputs:
     Value: !Ref ProcessingBucket
   FinalBucketName:
     Value: !Ref FinalBucket
+  WebAppDomain:
+    Value: !GetAtt CloudFrontDistribution.DomainName
+  CloudFrontDistributionId:
+    Value: !GetAtt CloudFrontDistribution.Id

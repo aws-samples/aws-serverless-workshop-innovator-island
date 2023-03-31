@@ -58,7 +58,7 @@ exports.handler = async (event) => {
     Key: output_filename,
     ContentType: Jimp.MIME_JPEG,
     Body: fs.readFileSync(output_path),
-    ACL: 'public-read'
+    //ACL: 'public-read'
   }
   console.log(outParams)
   console.log(await s3.putObject(outParams).promise())
