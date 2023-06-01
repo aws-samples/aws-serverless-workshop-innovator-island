@@ -74,13 +74,16 @@ Lambda functions that use arm64 architecture (AWS Graviton2 processor) can achie
 
 ![Module 2 - SNS completed](../images/2-realtime-lambda3.png)
 
-8. Back in the Cloud9 browser tab, in the left directory panel navigate to `theme-park-backend\2-realtime\app.js`. Double click to open the file and copy the contents onto the clipboard.
+8. Back in the Cloud9 browser tab, run these commands to send the code and dependencies to the Lambda function:
 
-9. Go back to the browser tab with the Lambda console. In the *Code source* card, open the `index.js` file. Paste the file contents in the clipboard into the `index.js` file, overwriting the existing content.
+```
+cd ~/environment/theme-park-backend/2-realtime/
+npm install
+rm --force function.zip && zip -r function.zip app.js node_modules/
+aws lambda update-function-code --function-name theme-park-ridetimes --zip-file fileb://function.zip
+```
 
-10. Above the *Code source* panel, select **Deploy** to save the changes and deploy the function.
-
-![Module 2 - Paste code](../images/2-realtime-lambda4.png)
+9. Go back to the browser tab with the Lambda console. In the *Code source* card and scroll down to *Runtime settings*. Click Edit, change the handler to `app.handler` and click *Save*
 
 This Lambda function code reads the latest message from the SNS topic, writes it to the DynamoDB table, and then pushes the message to the frontend application via an IoT topic.
 
@@ -100,7 +103,7 @@ In this section, you will retrieve and configure these Environment Variables for
 2. In the terminal enter the following command to retrieve the value for IOT_DATA_ENDPOINT:
 
 ```
-aws iot describe-endpoint --endpoint-type iot:Data-ATS
+aws iot describe-endpoint --endpoint-type iot:Data-ATS --query endpointAddress --output text
 ```
 3. Next, enter the following command to retrieve the value for DDB_TABLE_NAME:
 ```

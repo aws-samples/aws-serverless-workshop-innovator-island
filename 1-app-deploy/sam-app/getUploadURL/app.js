@@ -6,9 +6,9 @@
 'use strict'
 
 const { v4: uuidv4 } = require('uuid')
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.env.AWS_REGION })
-const s3 = new AWS.S3()
+const { S3, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+const s3 = new S3({ region: process.env.AWS_REGION })
 
 // Main Lambda entry point
 exports.handler = async (event) => {
@@ -27,7 +27,9 @@ const getUploadURL = async function() {
     //ACL: 'public-read'      // Enable this setting to make the object publicly readable - only works if the bucket can support public objects
   }
 
-  console.log('getUploadURL: ', s3Params)
+  const command = new PutObjectCommand(s3Params);
+  const url = await getSignedUrl(s3, command);
+  console.log('getUploadURL: ', s3Params, ' getSignedUrl: ', url)
   return new Promise((resolve, reject) => {
     // Get signed URL
     resolve({
@@ -37,7 +39,7 @@ const getUploadURL = async function() {
         "Access-Control-Allow-Origin": "*"
       },
       "body": JSON.stringify({
-          "uploadURL": s3.getSignedUrl('putObject', s3Params),
+          "uploadURL": url,
           "photoFilename": `${actionId}.jpg`
       })
     })

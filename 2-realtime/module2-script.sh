@@ -9,7 +9,8 @@ DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-b
 
 ##Create Ridetimes Lambda Function and subscribe to SNS Topic
 cd ~/environment/theme-park-backend/2-realtime/
-zip 2-realtime-app.zip app.js
+npm install
+zip -r 2-realtime-app.zip app.js node_modules
 LAMBDA_ROLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id ThemeParkLambdaRole --query "StackResourceDetail.PhysicalResourceId" --output text)
 LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'"' -f 4)
 

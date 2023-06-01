@@ -34,6 +34,8 @@ Make sure your region is set to the same region you initially selected for Cloud
 ```
 cd ~/environment/theme-park-backend/6-eventbridge/2-maintenance/sam-app/
 
+sam build
+
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-outages --capabilities CAPABILITY_IAM

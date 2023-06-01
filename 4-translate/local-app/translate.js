@@ -5,10 +5,9 @@
 
 'use strict'
 
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.argv[2] })
+const { Translate } = require("@aws-sdk/client-translate");
 
-const translate = new AWS.Translate()
+const translate = new Translate({ region: process.argv[2] })
 const fs = require('fs')
 const messages = require('./translations-input.json')
 
@@ -32,7 +31,7 @@ const translateText = async (originalText, targetLanguageCode) => {
 
   try {
     console.log(`Translating to ${targetLanguageCode}: ${originalText} `)
-    const result = await translate.translateText(params).promise()
+    const result = await translate.translateText(params)
 
     // Introduce a slight delay to avoid throttling on the AWS Translate service
     // In production systems, you can raise your throttling limits as needed

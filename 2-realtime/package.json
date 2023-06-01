@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-iot-data-plane": "^3.344.0",
+    "@aws-sdk/lib-dynamodb": "^3.344.0"
+  }
+}

@@ -2,9 +2,17 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
-const AWS = require('aws-sdk')
-const ddb = new AWS.DynamoDB.DocumentClient()
-const iotdata = new AWS.IotData({ endpoint: process.env.IOT_DATA_ENDPOINT })
+const {
+        DynamoDBDocument
+      } = require("@aws-sdk/lib-dynamodb"),
+      {
+        DynamoDB
+      } = require("@aws-sdk/client-dynamodb"),
+      {
+        IoTDataPlane: IotData
+      } = require("@aws-sdk/client-iot-data-plane");
+const ddb = DynamoDBDocument.from(new DynamoDB())
+const iotdata = new IotData({ endpoint: process.env.IOT_DATA_ENDPOINT })
 const IOT_TOPIC = 'theme-park-rides'
 
 /* MODULE 3 - Post Processing
@@ -24,7 +32,7 @@ const saveToDDB = async function (params) {
                 'objectKey': params.ObjectKey,
                 'URL': params.URL
             }
-        }).promise();
+        });
         console.log('saveToDDB success');
     } catch (err) {
         console.error('saveToDDB error: ', err);
@@ -44,7 +52,7 @@ const iotPublish = async function (message) {
       topic: IOT_TOPIC,
       qos: 0,
       payload: wrappedMessage
-    }).promise()
+    })
     console.log('iotPublish success')
   } catch (err) {
     console.error('iotPublish error:', err)

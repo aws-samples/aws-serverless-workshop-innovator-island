@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "aws-sdk": "^2.997.0",
+    "@aws-sdk/client-s3": "^3.344.0",
+    "@aws-sdk/s3-request-presigner": "^3.344.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {},
