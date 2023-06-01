@@ -5,9 +5,9 @@
  */
 
 
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.env.AWS_REGION })
-const documentClient = new AWS.DynamoDB.DocumentClient()
+const { DynamoDBDocument } = require("@aws-sdk/lib-dynamodb");
+const{ DynamoDB } = require("@aws-sdk/client-dynamodb");
+const documentClient = DynamoDBDocument.from(new DynamoDB({ region: process.env.AWS_REGION }))
 
 const masterTable = process.env.DDBtable
 
@@ -15,7 +15,7 @@ const masterTable = process.env.DDBtable
 const getRides = async () => {
   const result = await documentClient.scan({
     TableName: masterTable
-  }).promise()
+  })
   return result.Items
 }
 
@@ -27,7 +27,7 @@ const updateRide = async (ride) => {
   await documentClient.put({
     TableName: masterTable,
     Item: ride
-  }).promise()
+  })
 }
 
 module.exports = { getRides, updateRide }

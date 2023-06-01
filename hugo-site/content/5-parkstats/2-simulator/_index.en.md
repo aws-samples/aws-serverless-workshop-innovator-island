@@ -79,7 +79,7 @@ aws lambda list-functions | grep theme-park-simulator | grep FunctionName
 ```
 ![Lambda function name](/images/module5-2-simulator-getname.png)
 
-6. Copy the name value to the clipboard (exclude the quotes). Now invoke the Lambda functio asynchronously:
+6. Copy the name value to the clipboard (exclude the quotes). Now invoke the Lambda function asynchronously:
 ```
 aws lambda invoke --function-name ENTER_FUNCTION_NAME --invocation-type Event --payload '{}' response.json
 ```

@@ -2,9 +2,17 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
-const AWS = require('aws-sdk')
-const ddb = new AWS.DynamoDB.DocumentClient()
-const iotdata = new AWS.IotData({ endpoint: process.env.IOT_DATA_ENDPOINT })
+const {
+          DynamoDBDocument
+      } = require("@aws-sdk/lib-dynamodb"),
+      {
+          DynamoDB
+      } = require("@aws-sdk/client-dynamodb"),
+      {
+          IoTDataPlane: IotData
+      } = require("@aws-sdk/client-iot-data-plane");
+const ddb = DynamoDBDocument.from(new DynamoDB())
+const iotdata = new IotData({ endpoint: 'https://' + process.env.IOT_DATA_ENDPOINT })
 
 /* MODULE 2 - Real-time ride wait times
 
@@ -23,7 +31,7 @@ const saveToDDB = async function (message) {
                 'sortKey': 'waittimes',
                 'message': message
             }
-        }).promise()
+        })
         console.log('saveToDDB success')
     } catch (err) {
         console.error('saveToDDB error: ', err)
@@ -37,7 +45,7 @@ const iotPublish = async function (topic, message) {
             topic,
             qos: 0,
             payload: JSON.stringify(message)
-        }).promise();
+        });
         console.log('iotPublish success')
     } catch (err) {
         console.error('iotPublish error:', err)

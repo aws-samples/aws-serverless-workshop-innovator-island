@@ -10,7 +10,7 @@
   "author": "James Beswick, AWS Serverless",
   "license": "MIT-0",
   "dependencies": {
-    "aws-sdk": "^2.701.0",
+    "@aws-sdk/client-s3": "^3.344.0",
     "jimp": "^0.13.0"
   }
 }

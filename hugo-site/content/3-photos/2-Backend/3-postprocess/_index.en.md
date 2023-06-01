@@ -41,11 +41,12 @@ After you will test with the sample image, and then perform a test from the fron
 
 5. Go back to your browser tab with Cloud9 running. If you need to re-launch Cloud9, from the AWS Management Console, select **Services** then select [**Cloud9**](https://console.aws.amazon.com/cloud9) under *Developer Tools*. **Make sure your region is correct.**
 
-6. Copy the code from `3-postprocess/app.js` onto the clipboard and paste into the `index.js` tab in the Lambda function, overwriting the existing content:
+cd ~/environment/theme-park-backend/3-photos/3-postprocess
+npm install
+rm --force function.zip && zip -r function.zip app.js node_modules/
+aws lambda update-function-code --function-name theme-park-photos-postprocess --zip-file fileb://function.zip
 
-7. Select *Deploy* in the *Function Code* panel to save the changes and deploy the function.
-
-![Module 3 - Paste code](../../images/3-photos-composite5.png)
+6. Go back to the browser tab with the Lambda console. In the *Code source* card and scroll down to *Runtime settings*. Click Edit, change the handler to `app.handler` and click *Save*
 
 ### Adding environment variables
 
@@ -62,7 +63,7 @@ In this section, you will retrieve and configure these Environment Variables for
 
 2. In the terminal enter the following command to retrieve the value for `IOT_DATA_ENDPOINT`:
 ```
-aws iot describe-endpoint --endpoint-type iot:Data-ATS
+aws iot describe-endpoint --endpoint-type iot:Data-ATS --query endpointAddress --output text
 ```
 3. Next, enter the following command to retrieve the value for `DDB_TABLE_NAME`:
 ```

@@ -3,9 +3,9 @@
  */
 
 
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.env.AWS_REGION || 'us-east-1' })
-const documentClient = new AWS.DynamoDB.DocumentClient()
+const { DynamoDBDocument } = require("@aws-sdk/lib-dynamodb");
+const{ DynamoDB } = require("@aws-sdk/client-dynamodb");
+const documentClient = DynamoDBDocument.from(new DynamoDB({ region: process.env.AWS_REGION || 'us-east-1' }))
 
 const TableName = process.env.DDBtable
 const initRideState = require('./initRideState')
@@ -31,7 +31,7 @@ initRideState.map((ride) => {
 const initRides = async () => {
   try {
     console.log(params)
-    const result = await documentClient.batchWrite(params).promise()
+    const result = await documentClient.batchWrite(params)
     console.log('initRides result: ', result)
   } catch (err) {
     console.error('initRides error: ', err)

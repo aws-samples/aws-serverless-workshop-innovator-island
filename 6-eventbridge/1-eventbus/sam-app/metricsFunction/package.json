@@ -1,15 +1,15 @@
 {
-  "name": "initDB",
+  "name": "1-eventbus-metricsfunction",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT-0",
+  "description": "",
   "dependencies": {
-    "@aws-sdk/lib-dynamodb": "^3.344.0"
+    "@aws-sdk/client-cloudwatch": "^3.344.0"
   }
 }
