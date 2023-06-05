@@ -17,17 +17,14 @@ Take a few minutes now and setup your Cloud9 development environment. Cloud9 wor
 
 1. Select **Create environment**.
 
-1. Enter `theme-park-development` into **Name** and optionally provide a **Description**.
+1. In the *Details* panel, enter `theme-park-development` into **Name** and optionally provide a **Description**.
 
-1. Select **Next step**.
+1. In the *New EC2 instance* panel, for *Instance type*, choose **t3.small**. Keep the defaults in the other sections. Choose **Create**.
 
-1. For *Instance type*, choose **t3.small**. Keep the defaults in the other sections. Select **Next step**.
-
-1. Review the environment settings and select **Create environment**. It will take a few minutes for your Cloud9 environment to be provisioned and prepared.
-
-1. Once ready, your IDE will open to a welcome screen. Below that, you should see a terminal prompt. Close the *Welcome* tab and drag up the terminal window to give yourself more space to work in.
-
-![Cloud9](../images/0-setup-cloud9.png)
+1. Once Cloud9 has created your environment, you will see a 'Success' banner. Choose **Open** to open the Cloud9 IDE in a new tab.
+    ![Cloud9](../images/0-setup-cloud9-pending.png)
+1. Your IDE will open to a welcome screen. Below that, you should see a terminal prompt. Close the *Welcome* tab and drag up the terminal window to give yourself more space to work in.
+    ![Cloud9](../images/0-setup-cloud9.png)
 
 You can run AWS CLI commands in here just like you would on your local computer. Remember for this workshop to run all commands within the Cloud9 terminal window instead of your local computer.
 

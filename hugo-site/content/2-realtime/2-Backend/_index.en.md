@@ -49,7 +49,7 @@ Environment variables are not stored in the terminal. Any time you close Cloud9 
 - For *Architecture*, choose `arm64`.
 
 {{% notice info %}}
-Lambda functions that use arm64 architecture (AWS Graviton2 processor) can achieve significantly better better price and performance than the equivalent function running on x86_64 architecture. For more information, read this [documentation page](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html?icmpid=docs_lambda_help).
+Lambda functions that use arm64 architecture (AWS Graviton2 processor) can achieve significantly better price and performance than the equivalent function running on x86_64 architecture. For more information, read this [documentation page](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html?icmpid=docs_lambda_help).
 {{% /notice %}}
 
 3. Open the *Change default execution role* section:
