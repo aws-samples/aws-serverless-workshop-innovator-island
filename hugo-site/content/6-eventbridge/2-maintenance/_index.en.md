@@ -176,7 +176,7 @@ First, you create two SNS topics. The first is for outages of type "Info" and "W
 14. In step 3, the *Select targets* page, in the *Target 1* panel:
 - For *Target types*, choose **AWS service**.
 - Click the *Target* dropdown and select *SNS topic*.
-- Under *Log group*, next to the radio button with named */aws/events/*, enter `theme-park-events-outages-alerts-info`.
+- In the *Topic* dropdown, select the topic name `theme-park-events-outages-alerts-info`.
 
 ![SNS target](/images/module6-2-sns-6.png)
 
@@ -268,7 +268,7 @@ You may be charged by your phone service carrier for receiving SMS messages.
 14. In step 3, the *Select targets* page, in the *Target 1* panel:
 - For *Target types*, choose **AWS service**.
 - Click the *Target* dropdown and select *SNS topic*.
-- In the *Topic* dropdown, select the function name beginning with `theme-park-events-outages-alerts-emergency`.
+- In the *Topic* dropdown, select the topic name `theme-park-events-outages-alerts-emergency`.
 
 15. Choose **Next**.
 
