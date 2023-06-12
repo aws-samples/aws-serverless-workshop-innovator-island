@@ -35,6 +35,7 @@ aws cloudformation delete-stack --stack-name your-stack-name
 ```
 aws lambda delete-function --function-name theme-park-photos-chromakey
 aws lambda delete-function --function-name theme-park-photos-postprocess
+aws lambda delete-function --function-name theme-park-ridetimes
 ```
 2. Delete the OpenCV Lambda layer:
 ```
