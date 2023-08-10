@@ -4,30 +4,29 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
+const { DynamoDBClient} = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, ScanCommand, PutCommand } = require("@aws-sdk/lib-dynamodb");
+const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+const documentClient = DynamoDBDocumentClient.from(client)
 
-const { DynamoDBDocument } = require("@aws-sdk/lib-dynamodb");
-const{ DynamoDB } = require("@aws-sdk/client-dynamodb");
-const documentClient = DynamoDBDocument.from(new DynamoDB({ region: process.env.AWS_REGION }))
-
-const masterTable = process.env.DDBtable
 
 // Get all rides from the table
 const getRides = async () => {
-  const result = await documentClient.scan({
-    TableName: masterTable
-  })
-  return result.Items
+    const result = await documentClient.send(new ScanCommand({
+        TableName:  process.env.DDBtable}));
+    return result.Items
 }
 
 // Updates ride in the table
 const updateRide = async (ride) => {
-  
-  ride.lastUpdated = Date.now()
 
-  await documentClient.put({
-    TableName: masterTable,
-    Item: ride
-  })
+    ride.lastUpdated = Date.now()
+    console.log("ride"+ JSON.stringify(ride))
+
+    await documentClient.send(new PutCommand({
+        TableName: process.env.DDBtable,
+        Item: ride
+    }));
 }
 
 module.exports = { getRides, updateRide }

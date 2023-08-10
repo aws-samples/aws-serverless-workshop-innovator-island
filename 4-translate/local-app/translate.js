@@ -5,9 +5,9 @@
 
 'use strict'
 
-const { Translate } = require("@aws-sdk/client-translate");
 
-const translate = new Translate({ region: process.argv[2] })
+const { TranslateClient, TranslateTextCommand } = require("@aws-sdk/client-translate")
+const client = new TranslateClient({region: process.argv[2]});
 const fs = require('fs')
 const messages = require('./translations-input.json')
 
@@ -23,22 +23,19 @@ const targetLanguages = ['fr','es','ja']
 const outputFileName = './translations.json'
 
 const translateText = async (originalText, targetLanguageCode) => {
-    const params = {
-      Text: originalText.substring(0, MAX_LENGTH),
-      SourceLanguageCode: "auto",
-      TargetLanguageCode: targetLanguageCode
-  }
 
   try {
     console.log(`Translating to ${targetLanguageCode}: ${originalText} `)
-    const result = await translate.translateText(params)
-
+    const result = await client.send(new TranslateTextCommand({
+      Text: originalText.substring(0, MAX_LENGTH),
+      SourceLanguageCode: "auto",
+      TargetLanguageCode: targetLanguageCode
+    }));
     // Introduce a slight delay to avoid throttling on the AWS Translate service
     // In production systems, you can raise your throttling limits as needed
     return new Promise((resolve) => {
       setTimeout(() => resolve(result.TranslatedText), 500)
     })
-
   } catch (err) {
     console.error(err)
   }

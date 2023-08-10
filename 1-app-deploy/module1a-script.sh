@@ -17,12 +17,21 @@ wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-fr
 unzip theme-park-frontend.zip 
 
 ## Push to CodeCommit
-cd ~/environment/theme-park-frontend/
+git init -b main
+git add .
+git commit -am "First commit"
+
+## Push to CodeCommit
 AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend master
+git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend main
+
 
 
 #############Deploy the site with the AWS Amplify Console
-
-read -p "Manually create Amplify Console App and then continue with module1b-script.sh"
-
+while true; do
+    read -p "Manually create Amplify App on AWS Console Amplify App and type 'y' to continue: " y
+    case $y in
+        [Yy]* ) echo "Nice, preparing to run module1b-script.sh"; break;;
+        * ) echo "Please type y or Y to once you've created Amplify app and are ready to continue";;
+    esac
+done
