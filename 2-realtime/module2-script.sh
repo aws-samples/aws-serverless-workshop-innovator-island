@@ -1,7 +1,7 @@
 ###########MODULE 2-Realtime
-AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
-s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+AWS_REGION="us-west-2"
+accountId="700336187521"
+s3_deploy_bucket="theme-park-backend-uploadbucket-1iyuqif70xt1x"
 
 COGNITO_POOLID=$(aws cognito-identity list-identity-pools  --max-results 10 | grep -B 1 ThemeParkIdentityPool | grep IdentityPoolId | cut -d'"' -f 4)
 IOT_ENDPOINT_HOST=$(aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep endpointAddress | cut -d'"' -f 4)
