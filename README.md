@@ -2,7 +2,7 @@
 
 ![InnovatorIsland](./images/innovator-island_logo.png)
 
-For workshop instructions, visit the [workshop's new instructions site](https://www.eventbox.dev/published/lesson/innovator-island/)
+For workshop instructions, visit [AWS Workshop Studio](https://catalog.us-east-1.prod.workshops.aws/workshops/74d0f3be-7108-4bba-8136-00617a988535)
 
 ### Have an idea for this workshop? Found a bug? ###
 
