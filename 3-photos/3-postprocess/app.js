@@ -47,7 +47,7 @@ const iotPublish = async function (message) {
     console.log('iotPublish msg: ', wrappedMessage)
     try {
         await iotClient.send(new PublishCommand({
-            topic: process.env.IOT_TOPIC,
+            topic: 'theme-park-rides',
             qos: 0,
             payload: wrappedMessage
         }))
