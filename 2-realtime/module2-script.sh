@@ -16,7 +16,7 @@ LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'
 
 aws lambda create-function \
     --function-name theme-park-ridetimes \
-    --runtime nodejs16.x \
+    --runtime nodejs18.x \
     --zip-file fileb://2-realtime-app.zip \
     --handler app.handler \
     --role $LAMBDA_ROLE_ARN \
