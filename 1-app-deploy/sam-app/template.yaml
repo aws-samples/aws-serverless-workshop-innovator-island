@@ -14,7 +14,7 @@ Resources:
       CodeUri: getInitState/
       Handler: app.lambdaHandler
       MemorySize: 128
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Environment:
         Variables:
           DDB_TABLE_NAME: !Ref DynamoDBTable     
@@ -35,7 +35,7 @@ Resources:
       CodeUri: getUploadURL/
       Handler: app.handler
       MemorySize: 128
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Environment:
         Variables:
           UploadBucket: !Ref UploadBucket
@@ -348,7 +348,7 @@ Outputs:
     Value: !Ref IdentityPool
     Export:
       Name: "IdentityPool::Id"    
-  IotEndpoint:
+  IotTopic:
     Value: !Ref ThemeParkRealtime
   UploadBucketName:
     Value: !Ref UploadBucket

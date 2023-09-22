@@ -29,7 +29,9 @@ Resources:
     Properties:
       CodeUri: fatController/
       Handler: app.handler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
+      Architectures:
+        - arm64
       MemorySize: 128
       Environment:
         Variables:
@@ -55,7 +57,9 @@ Resources:
     Properties:
       CodeUri: initDB/
       Handler: app.handler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
+      Architectures:
+        - arm64
       Timeout: 15
       MemorySize: 128
       Environment:

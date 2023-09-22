@@ -12,7 +12,9 @@ Resources:
     Properties:
       CodeUri: outagesFunction/
       Handler: app.handler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
+      Architectures:
+        - arm64
       MemorySize: 128
       Policies:
         - Statement:

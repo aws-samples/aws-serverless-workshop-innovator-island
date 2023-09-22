@@ -11,11 +11,10 @@ const docClient = DynamoDBDocument.from(new DynamoDB())
  
 exports.lambdaHandler = async (event, context) => {
   try {
-    const params = {
+    const result = await docClient.scan({
       TableName:  process.env.DDB_TABLE_NAME
-    }
-    const result = await docClient.scan(params)
-
+    })
+    
     return {
       'statusCode': 200,
       "isBase64Encoded": false,

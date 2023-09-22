@@ -21,7 +21,9 @@ Resources:
       CodeUri: controller/
       Handler: app.handler
       MemorySize: 128
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
+      Architectures:
+        - arm64
       Environment:
         Variables:
           DDB_TABLE_NAME: !Ref DynamoDBTableName

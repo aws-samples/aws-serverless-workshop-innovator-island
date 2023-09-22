@@ -7,6 +7,7 @@
   "author": "AWS Serverless team",
   "license": "MIT",
   "dependencies": {
-    "@aws-sdk/lib-dynamodb": "^3.344.0"
+    "@aws-sdk/client-dynamodb": "^3.382.0",
+    "@aws-sdk/lib-dynamodb": "^3.382.0"
   }
 }
