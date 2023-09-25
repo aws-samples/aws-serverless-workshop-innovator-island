@@ -25,6 +25,8 @@ The second part, you will create a CloudWatch Metrics dashboard that enables Par
 ```
 cd ~/environment/theme-park-backend/6-eventbridge/1-eventbus/sam-app/
 
+sam build
+
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 
 sam deploy --template-file packaged.yaml --stack-name theme-park-events --capabilities CAPABILITY_IAM

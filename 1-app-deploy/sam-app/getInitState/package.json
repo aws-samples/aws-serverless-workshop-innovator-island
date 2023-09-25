@@ -5,5 +5,9 @@
   "main": "app.js",
   "repository": "",
   "author": "AWS Serverless team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.382.0",
+    "@aws-sdk/lib-dynamodb": "^3.382.0"
+  }
 }

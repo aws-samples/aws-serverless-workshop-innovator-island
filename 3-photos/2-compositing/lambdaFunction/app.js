@@ -4,9 +4,8 @@
 
  // Library documentation: https://www.npmjs.com/package/jimp
 
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.env.AWS_REGION })
-const s3 = new AWS.S3()
+const { S3, GetObjectCommand } = require("@aws-sdk/client-s3")
+const s3 = new S3({ region: process.env.AWS_REGION })
 const Jimp = require('jimp')
 const fs = require('fs');
 
@@ -20,6 +19,18 @@ const getBuffer = function(image) {
   })
 }
 
+// https://github.com/aws/aws-sdk-js-v3/issues/1877#issuecomment-1071508390
+// FIXME for node 18.x: https://github.com/aws/aws-sdk-js-v3/issues/1877#issuecomment-1463923284
+const streamToString = (stream) => {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    stream.on("data", (chunk) => chunks.push(chunk));
+    stream.on("error", reject);
+    // I removed the .toString here
+    stream.on("end", () => resolve(Buffer.concat(chunks)));
+  });
+};
+
 // Module 3 - Compositing
 // This function composites three images - a background, the green screen photo and a branding frame.
 // The composited image is put back to S3 in the final bucket.
@@ -32,8 +43,9 @@ exports.handler = async (event) => {
   }
 
   // Load greenscreen person foreground (already resized to 600w x 800h in previously Lambda function)
-  const s3Object = await s3.getObject(params).promise()
-  const foreground  = await Jimp.read(s3Object.Body)
+  const getObjectResponse = await s3.send(new GetObjectCommand(params));
+  const s3Object = await streamToString(getObjectResponse.Body);
+  const foreground  = await Jimp.read(s3Object)
 
   // Select random background (1-4 available)
   const random = Math.ceil(Math.random()*4)
@@ -61,5 +73,5 @@ exports.handler = async (event) => {
     //ACL: 'public-read'
   }
   console.log(outParams)
-  console.log(await s3.putObject(outParams).promise())
+  console.log(await s3.putObject(outParams))
 }

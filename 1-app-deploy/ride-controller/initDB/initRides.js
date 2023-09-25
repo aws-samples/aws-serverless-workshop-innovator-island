@@ -2,40 +2,40 @@
  *  SPDX-License-Identifier: MIT-0
  */
 
-
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.env.AWS_REGION || 'us-east-1' })
-const documentClient = new AWS.DynamoDB.DocumentClient()
+const { DynamoDBClient} = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, BatchWriteCommand } = require("@aws-sdk/lib-dynamodb");
+const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+const documentClient = DynamoDBDocumentClient.from(client)
 
 const TableName = process.env.DDBtable
 const initRideState = require('./initRideState')
 
 // BatchWrite params template
 const params = {
-  RequestItems: {
-    [TableName]: []
-  }
+    RequestItems: {
+        [TableName]: []
+    }
 }
 
 // Load in ride template
 initRideState.map((ride) => {
-  params.RequestItems[TableName].push ({
-    PutRequest: {
-      Item: {
-        ...ride
-      }
-    }
-  })
+    params.RequestItems[TableName].push ({
+        PutRequest: {
+            Item: {
+                ...ride
+            }
+        }
+    })
 })
 
 const initRides = async () => {
-  try {
-    console.log(params)
-    const result = await documentClient.batchWrite(params).promise()
-    console.log('initRides result: ', result)
-  } catch (err) {
-    console.error('initRides error: ', err)
-  }
+    try {
+        console.log("params"+JSON.stringify(params))
+        const result = await documentClient.send(new BatchWriteCommand(params));
+        console.log('initRides result: ', result)
+    } catch (err) {
+        console.error('initRides error: ', err)
+    }
 }
 
 module.exports = { initRides }

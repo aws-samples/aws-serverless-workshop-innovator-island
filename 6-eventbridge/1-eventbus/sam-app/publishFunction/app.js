@@ -2,9 +2,8 @@
 // 1. DetailType "waitTimes" - individual ride times per event
 // 2. DetailType "waitTimesSummary" - aggregated ride times
 
-const AWS = require('aws-sdk')
-AWS.config.region = process.env.AWS_REGION 
-const eventbridge = new AWS.EventBridge()
+const { EventBridge } = require("@aws-sdk/client-eventbridge");
+const eventbridge = new EventBridge({ region: process.env.AWS_REGION})
 const MAX_ENTRIES = 10
 
 exports.handler = async (event) => {
@@ -46,7 +45,7 @@ exports.handler = async (event) => {
     // Maximum size of Entries for EventBridge is 10    
     if (params.Entries.length === MAX_ENTRIES) {
       console.log(params)
-      console.log(await eventbridge.putEvents(params).promise())
+      console.log(await eventbridge.putEvents(params))
       params.Entries = []
     }
   }
@@ -54,7 +53,7 @@ exports.handler = async (event) => {
   // Clear anything left in the batch
   if (params.Entries.length > 0 ) {
     console.log(params)
-    console.log(await eventbridge.putEvents(params).promise())
+    console.log(await eventbridge.putEvents(params))
   } 
   
   // Post summary messsage to EventBridge with all contents
@@ -71,5 +70,5 @@ exports.handler = async (event) => {
         Detail: sns.Message 
       }
     ]
-  }).promise())
+  }))
 }

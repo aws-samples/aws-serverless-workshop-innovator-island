@@ -2,9 +2,8 @@
 // to EventBridge default bus:
 // 1. DetailType "outage" - individual ride outage information
 
-const AWS = require('aws-sdk')
-AWS.config.region = process.env.AWS_REGION 
-const eventbridge = new AWS.EventBridge()
+const { EventBridge } = require("@aws-sdk/client-eventbridge");
+const eventbridge = new EventBridge({ region: process.env.AWS_REGION })
 
 const CACHE_TIME = 180  // length of cache in seconds
 let alertCache = {}     // Local cache that surives between warm invocations
@@ -108,5 +107,5 @@ exports.handler = async (event) => {
             Detail: JSON.stringify(message)
           }
         ]
-    }).promise())    
+    }))
 }

@@ -4,9 +4,10 @@
 
 const fs = require('fs')
 const parse = require('csv-parse')
-const AWS = require('aws-sdk')
-AWS.config.update({ region: process.argv[2] })
-const docClient = new AWS.DynamoDB.DocumentClient()
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, BatchWriteCommand } = require("@aws-sdk/lib-dynamodb");
+const client = new DynamoDBClient({ region: process.argv[2] });
+const docClient = DynamoDBDocumentClient.from(client);
 const CSV_FILENAME = './table.csv'
 
 /* 
@@ -60,7 +61,8 @@ const uploadFileToDynamoDB = (err, data) => {
     try {
       console.log('Trying batch: ', batchCount)
       batchCount++
-      const result = await docClient.batchWrite(params).promise()
+      const command = new BatchWriteCommand(params);
+      const result = await docClient.send(command);
       console.log('Success: ', result)
     } catch (err) {
       console.error('Error: ', err)

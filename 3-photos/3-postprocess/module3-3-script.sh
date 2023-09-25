@@ -1,20 +1,23 @@
 ##Creating the PostProcess Lambda function
 cd ~/environment/theme-park-backend/3-photos/3-postprocess/
-zip 3-photos-3-postprocess.zip app.js
+zip 3-photos-3-postprocess.zip app.js node_modules/
 accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 LAMBDA_ROLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id ThemeParkLambdaRole --query "StackResourceDetail.PhysicalResourceId" --output text)
 LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'"' -f 4)
 DDB_TABLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id DynamoDBTable --query "StackResourceDetail.PhysicalResourceId" --output text)
 IOT_ENDPOINT_HOST=$(aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep endpointAddress | cut -d'"' -f 4)
+WEB_APP_DOMAIN=$(aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='WebAppDomain'].OutputValue" --output text)
 FINAL_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id FinalBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
+WEB_APP_DOMAIN=$(aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='WebAppDomain'].OutputValue" --output text)
+#IOT_TOPIC=$(aws cloudformation describe-stacks --stack-name theme-park-backend --query "Stacks[0].Outputs[?OutputKey=='IotTopic'].OutputValue" --output text)
 
 aws lambda create-function \
     --function-name theme-park-photos-postprocess   \
-    --runtime nodejs12.x \
+    --runtime nodejs18.x \
     --zip-file fileb://3-photos-3-postprocess.zip \
     --handler app.handler \
     --role $LAMBDA_ROLE_ARN \
-	--environment "Variables={DDB_TABLE_NAME=$DDB_TABLE,IOT_DATA_ENDPOINT=$IOT_ENDPOINT_HOST}"
+	--environment "Variables={DDB_TABLE_NAME=$DDB_TABLE,IOT_DATA_ENDPOINT=$IOT_ENDPOINT_HOST,WEB_APP_DOMAIN=$WEB_APP_DOMAIN}"
 
 ##Adding the S3 trigger
 

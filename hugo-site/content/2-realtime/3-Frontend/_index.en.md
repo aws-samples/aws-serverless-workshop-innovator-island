@@ -40,7 +40,7 @@ This file contains a JSON configuration for the frontend. The file is separated 
 7. In the **MODULE 2** section at the beginning of the file, update the *iot* attributes as follows:
 
 - `poolId`: set to the **IdentityPool Id** from the section above.
-- `host`: set to the **IoT endpoint hostname** from the section above.
+- `host`: set to the **IoT endpoint hostname with https://** prefix from the section above.
 - `region`: set to your **AWS_REGION** from the section above (e.g. `'us-west-2'`).
 
 ![Module 2 - Front end config](../images/2-realtime-frontend1.png)
