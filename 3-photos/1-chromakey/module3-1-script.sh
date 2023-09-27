@@ -9,23 +9,24 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 mkdir ~/environment/lambda-layer
 cd ~/environment/lambda-layer
-wget https://innovator-island.s3-us-west-2.amazonaws.com/opencv-python-37.zip
 
-aws s3 cp opencv-python-37.zip s3://$s3_deploy_bucket
+wget https://innovator-island.s3.us-west-2.amazonaws.com/opencv-python-311.zip
 
-aws lambda publish-layer-version --layer-name python-opencv-37 --description "OpenCV for Python 3.7" --content S3Bucket=$s3_deploy_bucket,S3Key=opencv-python-37.zip --compatible-runtimes python3.7
+aws s3 cp opencv-python-311.zip s3://$s3_deploy_bucket
+
+aws lambda publish-layer-version --layer-name python-opencv-311 --description "OpenCV for Python 3.11" --content S3Bucket=$s3_deploy_bucket,S3Key=opencv-python-311.zip --compatible-runtimes python3.11
 
 # ##Creating the Chromakey Lambda function
 cd ~/environment/theme-park-backend/3-photos/1-chromakey/
 zip 3-photos-1-chromakey.zip app.py
 LAMBDA_ROLE=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id ThemeParkLambdaRole --query "StackResourceDetail.PhysicalResourceId" --output text)
 LAMBDA_ROLE_ARN=$(aws iam get-role --role-name $LAMBDA_ROLE | grep Arn | cut -d'"' -f 4)
-LAYER_ARN=$(aws lambda list-layers --query "Layers[?LayerName=='python-opencv-37'].{LayerArn: LatestMatchingVersion.LayerVersionArn}" --output json | jq -r '.[0].LayerArn')
+LAYER_ARN=$(aws lambda list-layers --query "Layers[?LayerName=='python-opencv-311'].{LayerArn: LatestMatchingVersion.LayerVersionArn}" --output json | jq -r '.[0].LayerArn')
 
 CHROMAKEY_FUNCTION_NAME="theme-park-photos-chromakey"
 aws lambda create-function \
     --function-name $CHROMAKEY_FUNCTION_NAME  \
-    --runtime python3.7 \
+    --runtime python3.11 \
     --zip-file fileb://3-photos-1-chromakey.zip \
     --handler app.lambda_handler \
     --role $LAMBDA_ROLE_ARN \

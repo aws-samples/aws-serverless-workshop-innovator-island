@@ -17,7 +17,7 @@ aws lambda create-function \
     --zip-file fileb://3-photos-3-postprocess.zip \
     --handler app.handler \
     --role $LAMBDA_ROLE_ARN \
-	--environment "Variables={DDB_TABLE_NAME=$DDB_TABLE,IOT_DATA_ENDPOINT=$IOT_ENDPOINT_HOST,WEB_APP_DOMAIN=$WEB_APP_DOMAIN, IOT_TOPIC="theme-park-rides"}"
+	--environment "Variables={DDB_TABLE_NAME=$DDB_TABLE,IOT_DATA_ENDPOINT=$IOT_ENDPOINT_HOST,WEB_APP_DOMAIN=$WEB_APP_DOMAIN}"
 
 ##Adding the S3 trigger
 
