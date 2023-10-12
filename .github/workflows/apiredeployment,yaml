@@ -1,0 +1,48 @@
+ name: API Gateway deployment
+
+ on:
+
+   push:
+
+     branches:
+
+       - main
+
+     paths:
+
+       - 'apps/dev/apideployment.yaml'
+
+ jobs:
+
+   API_Deployment:
+
+     runs-on: ubuntu-latest
+
+
+           echo "Installing fluxctl..."
+
+           curl -sL https://github.com/fluxcd/flux/releases/latest/download/fluxctl_linux_amd64 -o fluxctl
+
+           chmod +x fluxctl
+
+           mv fluxctl /usr/local/bin/
+
+ 
+
+           # Check if fluxctl is installed
+
+           if ! command -v fluxctl &> /dev/null; then
+
+             echo "fluxctl is not installed. Installation failed."
+
+             exit 1
+
+           fi
+
+ 
+
+           # Check the version of fluxctl
+
+           echo "Checking fluxctl version..."
+
+           fluxctl --version
