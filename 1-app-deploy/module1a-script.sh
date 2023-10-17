@@ -13,8 +13,8 @@ git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 mkdir ~/environment/theme-park-frontend
 cd ~/environment/theme-park-frontend
-wget https://innovator-island.s3-us-west-2.amazonaws.com/front-end/theme-park-frontend-202110.zip
-unzip theme-park-frontend-202110.zip
+wget https://innovator-island.s3.us-west-2.amazonaws.com/front-end/theme-park-frontend-202310.zip
+unzip theme-park-frontend-202310.zip
 
 ## Push to CodeCommit
 git init -b main
