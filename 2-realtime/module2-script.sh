@@ -1,6 +1,7 @@
 ###########MODULE 2-Realtime
-AWS_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
-accountId=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 120")
+AWS_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
+accountId=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 COGNITO_POOLID=$(aws cognito-identity list-identity-pools  --max-results 10 | grep -B 1 ThemeParkIdentityPool | grep IdentityPoolId | cut -d'"' -f 4)
