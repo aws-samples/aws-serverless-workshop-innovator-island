@@ -7,11 +7,13 @@ PROCESSING_BUCKET=$(aws cloudformation describe-stack-resource --stack-name them
 UPLOAD_BUCKET=$(aws cloudformation describe-stack-resource --stack-name theme-park-backend --logical-resource-id UploadBucket --query "StackResourceDetail.PhysicalResourceId" --output text)
 accountId=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
 s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
+s3_deploy_amplify_role_bucket="theme-park-amplify-role-${accountId}"
 
 aws s3 rb "s3://${FINAL_BUCKET}" --force
 aws s3 rb "s3://${PROCESSING_BUCKET}" --force
 aws s3 rb "s3://${UPLOAD_BUCKET}" --force
 aws s3 rb "s3://${s3_deploy_bucket}" --force
+aws s3 rb "s3://${s3_deploy_amplify_role_bucket}" --force
 aws s3 rb "s3://theme-park-data-${accountId}-${AWS_REGION}" --force
 
 prefix="theme-park"
@@ -57,6 +59,3 @@ rm -rf ~/environment/theme-park-backend/4-translate/local-app/node_modules
 #    TOPIC_ARN=$(aws sns list-topics --region $AWS_REGION | jq -r ".Topics[] | select(.TopicArn | contains(\"$TOPIC\")) | .TopicArn")
 #    aws sns delete-topic --region $AWS_REGION --topic-arn $TOPIC_ARN
 #done
-
-
-

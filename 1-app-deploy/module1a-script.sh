@@ -26,6 +26,18 @@ TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-meta
 AWS_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
 git push --set-upstream https://git-codecommit.$AWS_REGION.amazonaws.com/v1/repos/theme-park-frontend main
 
+##Deploy Amazon AmplifyRole
+accountId=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)
+s3_deploy_bucket="theme-park-amplify-role-${accountId}"
+echo $s3_deploy_bucket
+aws s3 mb s3://$s3_deploy_bucket
+
+##Deploy ride controller
+cd ~/environment/theme-park-backend/1-app-deploy/amplify-role/
+sam build
+sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
+sam deploy --template-file packaged.yaml --stack-name theme-park-amplify-role --capabilities CAPABILITY_IAM
+
 
 
 #############Deploy the site with the AWS Amplify Console
