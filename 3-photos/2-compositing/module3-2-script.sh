@@ -8,7 +8,7 @@ s3_deploy_bucket="theme-park-sam-deploys-${accountId}"
 
 ##Create the Lambda function using SAM
 cd ~/environment/theme-park-backend/3-photos/2-compositing
-
+npm cache clean --force
 sam build
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 sam deploy --template-file packaged.yaml --stack-name theme-park-photos --capabilities CAPABILITY_IAM --parameter-overrides "FinalBucketName"=$FINAL_BUCKET

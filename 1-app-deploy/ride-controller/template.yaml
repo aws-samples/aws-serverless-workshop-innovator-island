@@ -30,6 +30,7 @@ Resources:
       CodeUri: fatController/
       Handler: app.handler
       Runtime: nodejs18.x
+      Timeout: 10
       Architectures:
         - arm64
       MemorySize: 128

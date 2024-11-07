@@ -14,6 +14,7 @@ sam deploy --template-file packaged.yaml --stack-name theme-park-ride-times --ca
 
 ##Deploy remaining SAM backend 
 cd ~/environment/theme-park-backend/1-app-deploy/sam-app/
+npm cache clean --force
 sam build
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 sam deploy --template-file packaged.yaml --stack-name theme-park-backend --capabilities CAPABILITY_IAM
