@@ -14,7 +14,7 @@ WEB_APP_DOMAIN=$(aws cloudformation describe-stacks --stack-name theme-park-back
 
 aws lambda create-function \
     --function-name theme-park-photos-postprocess   \
-    --runtime nodejs18.x \
+    --runtime nodejs20.x \
     --zip-file fileb://3-photos-3-postprocess.zip \
     --handler app.handler \
     --role $LAMBDA_ROLE_ARN \

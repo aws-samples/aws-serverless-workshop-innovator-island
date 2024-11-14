@@ -29,7 +29,7 @@ Resources:
     Properties:
       CodeUri: fatController/
       Handler: app.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Timeout: 10
       Architectures:
         - arm64
@@ -58,7 +58,7 @@ Resources:
     Properties:
       CodeUri: initDB/
       Handler: app.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Architectures:
         - arm64
       Timeout: 15
