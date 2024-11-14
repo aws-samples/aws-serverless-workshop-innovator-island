@@ -10,7 +10,7 @@
   "author": "James Beswick, AWS Serverless",
   "license": "MIT-0",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.682.0",
-    "@aws-sdk/lib-dynamodb": "^3.685.0"
+    "@aws-sdk/client-dynamodb": "^3.687.0",
+    "@aws-sdk/lib-dynamodb": "^3.689.0"
   }
 }

@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.682.0",
-    "@aws-sdk/lib-dynamodb": "^3.685.0",
+    "@aws-sdk/client-dynamodb": "^3.687.0",
+      "@aws-sdk/lib-dynamodb": "^3.689.0",
     "csv-parse": "^4.16.3"
   },
   "description": ""

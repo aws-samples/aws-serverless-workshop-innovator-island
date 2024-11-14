@@ -21,7 +21,7 @@ Resources:
       CodeUri: controller/
       Handler: app.handler
       MemorySize: 128
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Architectures:
         - arm64
       Environment:

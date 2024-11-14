@@ -14,7 +14,7 @@ Resources:
       CodeUri: getInitState/
       Handler: app.lambdaHandler
       MemorySize: 128
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Environment:
         Variables:
           DDB_TABLE_NAME: !Ref DynamoDBTable     
@@ -35,7 +35,7 @@ Resources:
       CodeUri: getUploadURL/
       Handler: app.handler
       MemorySize: 128
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Environment:
         Variables:
           UploadBucket: !Ref UploadBucket

@@ -33,7 +33,6 @@ echo $s3_deploy_bucket
 aws s3 mb s3://$s3_deploy_bucket
 
 cd ~/environment/theme-park-backend/1-app-deploy/amplify-role/
-npm cache clean --force
 sam build
 sam package --output-template-file packaged.yaml --s3-bucket $s3_deploy_bucket
 sam deploy --template-file packaged.yaml --stack-name theme-park-amplify-role --capabilities CAPABILITY_IAM

@@ -16,7 +16,7 @@ Resources:
     Properties:
       CodeUri: lambdaFunction/
       Handler: app.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       Architectures:
         - arm64
       MemorySize: 2048
