@@ -85,8 +85,8 @@ def lambda_handler(event, context) -> None:
 
     # (70, 255, 255) - default
     upper_range = tuple(json.loads(os.environ["HSV_UPPER"]))
-    logger.info("Lower HSV range: ", lower_range)
-    logger.info("Upper HSV range: ", upper_range)
+    logger.info(f"Lower HSV range: {lower_range}")
+    logger.info(f"Upper HSV range: {upper_range}")
 
     # Read in the file
     image = cv2.imread(local_input_temp_file)
