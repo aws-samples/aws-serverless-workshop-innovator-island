@@ -6,9 +6,6 @@ Parameters:
     Type: String
     Description: Name of the final S3 bucket
 
-Globals:
-  Function:
-    Timeout: 10
 
 Resources:
   CompositeFunction:
@@ -16,6 +13,7 @@ Resources:
     Properties:
       CodeUri: lambdaFunction/
       Handler: app.handler
+      Timeout: 10
       Runtime: nodejs20.x
       Architectures:
         - arm64

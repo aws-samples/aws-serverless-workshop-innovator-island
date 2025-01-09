@@ -6,6 +6,7 @@ Description: Innovator Island - Theme park backend
 Globals:
   Function:
     Timeout: 5
+    Runtime: nodejs20.x
 
 Resources:
   InitStateFunction:
@@ -13,8 +14,6 @@ Resources:
     Properties:
       CodeUri: getInitState/
       Handler: app.lambdaHandler
-      MemorySize: 128
-      Runtime: nodejs20.x
       Environment:
         Variables:
           DDB_TABLE_NAME: !Ref DynamoDBTable     
@@ -34,8 +33,6 @@ Resources:
     Properties:
       CodeUri: getUploadURL/
       Handler: app.handler
-      MemorySize: 128
-      Runtime: nodejs20.x
       Environment:
         Variables:
           UploadBucket: !Ref UploadBucket
@@ -65,11 +62,7 @@ Resources:
         - AttributeName: partitionKey
           KeyType: HASH
         - AttributeName: sortKey
-          KeyType: RANGE
-      BillingMode: PROVISIONED
-      ProvisionedThroughput:
-        ReadCapacityUnits: 2
-        WriteCapacityUnits: 2     
+          KeyType: RANGE   
 
   ##########################################
   # S3 Buckets                             #
@@ -302,6 +295,14 @@ Resources:
             Condition:
               StringEquals:
                 AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource: !Sub arn:aws:s3:::${FinalBucket}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: false
 
   WebAppOriginAccessControl:
     Type: AWS::CloudFront::OriginAccessControl

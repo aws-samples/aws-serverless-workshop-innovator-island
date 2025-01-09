@@ -2,6 +2,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Innovator Island - Flow & Traffic Controller (ride queue times service).
 
+Globals:
+  Function:
+    Handler: app.handler
+    Runtime: nodejs20.x
+    Architectures:
+      - arm64
+    Environment:
+      Variables:
+        DDBtable: !Ref DDBtable
+
+
 Resources:
 
   # Ride times are published to this topic
@@ -9,43 +20,28 @@ Resources:
     Type: AWS::SNS::Topic
 
   # Table to hold state between Lambda invocations
+
   DDBtable:
-    Type: AWS::DynamoDB::Table
+    Type: AWS::Serverless::SimpleTable
     Properties:
-      AttributeDefinitions:
-      - AttributeName: ID
-        AttributeType: S
-      KeySchema:
-      - AttributeName: ID
-        KeyType: HASH
-      BillingMode: PROVISIONED
-      ProvisionedThroughput:
-        ReadCapacityUnits: 2
-        WriteCapacityUnits: 2     
+      PrimaryKey:
+        Name: ID
+        Type: String
         
   # Function to simulate ride times and closures
   UpdateRides:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: fatController/
-      Handler: app.handler
-      Runtime: nodejs20.x
       Timeout: 10
-      Architectures:
-        - arm64
-      MemorySize: 128
       Environment:
         Variables:
-          DDBtable: !Ref DDBtable
           TopicArn: !Ref FATcontroller      
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DDBtable  
-        - Statement:
-          - Effect: Allow
-            Resource: !Ref FATcontroller
-            Action:
-              - sns:Publish                 
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt FATcontroller.TopicName                
       Events:
         UpdateRidesEvent:
           Type: Schedule
@@ -57,15 +53,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: initDB/
-      Handler: app.handler
-      Runtime: nodejs20.x
-      Architectures:
-        - arm64
       Timeout: 15
-      MemorySize: 128
-      Environment:
-        Variables:
-          DDBtable: !Ref DDBtable
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref DDBtable                 

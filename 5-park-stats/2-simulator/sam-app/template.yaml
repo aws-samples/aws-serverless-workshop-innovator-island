@@ -9,9 +9,6 @@ Parameters:
   StreamArn:
     Type: String
 
-Globals:
-  Function:
-    Timeout: 900
 
 Resources:
   SimulatorFunction:
@@ -20,6 +17,7 @@ Resources:
       CodeUri: simulatorFunction/
       Handler: app.handler
       Runtime: nodejs20.x
+      Timeout: 900
       Architectures:
         - arm64
       MemorySize: 3008
