@@ -1,6 +1,6 @@
 ## Welcome to the Innovator Island workshop!
 
-For workshop instructions, visit the [workshop's new instructions site](https://www.eventbox.dev/published/lesson/innovator-island/)
+We are working on a new version of the workshop and we will share it as soon as it's ready. 
 
 ### Have an idea for this workshop? Found a bug? ###
 
